@@ -2,6 +2,20 @@
 
 - title: "Wish You Were Here"
   release: "2015-09-09"
-  mood: ["sad","retrospective"]
+  mood: ["sad","retrospective","nostalgic","longing","heartbreak"]
   tags: ["guitar","solo"]
 
+- title: "Complicated"
+  release: "2002-05-14"
+  mood: ["happy","nostalgic","conflicted"]
+  tags: ["guitar","solo"]
+
+- title: "Sk8er Boi"
+  release: "2002-05-14"
+  mood: ["happy","nostalgic","rebellious","energetic"]
+  tags: ["guitar","solo"]
+
+- title: "I'm With You"
+  release: "2002-05-14"
+  mood: ["sad","nostalgic","longing"]
+  tags: ["guitar","solo"]

@@ -1,20 +1,20 @@
 ---
 layout: "base.njk"
 ---
-<!-- Font -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-
 <style>
-  /* Centered title */
+  /* Import Archivo font */
+  @import url('https://fonts.googleapis.com/css2?family=Archivo:wght@400;700&display=swap');
+
+  body {
+    font-family: 'Archivo', sans-serif;
+  }
   h1.site-title {
     text-align: center;
     margin-top: 1rem;
     font-size: 2rem;
+    font-weight: 700;
   }
 
-  /* Center & stretch search box */
   .search-container {
     text-align: center;
     margin: 1.5rem 0;
@@ -28,36 +28,35 @@ layout: "base.njk"
     border-radius: 4px;
   }
 
-  /* Table styling */
   table#resultsTable {
     margin: 0 auto;
     border-collapse: collapse;
     width: 80%;
     max-width: 800px;
-    font-family: sans-serif;
+    font-family: 'Archivo', sans-serif;
   }
   table#resultsTable th,
   table#resultsTable td {
     border: 1px solid #ccc;
-    padding: 0.5rem 0.75rem;
+    padding: 0.5rem 0.5rem;
   }
   table#resultsTable th {
     background: #f4f4f4;
+    cursor: pointer;
+    text-align: center;        /* center Artist, Title, Release headers */
   }
 
-  /* Font styles */
-  body {
-    font-family: 'Archivo', 'Consolas', sans-serif;
-  }
-  /* Optional: override specific elements */
-  h1.site-title {
-    font-family: 'Archivo', 'Consolas', sans-serif;
-    font-weight: 700;
-  }
-  table#resultsTable {
-    font-family: 'Archivo', 'Consolas', sans-serif;
+  .sort-indicator {
+    font-size: 0.8rem;
+    margin-left: 0.25rem;
+    user-select: none;
   }
 
+  .clickable {
+    cursor: pointer;
+    color: #0066cc;
+    text-decoration: underline;
+  }
 </style>
 
 <h1 class="site-title">KnightChaser's Music Curation List</h1>
@@ -69,25 +68,30 @@ layout: "base.njk"
 <table id="resultsTable">
   <thead>
     <tr>
-      <th>Artist</th>
-      <th>Title</th>
-      <th>Release</th>
+      <th class="sortable" data-key="artist">
+        Artist <span class="sort-indicator">⇅</span>
+      </th>
+      <th class="sortable" data-key="title">
+        Title <span class="sort-indicator">⇅</span>
+      </th>
+      <th class="sortable" data-key="release">
+        Release <span class="sort-indicator">⇅</span>
+      </th>
       <th>Mood</th>
       <th>Tags</th>
     </tr>
   </thead>
   <tbody>
-    <!-- JS will populate rows here -->
+    <tr><td colspan="5" style="text-align:center;">Type to search…</td></tr>
   </tbody>
 </table>
 
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6"></script>
 <script>
-  // Escape regex special chars
+  // Utility: escape RegEx chars
   function escapeRegex(s) {
     return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
   }
-
   // Wrap matches in <strong>
   function highlight(text, term) {
     if (!term) return text;
@@ -100,44 +104,98 @@ layout: "base.njk"
     .then(data => {
       const fuse = new Fuse(data, {
         keys: ['artist','title','mood','tags'],
-        threshold: 0.3,
+        threshold: 0.3
       });
 
       const input = document.getElementById('search');
       const tbody = document.querySelector('#resultsTable tbody');
+      let currentResults = [];
+      let sortKey = null, sortDir = 1;
 
-      function renderResults(results, term) {
-        if (!results.length) {
+      // Perform search and render
+      function doSearch(term) {
+        currentResults = term
+          ? fuse.search(term).map(r => r.item)
+          : [];
+        applySort();
+        render(term);
+      }
+
+      // Apply column sort
+      function applySort() {
+        if (!sortKey) return;
+        currentResults.sort((a, b) => {
+          let av = a[sortKey], bv = b[sortKey];
+          if (sortKey === 'release') {
+            av = new Date(av); bv = new Date(bv);
+          } else {
+            av = String(av).toLowerCase();
+            bv = String(bv).toLowerCase();
+          }
+          if (av < bv) return -1 * sortDir;
+          if (av > bv) return 1 * sortDir;
+          return 0;
+        });
+      }
+
+      // Build the table rows
+      function render(term) {
+        if (!currentResults.length) {
           tbody.innerHTML = `<tr><td colspan="5" style="text-align:center;">No matches</td></tr>`;
           return;
         }
-        tbody.innerHTML = results.map(h => {
-          const item = h.item;
-          // Join arrays into comma-lists
-          const mood = Array.isArray(item.mood) ? item.mood.join(', ') : item.mood;
-          const tags = Array.isArray(item.tags) ? item.tags.join(', ') : item.tags;
-          // Highlight search term
+        tbody.innerHTML = currentResults.map(item => {
           const t = term.trim();
+          // build hashtagged, highlighted arrays
+          const moods = (item.mood || []).map(m =>
+            `<span class="clickable">#${highlight(m, t)}</span>`
+          ).join(' ');
+          const tags = (item.tags || []).map(tag =>
+            `<span class="clickable">#${highlight(tag, t)}</span>`
+          ).join(' ');
+
           return `
             <tr>
-              <td>${highlight(item.artist, t)}</td>
+              <td><span class="clickable">${highlight(item.artist, t)}</span></td>
               <td>${highlight(item.title, t)}</td>
               <td>${highlight(item.release, t)}</td>
-              <td>${highlight(mood, t)}</td>
-              <td>${highlight(tags, t)}</td>
+              <td>${moods}</td>
+              <td>${tags}</td>
             </tr>`;
         }).join('');
       }
 
-      // Initial empty state
-      tbody.innerHTML = `<tr><td colspan="5" style="text-align:center;">Type to search…</td></tr>`;
+      // Sort handlers
+      document.querySelectorAll('th.sortable').forEach(th => {
+        th.addEventListener('click', () => {
+          const key = th.dataset.key;
+          if (sortKey === key) {
+            sortDir = -sortDir;
+          } else {
+            sortKey = key;
+            sortDir = 1;
+          }
+          applySort();
+          render(input.value);
+        });
+      });
 
+      // Click delegation for hashtag insertion
+      tbody.addEventListener('click', e => {
+        if (e.target.classList.contains('clickable')) {
+          const term = e.target.innerText;
+          if (!input.value.includes(term)) {
+            input.value = input.value
+              ? input.value + ' ' + term
+              : term;
+            doSearch(input.value);
+          }
+        }
+      });
+
+      // Wire up input
       input.addEventListener('input', e => {
-        const term = e.target.value;
-        const results = term
-          ? fuse.search(term)
-          : [];
-        renderResults(results, term);
+        doSearch(e.target.value);
       });
     });
 </script>
