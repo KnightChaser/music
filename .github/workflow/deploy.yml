@@ -30,3 +30,4 @@ jobs:
         with:
           publish_dir: ./docs
           github_token: ${{ secrets.GITHUB_TOKEN }}
+          nojekyll: true
