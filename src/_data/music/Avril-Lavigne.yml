@@ -4,18 +4,26 @@
   release: "2015-09-09"
   mood: ["sad","retrospective","nostalgic","longing","heartbreak"]
   tags: ["guitar","solo"]
+  note: "I used to listen to this when I wish you were here."
+  language: en
 
 - title: "Complicated"
   release: "2002-05-14"
   mood: ["happy","nostalgic","conflicted"]
   tags: ["guitar","solo"]
+  note:
+  language: en
 
 - title: "Sk8er Boi"
   release: "2002-05-14"
   mood: ["happy","nostalgic","rebellious","energetic"]
   tags: ["guitar","solo"]
+  note:
+  language: en
 
 - title: "I'm With You"
   release: "2002-05-14"
   mood: ["sad","nostalgic","longing"]
   tags: ["guitar","solo"]
+  note:
+  language: en

@@ -38,22 +38,24 @@ layout: "base.njk"
   table#resultsTable {
     margin: 0 auto;
     border-collapse: collapse;
-    width: 80%;
-    max-width: 800px;
+    /* widen to about 3/4 screen */
+    width: 75%;
     font-family: 'Archivo', sans-serif;
   }
   table#resultsTable th,
   table#resultsTable td {
     border: 1px solid #ccc;
-    padding: 0.5rem 0.5rem;
+    padding: 0.5rem;
   }
   table#resultsTable th {
     background: #f4f4f4;
     cursor: pointer;
   }
-  /* center-align first three columns */
+  /* center-align Artist, Title, Release, Language */
   table#resultsTable th:nth-child(-n+3),
-  table#resultsTable td:nth-child(-n+3) {
+  table#resultsTable td:nth-child(-n+3),
+  table#resultsTable th:nth-last-child(1),
+  table#resultsTable td:nth-last-child(1) {
     text-align: center;
   }
 
@@ -62,7 +64,6 @@ layout: "base.njk"
     margin-left: 0.25rem;
     user-select: none;
   }
-
   .clickable {
     cursor: pointer;
     color: #0066cc;
@@ -70,11 +71,11 @@ layout: "base.njk"
   }
 </style>
 
-<h1 class="site-title">KnightChaser's Music Curation List</h1>
+<h1 class="site-title">KnightChaser’s Music Curation List</h1>
 <div class="count-container" id="count">0 / 0 songs shown</div>
 
 <div class="search-container">
-  <input id="search" placeholder="Search by artist, title, mood, tag…" />
+  <input id="search" placeholder="Search by artist, title, mood, tag, note, language…" />
 </div>
 
 <table id="resultsTable">
@@ -91,22 +92,35 @@ layout: "base.njk"
       </th>
       <th>Mood</th>
       <th>Tags</th>
+      <th>Note</th>
+      <th class="sortable" data-key="language">
+        Language <span class="sort-indicator">⇅</span>
+      </th>
     </tr>
   </thead>
   <tbody>
-    <tr><td colspan="5" style="text-align:center;">Loading…</td></tr>
+    <tr><td colspan="7" style="text-align:center;">Loading…</td></tr>
   </tbody>
 </table>
 
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6"></script>
 <script>
+  // Language emoji map
+  const langEmoji = {
+    en: '🇺🇸',
+    pt: '🇧🇷',
+    ja: '🇯🇵',
+    es: '🇪🇸',
+    fr: '🇫🇷'
+  };
+
   function escapeRegex(s) {
     return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
   }
   function highlight(text, term) {
     if (!term) return text;
     const re = new RegExp('(' + escapeRegex(term) + ')', 'gi');
-    return text.replace(re, '<strong>$1</strong>');
+    return String(text).replace(re, '<strong>$1</strong>');
   }
 
   fetch('{{ "/search.json" | url }}')
@@ -114,30 +128,22 @@ layout: "base.njk"
     .then(data => {
       const total = data.length;
       const fuse = new Fuse(data, {
-        keys: ['artist','title','mood','tags'],
+        keys: ['artist','title','mood','tags','note','language'],
         threshold: 0.3
       });
 
-      const input       = document.getElementById('search');
-      const tbody       = document.querySelector('#resultsTable tbody');
-      const countEl     = document.getElementById('count');
-      let currentResults = [];
-      let sortKey       = null, sortDir = 1;
-
-      // initial show up to 100
-      function init() {
-        currentResults = data.slice(0, 100);
-        updateCount();
-        render('');
-      }
+      const input   = document.getElementById('search');
+      const tbody   = document.querySelector('#resultsTable tbody');
+      const countEl = document.getElementById('count');
+      let current   = [], sortKey = null, sortDir = 1;
 
       function updateCount() {
-        countEl.textContent = `${currentResults.length} / ${total} songs shown`;
+        countEl.textContent = `${current.length} / ${total} songs shown`;
       }
 
       function applySort() {
         if (!sortKey) return;
-        currentResults.sort((a, b) => {
+        current.sort((a, b) => {
           let av = a[sortKey], bv = b[sortKey];
           if (sortKey === 'release') {
             av = new Date(av); bv = new Date(bv);
@@ -145,25 +151,29 @@ layout: "base.njk"
             av = String(av).toLowerCase();
             bv = String(bv).toLowerCase();
           }
-          if (av < bv) return -1 * sortDir;
-          if (av > bv) return 1 * sortDir;
-          return 0;
+          return (av < bv ? -1 : av > bv ? 1 : 0) * sortDir;
         });
       }
 
       function render(term) {
-        if (!currentResults.length) {
-          tbody.innerHTML = `<tr><td colspan="5" style="text-align:center;">No matches</td></tr>`;
+        if (!current.length) {
+          tbody.innerHTML = `<tr><td colspan="7" style="text-align:center;">No matches</td></tr>`;
+          updateCount();
           return;
         }
-        tbody.innerHTML = currentResults.map(item => {
+        tbody.innerHTML = current.map(item => {
           const t = term.trim();
-          const moods = (item.mood || []).map(m =>
-            `<span class="clickable">#${highlight(m, t)}</span>`
-          ).join(' ');
-          const tags = (item.tags || []).map(tag =>
-            `<span class="clickable">#${highlight(tag, t)}</span>`
-          ).join(' ');
+          const moods = (item.mood||[])
+            .map(m => `<span class="clickable">#${highlight(m, t)}</span>`)
+            .join(' ');
+          const tags  = (item.tags||[])
+            .map(tag => `<span class="clickable">#${highlight(tag, t)}</span>`)
+            .join(' ');
+          const note  = item.note ? highlight(item.note, t) : 'N/A';
+          const lang  = item.language
+            ? `<span class="clickable">${highlight(item.language, t)}${langEmoji[item.language]||''}</span>`
+            : '';
+
           return `
             <tr>
               <td><span class="clickable">${highlight(item.artist, t)}</span></td>
@@ -171,6 +181,8 @@ layout: "base.njk"
               <td>${highlight(item.release, t)}</td>
               <td>${moods}</td>
               <td>${tags}</td>
+              <td>${note}</td>
+              <td>${lang}</td>
             </tr>`;
         }).join('');
         updateCount();
@@ -178,38 +190,40 @@ layout: "base.njk"
 
       function doSearch(term) {
         if (term) {
-          currentResults = fuse.search(term).map(r => r.item).slice(0, 100);
+          current = fuse.search(term).map(r => r.item).slice(0,100);
         } else {
-          currentResults = data.slice(0, 100);
+          current = data.slice(0,100);
         }
         applySort();
         render(term);
       }
 
+      // init
+      doSearch('');
+
+      // sort clicks
       document.querySelectorAll('th.sortable').forEach(th => {
         th.addEventListener('click', () => {
           const key = th.dataset.key;
-          if (sortKey === key) sortDir = -sortDir;
-          else { sortKey = key; sortDir = 1; }
+          sortKey = (sortKey === key ? null : key) || key;
+          sortDir = (sortKey === key ? -sortDir : 1);
           applySort();
           render(input.value);
         });
       });
 
+      // hashtag clicks
       tbody.addEventListener('click', e => {
         if (e.target.classList.contains('clickable')) {
-          const term = e.target.innerText;
-          if (!input.value.includes(term)) {
-            input.value = input.value ? input.value + ' ' + term : term;
+          const tag = e.target.innerText;
+          if (!input.value.includes(tag)) {
+            input.value = input.value ? input.value + ' ' + tag : tag;
             doSearch(input.value);
           }
         }
       });
 
-      input.addEventListener('input', e => {
-        doSearch(e.target.value);
-      });
-
-      init();
+      // input
+      input.addEventListener('input', e => doSearch(e.target.value));
     });
 </script>
