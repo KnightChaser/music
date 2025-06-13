@@ -1,27 +1,33 @@
 name: Build & Deploy Eleventy Site
-
-# Trigger on pushes to main
 on:
   push:
     branches:
       - main
-    paths-ignore:
-      - 'README.md'
 
 jobs:
   build-and-deploy:
-    name: Build and Deploy Eleventy Site
     runs-on: ubuntu-latest
     permissions:
       contents: write
+
     steps:
-      - name: Git Checkout
-        uses: actions/checkout@v2
-      - name: Build
-        uses: TartanLlama/actions-eleventy@v1.1
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
         with:
-          publish_dir: ./dist
-          publish_branch: gh-pages
+          node-version: '16'
+
+      - name: Build site with Eleventy
+        uses: TartanLlama/actions-eleventy@v1.3
+        with:
+          install_dependencies: true
+          args: --output dist
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: ./dist
