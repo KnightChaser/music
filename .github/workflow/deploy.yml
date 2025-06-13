@@ -1,33 +1,37 @@
 name: Build & Deploy Eleventy Site
+
 on:
   push:
     branches:
       - main
+    paths-ignore:
+      - 'README.md'
 
 jobs:
   build-and-deploy:
+    name: Build and Deploy Eleventy Site
     runs-on: ubuntu-latest
     permissions:
       contents: write
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
+      - name: Git Checkout
+        uses: actions/checkout@v4
 
       - name: Setup Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: '16'
+          node-version: '20' # Specify a Node.js version
+          cache: 'npm'       # Cache npm dependencies for faster builds
 
-      - name: Build site with Eleventy
-        uses: TartanLlama/actions-eleventy@v1.3
-        with:
-          install_dependencies: true
-          args: --output dist
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Build Site
+        run: npx @11ty/eleventy
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_branch: gh-pages
           publish_dir: ./dist
+          github_token: ${{ secrets.GITHUB_TOKEN }}
