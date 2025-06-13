@@ -31,8 +31,22 @@ layout: "base.njk"
     max-width: 500px;
     padding: 0.6rem;
     font-size: 1rem;
+    font-family: 'Archivo', sans-serif;
     border: 1px solid #888;
     border-radius: 4px;
+  }
+  .search-container button {
+    margin-left: 0.5rem;
+    padding: 0.6rem 1rem;
+    font-size: 1rem;
+    font-family: 'Archivo', sans-serif;
+    border: 1px solid #888;
+    border-radius: 4px;
+    background: #f4f4f4;
+    cursor: pointer;
+  }
+  .search-container button:hover {
+    background: #e0e0e0;
   }
 
   table#resultsTable {
@@ -81,12 +95,13 @@ layout: "base.njk"
   }
 </style>
 
-<h1 class="site-title">KnightChaser’s Music Curation List</h1>
+<h1 class="site-title">KnightChaser's Music Curation List</h1>
 <div class="count-container" id="count">0 / 0 songs shown</div>
 
 <div class="search-container">
   <!-- User enters key:value pairs, comma-separated -->
   <input id="search" placeholder="Artist:..., Mood:..., Tag:..., Note:..., Language:..." />
+  <button id="clear">Clear Query</button>
 </div>
 
 <table id="resultsTable">
@@ -169,6 +184,7 @@ layout: "base.njk"
     .then(data => {
       const total = data.length;
       const input = document.getElementById('search');
+      const clearBtn = document.getElementById('clear');
       const tbody = document.querySelector('#resultsTable tbody');
       const countEl = document.getElementById('count');
       let current = [];
@@ -245,6 +261,13 @@ layout: "base.njk"
 
       // User typing triggers filter
       input.addEventListener('input', doSearch);
+
+      // Clear button resets input and refilters
+      clearBtn.addEventListener('click', () => {
+        input.value = '';
+        doSearch();
+        input.focus();
+      });
 
       // Clicking headers toggles sort
       document.querySelectorAll('th.sortable').forEach(th => {
