@@ -119,7 +119,7 @@
   };
 
   function escapeRegex(s) {
-    return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    return s.replace(/[.*+?^${}()|[\\]\\\\]/g, '\\\\$&');
   }
   function highlight(text, term) {
     if (!term) return text;
@@ -168,19 +168,21 @@
         tbody.innerHTML = current.map(item => {
           const t = term.trim();
           const moods = (item.mood||[])
-            .map(m => `<span class="clickable">#${highlight(m, t)}</span>`)
+            .map(m => `<span class="clickable" data-term="${m}">#${highlight(m, t)}</span>`)
             .join(' ');
           const tags  = (item.tags||[])
-            .map(tag => `<span class="clickable">#${highlight(tag, t)}</span>`)
+            .map(tag => `<span class="clickable" data-term="${tag}">#${highlight(tag, t)}</span>`)
             .join(' ');
           const note  = item.note ? highlight(item.note, t) : 'N/A';
-          const lang  = item.language
-            ? `<span class="clickable">${highlight(item.language, t)}${langEmoji[item.language]||''}</span>`
+          const code  = item.language || '';
+          const emoji = langEmoji[code] || '';
+          const lang  = code
+            ? `<span class="clickable" data-term="${code}">${highlight(code, t)}${emoji}</span>`
             : '';
 
           return `
             <tr>
-              <td><span class="clickable">${highlight(item.artist, t)}</span></td>
+              <td><span class="clickable" data-term="${item.artist}">${highlight(item.artist, t)}</span></td>
               <td>${highlight(item.title, t)}</td>
               <td>${highlight(item.release, t)}</td>
               <td>${moods}</td>
@@ -216,12 +218,12 @@
         });
       });
 
-      // hashtag clicks
+      // hashtag/lang clicks
       tbody.addEventListener('click', e => {
         if (e.target.classList.contains('clickable')) {
-          const tag = e.target.innerText;
-          if (!input.value.includes(tag)) {
-            input.value = input.value ? input.value + ' ' + tag : tag;
+          const term = e.target.dataset.term;
+          if (!input.value.includes(term)) {
+            input.value = input.value ? input.value + ' ' + term : term;
             doSearch(input.value);
           }
         }
