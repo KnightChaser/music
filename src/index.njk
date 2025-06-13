@@ -1,0 +1,21 @@
+---
+layout: "base.njk"
+---
+<input id="search" placeholder="Search by artist, mood, tag…">
+<ul id="results"></ul>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6"></script>
+<script>
+  fetch('{{ "/search.json" | url }}')
+    .then(r => r.json())
+    .then(data => {
+      const fuse = new Fuse(data, {
+        keys: ['artist','title','mood','tags']
+      });
+      document.getElementById('search').oninput = e => {
+        const hits = fuse.search(e.target.value);
+        document.getElementById('results').innerHTML =
+          hits.map(h => `<li>${h.item.artist} — ${h.item.title}</li>`).join('');
+      };
+    });
+</script>
+

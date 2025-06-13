@@ -1,0 +1,12 @@
+---
+layout: "base.njk"
+eleventyComputed:
+  title: "{{ title }}"
+---
+<h1>{{ title }}</h1>
+<ul>
+  {% for song in songs %}
+    <li>{{ song.title }} ({{ song.release }})</li>
+  {% endfor %}
+</ul>
+
