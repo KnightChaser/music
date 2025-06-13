@@ -11,9 +11,8 @@ module.exports = function(eleventyConfig) {
   return {
     dir: {
       input:  "src",
-      output: "dist"        // Eleventy writes here
+      output: "docs"
     },
     pathPrefix: "/music/"
   };
 };
-
