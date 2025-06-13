@@ -9,8 +9,11 @@ module.exports = function(eleventyConfig) {
   });
 
   return {
-    pathPrefix: "/music/",
-    dir: { input: "src", output: "dist" }
+    dir: {
+      input:  "src",
+      output: "dist"        // Eleventy writes here
+    },
+    pathPrefix: "/music/"
   };
 };
 
