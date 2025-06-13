@@ -21,14 +21,19 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20' # Specify a Node.js version
-          cache: 'npm'       # Cache npm dependencies for faster builds
+          node-version: '20'
+          cache: 'npm'
 
       - name: Install Dependencies
         run: npm install
 
       - name: Build Site
-        run: npx @11ty/eleventy
+        run: npm run build # Uses the build script from your package.json
+
+      - name: Verify Build Output
+        run: ls -R
+        # This command will list all files recursively from the current directory.
+        # It will show us if the 'dist' folder was created and what's inside.
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
