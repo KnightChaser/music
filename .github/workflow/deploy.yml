@@ -1,37 +1,33 @@
-name: Build and Commit to /docs
+name: Build Eleventy
 
 on:
   push:
     branches:
-      - main
-
-permissions:
-  contents: write
-  pages: write
-  id-token: write
+      - master
 
 jobs:
-  build-and-commit:
-    runs-on: ubuntu-latest
+  build:
+    runs-on: ubuntu-22.04
+
+    strategy:
+      matrix:
+        node-version: [18]
+
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v2
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
         with:
-          node-version: '20'
-          cache: 'npm'
+          node-version: ${{ matrix.node-version }}
 
-      - name: Install dependencies
-        run: npm install
+      - name: Install dependencies & build
+        run: |
+          npm ci
+          npm run build          
 
-      - name: Build with Eleventy
-        run: npm run build # This will now create a 'docs' folder
-
-      - name: Commit built site
-        uses: stefanzweifel/git-auto-commit-action@v5
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          commit_message: "chore: Build and commit site"
-          # The action will automatically detect changes in the 'docs' folder
-          # and commit them to the current branch (main).
+          publish_dir: ./src/_site
+          github_token: ${{ secrets.GITHUB_TOKEN }}
