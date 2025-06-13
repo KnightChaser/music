@@ -55,10 +55,10 @@
     background: #f4f4f4;
     cursor: pointer;
   }
-  /* center-align Artist, Title, Release, Language */
+  /* center-align Artist, Title, Release, Language columns */
   table#resultsTable th:nth-child(-n+3),
   table#resultsTable td:nth-child(-n+3),
-  table#resultsTable th:nth-last-child(1),
+  table#resultsTable th[data-key="language"],
   table#resultsTable td:nth-last-child(1) {
     text-align: center;
   }
@@ -69,7 +69,7 @@
     user-select: none;
   }
 
-  /* Hashtag / clickable badge style */
+  /* Badge style for clickable filters */
   .clickable {
     display: inline-block;
     background-color: #fdecea;
@@ -89,12 +89,14 @@
 <div class="count-container" id="count">0 / 0 songs shown</div>
 
 <div class="search-container">
-  <input id="search" placeholder="Search by artist, title, mood, tag, note, language…" />
+  <!-- User enters key:value pairs, comma-separated -->
+  <input id="search" placeholder="Artist:..., Mood:..., Tag:..., Note:..., Language:..." />
 </div>
 
 <table id="resultsTable">
   <thead>
     <tr>
+      <!-- Clickable headers for sorting -->
       <th class="sortable" data-key="artist">
         Artist <span class="sort-indicator">⇅</span>
       </th>
@@ -113,48 +115,75 @@
     </tr>
   </thead>
   <tbody>
+    <!-- Initial loading state -->
     <tr><td colspan="7" style="text-align:center;">Loading…</td></tr>
   </tbody>
 </table>
 
-<script src="https://cdn.jsdelivr.net/npm/fuse.js@6"></script>
 <script>
-  // Language emoji map
+  // Map language codes to emoji flags
   const langEmoji = {
     en: '🇺🇸',
     pt: '🇧🇷',
-    ja: '🇯🇵',
+    ja: '🇯🇵',  // use 'ja' for Japanese
     es: '🇪🇸',
     fr: '🇫🇷'
   };
 
-  function escapeRegex(s) {
-    return s.replace(/[.*+?^${}()|[\\]\\\\]/g, '\\\\$&');
-  }
-  function highlight(text, term) {
-    if (!term) return text;
-    const re = new RegExp('(' + escapeRegex(term) + ')', 'gi');
-    return String(text).replace(re, '<strong>$1</strong>');
+  /**
+   * Parse input string into criteria object.
+   * e.g. "Artist:Avril, Language:en" → { artist: 'avril', language: 'en' }
+   */
+  function parseCriteria(str) {
+    return str.split(',')
+      .map(s => s.trim())
+      .filter(s => s.includes(':'))
+      .reduce((acc, pair) => {
+        const [rawKey, ...rest] = pair.split(':');
+        const key = rawKey.trim().toLowerCase();
+        const val = rest.join(':').trim().toLowerCase();
+        if (key && val) acc[key] = val;
+        return acc;
+      }, {});
   }
 
+  /**
+   * Filter songs by AND-ing all criteria fields.
+   */
+  function filterData(data, criteria) {
+    return data.filter(item => {
+      return Object.entries(criteria).every(([key, val]) => {
+        switch(key) {
+          case 'artist':   return item.artist.toLowerCase().includes(val);
+          case 'title':    return item.title.toLowerCase().includes(val);
+          case 'release':  return item.release.toLowerCase().includes(val);
+          case 'mood':     return item.mood.some(m => m.toLowerCase().includes(val));
+          case 'tags':     return item.tags.some(t => t.toLowerCase().includes(val));
+          case 'note':     return (item.note||'').toLowerCase().includes(val);
+          case 'language': return item.language && item.language.toLowerCase() === val;
+          default:         return false;
+        }
+      });
+    });
+  }
+
+  // Fetch static JSON index
   fetch('/search.json')
-    .then(r => r.json())
+    .then(res => res.json())
     .then(data => {
       const total = data.length;
-      const fuse = new Fuse(data, {
-        keys: ['artist','title','mood','tags','note','language'],
-        threshold: 0.3
-      });
-
-      const input   = document.getElementById('search');
-      const tbody   = document.querySelector('#resultsTable tbody');
+      const input = document.getElementById('search');
+      const tbody = document.querySelector('#resultsTable tbody');
       const countEl = document.getElementById('count');
-      let current   = [], sortKey = null, sortDir = 1;
+      let current = [];
+      let sortKey = null, sortDir = 1;
 
+      // Update the count badge above table
       function updateCount() {
         countEl.textContent = `${current.length} / ${total} songs shown`;
       }
 
+      // Sort the current array by sortKey & sortDir
       function applySort() {
         if (!sortKey) return;
         current.sort((a, b) => {
@@ -169,80 +198,86 @@
         });
       }
 
-      function render(term) {
-        if (!current.length) {
+      // Render table rows from current array
+      function render() {
+        if (current.length === 0) {
           tbody.innerHTML = `<tr><td colspan="7" style="text-align:center;">No matches</td></tr>`;
           updateCount();
           return;
         }
         tbody.innerHTML = current.map(item => {
-          const t = term.trim();
-          const moods = (item.mood||[])
-            .map(m => `<span class="clickable" data-term="${m}">#${highlight(m, t)}</span>`)
-            .join(' ');
-          const tags  = (item.tags||[])
-            .map(tag => `<span class="clickable" data-term="${tag}">#${highlight(tag, t)}</span>`)
-            .join(' ');
-          const note  = item.note ? highlight(item.note, t) : 'N/A';
-          const code  = item.language || '';
-          const emoji = langEmoji[code] || '';
-          const lang  = code
-            ? `<span class="clickable" data-term="${code}">${highlight(code, t)}${emoji}</span>`
+          // Build clickable badges with data-field and data-term
+          const langCode = item.language || '';
+          const emoji = langEmoji[langCode] || '';
+          const langBadge = langCode
+            ? `<span class="clickable" data-field="language" data-term="${langCode}">${langCode}${emoji}</span>`
             : '';
+          const moods = item.mood.map(m =>
+            `<span class="clickable" data-field="mood" data-term="${m}">#${m}</span>`
+          ).join(' ');
+          const tags = item.tags.map(t =>
+            `<span class="clickable" data-field="tags" data-term="${t}">#${t}</span>`
+          ).join(' ');
+          const note = item.note || 'N/A';
 
           return `
             <tr>
-              <td><span class="clickable" data-term="${item.artist}">${highlight(item.artist, t)}</span></td>
-              <td>${highlight(item.title, t)}</td>
-              <td>${highlight(item.release, t)}</td>
+              <td><span class="clickable" data-field="artist" data-term="${item.artist}">${item.artist}</span></td>
+              <td>${item.title}</td>
+              <td>${item.release}</td>
               <td>${moods}</td>
               <td>${tags}</td>
               <td>${note}</td>
-              <td>${lang}</td>
+              <td>${langBadge}</td>
             </tr>`;
         }).join('');
         updateCount();
       }
 
-      function doSearch(term) {
-        if (term) {
-          current = fuse.search(term).map(r => r.item).slice(0,100);
-        } else {
-          current = data.slice(0,100);
-        }
+      // Perform search and filtering based on criteria
+      function doSearch() {
+        const criteria = parseCriteria(input.value);
+        current = Object.keys(criteria).length
+          ? filterData(data, criteria)
+          : data.slice(0, 100);  // show first 100 if no filter
         applySort();
-        render(term);
+        render();
       }
 
-      // init
-      doSearch('');
+      // Initial load
+      doSearch();
 
-      // sort clicks
+      // User typing triggers filter
+      input.addEventListener('input', doSearch);
+
+      // Clicking headers toggles sort
       document.querySelectorAll('th.sortable').forEach(th => {
         th.addEventListener('click', () => {
           const key = th.dataset.key;
-          sortKey = (sortKey === key ? null : key) || key;
-          sortDir = (sortKey === key ? -sortDir : 1);
+          if (sortKey === key) sortDir = -sortDir;
+          else { sortKey = key; sortDir = 1; }
           applySort();
-          render(input.value);
+          render();
         });
       });
 
-      // hashtag/lang clicks
+      // Clicking badges adds/replaces criteria and re-filters
       tbody.addEventListener('click', e => {
         if (e.target.classList.contains('clickable')) {
-          const term = e.target.dataset.term;
-          if (!input.value.includes(term)) {
-            input.value = input.value ? input.value + ' ' + term : term;
-            doSearch(input.value);
-          }
+          const field = e.target.dataset.field;
+          const term  = e.target.dataset.term;
+          const part = `${field}:${term}`;
+          const parts = input.value.split(',').map(s => s.trim()).filter(s => s);
+          // Replace same-field part
+          const filtered = parts.filter(p => !p.toLowerCase().startsWith(field + ':'));
+          filtered.push(part);
+          input.value = filtered.join(', ');
+          doSearch();
         }
       });
-
-      // input
-      input.addEventListener('input', e => doSearch(e.target.value));
     });
 </script>
+
   </body>
 </html>
 
