@@ -9,9 +9,7 @@ const files    = fs.readdirSync(musicDir)
 
 module.exports = files.flatMap(file => {
   const artist  = path.basename(file, path.extname(file));
-  const songs   = yaml.load(
-                   fs.readFileSync(path.join(musicDir, file), "utf8")
-                 );
+  const songs   = yaml.load(fs.readFileSync(path.join(musicDir, file), "utf8"));
   return songs.map(song => ({ artist, ...song }));
 });
 

@@ -1,9 +1,9 @@
 // src/_data/music/index.js
 const fs   = require("fs");
 const path = require("path");
-const yaml = require("js-yaml");          // npm install js-yaml
+const yaml = require("js-yaml");
 
-const dir      = __dirname;               // points to src/_data/music
+const dir      = __dirname;       // points to src/_data/music
 const files    = fs.readdirSync(dir)
                    .filter(f => f.endsWith(".yml") || f.endsWith(".yaml"));
 
