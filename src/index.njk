@@ -15,6 +15,13 @@ layout: "base.njk"
     font-weight: 700;
   }
 
+  .count-container {
+    text-align: center;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+    color: #555;
+  }
+
   .search-container {
     text-align: center;
     margin: 1.5rem 0;
@@ -43,7 +50,11 @@ layout: "base.njk"
   table#resultsTable th {
     background: #f4f4f4;
     cursor: pointer;
-    text-align: center;        /* center Artist, Title, Release headers */
+  }
+  /* center-align first three columns */
+  table#resultsTable th:nth-child(-n+3),
+  table#resultsTable td:nth-child(-n+3) {
+    text-align: center;
   }
 
   .sort-indicator {
@@ -60,6 +71,7 @@ layout: "base.njk"
 </style>
 
 <h1 class="site-title">KnightChaser's Music Curation List</h1>
+<div class="count-container" id="count">0 / 0 songs shown</div>
 
 <div class="search-container">
   <input id="search" placeholder="Search by artist, title, mood, tag…" />
@@ -82,17 +94,15 @@ layout: "base.njk"
     </tr>
   </thead>
   <tbody>
-    <tr><td colspan="5" style="text-align:center;">Type to search…</td></tr>
+    <tr><td colspan="5" style="text-align:center;">Loading…</td></tr>
   </tbody>
 </table>
 
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6"></script>
 <script>
-  // Utility: escape RegEx chars
   function escapeRegex(s) {
     return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
   }
-  // Wrap matches in <strong>
   function highlight(text, term) {
     if (!term) return text;
     const re = new RegExp('(' + escapeRegex(term) + ')', 'gi');
@@ -102,26 +112,29 @@ layout: "base.njk"
   fetch('{{ "/search.json" | url }}')
     .then(r => r.json())
     .then(data => {
+      const total = data.length;
       const fuse = new Fuse(data, {
         keys: ['artist','title','mood','tags'],
         threshold: 0.3
       });
 
-      const input = document.getElementById('search');
-      const tbody = document.querySelector('#resultsTable tbody');
+      const input       = document.getElementById('search');
+      const tbody       = document.querySelector('#resultsTable tbody');
+      const countEl     = document.getElementById('count');
       let currentResults = [];
-      let sortKey = null, sortDir = 1;
+      let sortKey       = null, sortDir = 1;
 
-      // Perform search and render
-      function doSearch(term) {
-        currentResults = term
-          ? fuse.search(term).map(r => r.item)
-          : [];
-        applySort();
-        render(term);
+      // initial show up to 100
+      function init() {
+        currentResults = data.slice(0, 100);
+        updateCount();
+        render('');
       }
 
-      // Apply column sort
+      function updateCount() {
+        countEl.textContent = `${currentResults.length} / ${total} songs shown`;
+      }
+
       function applySort() {
         if (!sortKey) return;
         currentResults.sort((a, b) => {
@@ -138,7 +151,6 @@ layout: "base.njk"
         });
       }
 
-      // Build the table rows
       function render(term) {
         if (!currentResults.length) {
           tbody.innerHTML = `<tr><td colspan="5" style="text-align:center;">No matches</td></tr>`;
@@ -146,14 +158,12 @@ layout: "base.njk"
         }
         tbody.innerHTML = currentResults.map(item => {
           const t = term.trim();
-          // build hashtagged, highlighted arrays
           const moods = (item.mood || []).map(m =>
             `<span class="clickable">#${highlight(m, t)}</span>`
           ).join(' ');
           const tags = (item.tags || []).map(tag =>
             `<span class="clickable">#${highlight(tag, t)}</span>`
           ).join(' ');
-
           return `
             <tr>
               <td><span class="clickable">${highlight(item.artist, t)}</span></td>
@@ -163,39 +173,43 @@ layout: "base.njk"
               <td>${tags}</td>
             </tr>`;
         }).join('');
+        updateCount();
       }
 
-      // Sort handlers
+      function doSearch(term) {
+        if (term) {
+          currentResults = fuse.search(term).map(r => r.item).slice(0, 100);
+        } else {
+          currentResults = data.slice(0, 100);
+        }
+        applySort();
+        render(term);
+      }
+
       document.querySelectorAll('th.sortable').forEach(th => {
         th.addEventListener('click', () => {
           const key = th.dataset.key;
-          if (sortKey === key) {
-            sortDir = -sortDir;
-          } else {
-            sortKey = key;
-            sortDir = 1;
-          }
+          if (sortKey === key) sortDir = -sortDir;
+          else { sortKey = key; sortDir = 1; }
           applySort();
           render(input.value);
         });
       });
 
-      // Click delegation for hashtag insertion
       tbody.addEventListener('click', e => {
         if (e.target.classList.contains('clickable')) {
           const term = e.target.innerText;
           if (!input.value.includes(term)) {
-            input.value = input.value
-              ? input.value + ' ' + term
-              : term;
+            input.value = input.value ? input.value + ' ' + term : term;
             doSearch(input.value);
           }
         }
       });
 
-      // Wire up input
       input.addEventListener('input', e => {
         doSearch(e.target.value);
       });
+
+      init();
     });
 </script>
