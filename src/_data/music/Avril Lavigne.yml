@@ -1,25 +1,46 @@
 # Avril Lavigne
 
+# I love her and her songs!
+
 - title: "Wish You Were Here"
   release: "2015-09-09"
   tags: ["sad","retrospective","nostalgic","longing","heartbreak","guitar","solo"]
   note: "I used to listen to this when I wish you were here."
   language: en
+  listen:
+    - ORG: https://youtu.be/VT1-sitWRtY?si=rvslY4YXGRi2ukQp
+    - NCR: https://youtu.be/6K_m_fxEe2E?si=F2w-w8WjIZ-uIjIt
 
 - title: "Complicated"
   release: "2002-05-14"
   tags: ["happy","nostalgic","conflicted","guitar","solo"]
   note:
   language: en
+  listen:
+    - ORG: https://youtu.be/5NPBIwQyPWE?si=0hOAW2Co0lmaSyuE
+    - NCR: https://youtu.be/zZiSX8VzHE8?si=5_tMDxp1JL3Y4luq
 
 - title: "Sk8er Boi"
   release: "2002-05-14"
   tags: ["happy","nostalgic","rebellious","energetic","guitar","solo"]
   note:
   language: en
+  listen:
+    - ORG: https://youtu.be/TIy3n2b7V9k?si=0txZ1LlQwUF96g7T
+    - NCR: https://youtu.be/8m5xepmZkzI?si=hqb37ZJYYVAb3Vo1
 
 - title: "I'm With You"
   release: "2002-05-14"
   tags: ["sad","nostalgic","longing","guitar","solo"]
   note:
   language: en
+  listen:
+    - ORG: https://youtu.be/dGR65RWwzg8?si=lA1Leu7S6BkUfh5c
+
+- title: "Young & Dumb"
+  release: "2025-05-10"
+  tags: ["guitar", "nostalgic", "colab", "Simple Plan", "happy", "energetic", "without regrets", "youth", "drum", "band", "teenage"]
+  note: "Avril is Avril even in 2025!"
+  language: en
+  listen:
+    - ORG: https://youtu.be/gRX3Gm-YPRY?si=YD8hIgkdaNHLGseZ

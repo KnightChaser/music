@@ -5,9 +5,21 @@
   tags: ["sensual", "energetic", "speedy", "playing","funk", "brazilian", "edm", "party", "club", "brailizan punk", "dj"]
   note: "Best song to dance to at the club"
   language: pt
+  listen:
+    - ORG: https://youtu.be/7Yh7S7xKdtk?si=ugqRazjFrjSQ65SI
+
+- title: SEQUÊNCIA COLOCADÃO
+  release: "2024-03-28"
+  tags: ["sensual", "energeic", "funk", "trance", "midi", "brazilian", "edm", "party", "club", "brazilian punk", "dj", "synth"]
+  note:
+  language: pt
+  listen:
+    - ORG: https://youtu.be/77HoIHKJpeY?si=YXqdgNcMbxepfgEF
 
 - title: DANÇARINA
   release: "2023-12-01"
   tags: ["sensual", "speedy", "dance", "beat", "alcoholic", "brazilian", "dance", "party", "street", "female vocal", "dual vocal", "modern"]
   note: "Best song to dance to at the club"
   language: pt
+  listen:
+    - ORG: https://youtu.be/BTXQWjGQ3PU?si=L-bROTIYPza1N8jT
