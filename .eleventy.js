@@ -12,7 +12,10 @@ module.exports = function(eleventyConfig) {
    eleventyConfig.addPassthroughCopy({ "src/assets/css": "assets/css" });
    eleventyConfig.addPassthroughCopy({ "node_modules/flowbite/dist/flowbite.min.js": "assets/flowbite/flowbite.min.js" });
 
-  const isProd = process.env.NODE_ENV === "production";
+  // flip to true if either env var is set
+  const isProd = 
+    process.env.NODE_ENV === "production" ||
+    process.env.ELEVENTY_ENV === "production";
 
   return {
     dir: { 

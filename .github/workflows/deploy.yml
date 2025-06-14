@@ -9,6 +9,9 @@ on:
 jobs:
   build:
     runs-on: ubuntu-22.04
+    env:
+      NODE_ENV: production
+      ELEVENTY_ENV: production
 
     strategy:
       matrix:
