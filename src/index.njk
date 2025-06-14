@@ -53,6 +53,25 @@ layout: "base.njk"
   }
   .clickable:hover { background-color: #f9d6d5; }
 
+  /* Language badge tooltip above */
+  .lang-badge {
+    position: relative;
+  }
+  .lang-badge:hover::after {
+    content: attr(data-emoji) "\A" attr(data-native) "\A" attr(data-english);
+    white-space: pre;
+    position: absolute;
+    left: 0;
+    bottom: calc(100% + 0.4rem);
+    background: #333;
+    color: #fff;
+    padding: 0.4rem;
+    border-radius: 0.25rem;
+    font-size: 0.8rem;
+    z-index: 200;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  }
+
   #backToTop {
     position: fixed; right: 1rem; bottom: 1rem; display: none;
     background: #b71c1c; color: white; border: none; border-radius: 50%;
@@ -61,7 +80,7 @@ layout: "base.njk"
   }
 </style>
 
-<h1 class="site-title">KnightChaser's Music Curation List</h1>
+<h1 class="site-title">KnightChaser’s Music Curation List</h1>
 <a href="https://github.com/KnightChaser/music" target="_blank" style="position:absolute; top:1rem; right:1rem;">
   <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub" width="32" height="32" title="Music Repo on GitHub">
 </a>
@@ -92,121 +111,143 @@ layout: "base.njk"
 <button id="backToTop" title="Top">↑</button>
 
 <script>
-  const langEmoji = { en:'🇺🇸', pt:'🇧🇷', ja:'🇯🇵', es:'🇪🇸', fr:'🇫🇷' };
+  const langEmoji = {
+    en: '🇺🇸', pt: '🇵🇹', ja: '🇯🇵', es: '🇪🇸', fr: '🇫🇷',
+    ko: '🇰🇷', ru: '🇷🇺', zh: '🇨🇳'
+  };
+  const langNames = {
+    en: ['English'], pt: ['Português', 'Portuguese'], ja: ['日本語', 'Japanese'],
+    es: ['Español', 'Spanish'], fr: ['Français', 'French'],
+    ko: ['한국어', 'Korean'], ru: ['Русский', 'Russian'], zh: ['中文', 'Chinese']
+  };
 
   function parseCriteria(str) {
-    return str.split(',').map(s=>s.trim()).filter(s=>s.includes(':')).reduce((a,p)=>{const [k,...r]=p.split(':');const key=k.trim().toLowerCase();const val=r.join(':').trim().toLowerCase();if(key&&val)a[key]=val;return a;},{});
+    return str.split(',').map(s => s.trim()).filter(s => s.includes(':')).reduce((a,p) => { const [k, ...r] = p.split(':'); const key = k.trim().toLowerCase(); const val = r.join(':').trim().toLowerCase(); if(key && val) a[key] = val; return a; }, {});
   }
   function filterData(data, criteria) {
-    return data.filter(item=>Object.entries(criteria).every(([k,v])=>{
-      switch(k){
+    return data.filter(item => Object.entries(criteria).every(([k,v]) => {
+      switch(k) {
         case 'artist': return item.artist.toLowerCase().includes(v);
         case 'title': return item.title.toLowerCase().includes(v);
         case 'release': return item.release.toLowerCase().includes(v);
-        case 'tags': return item.tags.some(t=>t.toLowerCase().includes(v));
+        case 'tags': return item.tags.some(t => t.toLowerCase().includes(v));
         case 'note': return (item.note||'').toLowerCase().includes(v);
-        case 'language': return item.language && item.language.toLowerCase()===v;
+        case 'language': return item.language && item.language.toLowerCase() === v;
         default: return false;
       }
     }));
   }
 
-  fetch('{{ "/search.json" | url }}').then(r=>r.json()).then(data=>{
-    const total=data.length;
-    const input=document.getElementById('search');
-    const clearBtn=document.getElementById('clear');
-    const suggestionsBox=document.getElementById('suggestions');
-    const tbody=document.querySelector('#resultsTable tbody');
-    const countEl=document.getElementById('count');
+  fetch('{{ "/search.json" | url }}').then(r => r.json()).then(data => {
+    const total = data.length;
+    const input = document.getElementById('search');
+    const clearBtn = document.getElementById('clear');
+    const suggestionsBox = document.getElementById('suggestions');
+    const tbody = document.querySelector('#resultsTable tbody');
+    const countEl = document.getElementById('count');
 
-    const sources={
-      artist: Array.from(new Set(data.map(d=>d.artist))).sort(),
-      title: Array.from(new Set(data.map(d=>d.title))).sort(),
-      tags: Array.from(new Set(data.flatMap(d=>d.tags))).sort(),
-      language: Array.from(new Set(data.map(d=>d.language).filter(l=>l))).sort(),
-      note: Array.from(new Set(data.map(d=>d.note).filter(n=>n))).sort()
+    const sources = {
+      artist: Array.from(new Set(data.map(d => d.artist))).sort(),
+      title: Array.from(new Set(data.map(d => d.title))).sort(),
+      tags: Array.from(new Set(data.flatMap(d => d.tags))).sort(),
+      language: Array.from(new Set(data.map(d => d.language).filter(l => l))).sort(),
+      note: Array.from(new Set(data.map(d => d.note).filter(n => n))).sort()
     };
-    const tagCounts=data.flatMap(d=>d.tags).reduce((a,t)=>(a[t]=(a[t]||0)+1,a),{});
+    const tagCounts = data.flatMap(d => d.tags).reduce((a,t) => { a[t] = (a[t]||0)+1; return a; }, {});
 
-    let current=[]; let sortKey='release', sortDir=-1;
-    let selectedIndex=-1;
+    let current = [];
+    let sortKey = 'release', sortDir = -1;
+    let selectedIndex = -1;
 
-    function updateCount(){countEl.textContent=`${current.length} / ${total} songs shown`;}
-    function applySort(){current.sort((a,b)=>{let av=a[sortKey],bv=b[sortKey];if(sortKey==='release'){av=new Date(av);bv=new Date(bv);}else{av=String(av).toLowerCase();bv=String(bv).toLowerCase();}return(av<bv?-1:av>bv?1:0)*sortDir;});}
+    function updateCount() { countEl.textContent = `${current.length} / ${total} songs shown`; }
+    function applySort() { current.sort((a,b) => { let av = a[sortKey], bv = b[sortKey]; if(sortKey==='release'){ av=new Date(av); bv=new Date(bv); } else { av=String(av).toLowerCase(); bv=String(bv).toLowerCase(); } return (av<bv?-1:av>bv?1:0)*sortDir; }); }
 
-    function render(){
-      if(!current.length){tbody.innerHTML='<tr><td colspan="6" style="text-align:center;">No matches</td></tr>';updateCount();return;}
-      tbody.innerHTML=current.map(item=>{
-        const tagsHtml=item.tags.slice().sort().map(t=>
+    function render() {
+      if(!current.length) {
+        tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;">No matches</td></tr>';
+        updateCount(); return;
+      }
+      tbody.innerHTML = current.map(item => {
+        const tagsHtml = item.tags.slice().sort().map(t =>
           `<span class="clickable" data-field="tags" data-term="${t}">#${t} (${tagCounts[t]})</span>`
         ).join(' ');
+        const lang = item.language;
+        const names = langNames[lang] || [''];
+        const titleAttr = names.join('\n');
+        const badge = lang ?
+          `<span class="clickable lang-badge" data-field="language" data-term="${lang}" data-emoji="${langEmoji[lang]||''}" data-native="${names[0]}" data-english="${names[1]||''}" title="${titleAttr}">${lang}${langEmoji[lang]||''}</span>`
+          : '';
         return `<tr>
           <td><span class="clickable" data-field="artist" data-term="${item.artist}">${item.artist}</span></td>
           <td>${item.title}</td>
           <td style="white-space: nowrap;">${item.release}</td>
           <td>${tagsHtml}</td>
           <td>${item.note||'N/A'}</td>
-          <td>${item.language?`<span class="clickable" data-field="language" data-term="${item.language}">${item.language}${langEmoji[item.language]||''}</span>`:''}</td>
+          <td>${badge}</td>
         </tr>`;
-      }).join('');updateCount();
+      }).join('');
+      updateCount();
     }
 
-    function doSearch(){const crit=parseCriteria(input.value);current=Object.keys(crit).length?filterData(data,crit):data.slice().sort((a,b)=>new Date(b.release)-new Date(a.release));applySort();render();}
+    function doSearch() {
+      const crit = parseCriteria(input.value);
+      current = Object.keys(crit).length ? filterData(data, crit) : data.slice().sort((a,b) => new Date(b.release)-new Date(a.release));
+      applySort(); render();
+    }
 
-    function updateSuggestions(){
-      // get last segment after comma
-      const raw=input.value;
-      const lastSeg=raw.includes(',')? raw.slice(raw.lastIndexOf(',')+1).trim() : raw.trim();
-      const m=lastSeg.match(/^(\w+):\s*([^,]*)$/);
-      if(m){
-        const field=m[1].toLowerCase();
-        const term=m[2].toLowerCase();
-        const list=sources[field];
-        if(list){
-          const matches=list.filter(v=>v.toLowerCase().startsWith(term)).slice(0,10);
-          if(matches.length){
-            suggestionsBox.innerHTML=matches.map((v,i)=>{
-              const bold=`<strong>${field}: ${v.substring(0,term.length)}</strong>`;
-              return `<div data-val="${field}:${v}" data-index="${i}">${bold+v.substring(term.length)}</div>`;
+    function updateSuggestions() {
+      const raw = input.value;
+      const lastSeg = raw.includes(',') ? raw.slice(raw.lastIndexOf(',')+1).trim() : raw.trim();
+      const m = lastSeg.match(/^(\w+):\s*([^,]*)$/);
+      if(m) {
+        const field = m[1].toLowerCase();
+        const term = m[2].toLowerCase();
+        const list = sources[field];
+        if(list) {
+          const matches = list.filter(v => v.toLowerCase().startsWith(term)).slice(0,10);
+          if(matches.length) {
+            suggestionsBox.innerHTML = matches.map((v,i) => {
+              const bold = `<strong>${field}: ${v.substring(0,term.length)}</strong>`;
+              return `<div data-val="${field}:${v}" data-index="${i}">${bold}${v.substring(term.length)}</div>`;
             }).join('');
-            selectedIndex=-1;
-            suggestionsBox.style.display='block';
+            selectedIndex = -1;
+            suggestionsBox.style.display = 'block';
             return;
           }
         }
       }
-      suggestionsBox.style.display='none';
+      suggestionsBox.style.display = 'none';
     }
 
     // event bindings
     doSearch();
-    input.addEventListener('input',()=>{doSearch();updateSuggestions();});
-    input.addEventListener('keydown',e=>{
-      const items=suggestionsBox.querySelectorAll('div');
-      if(items.length && suggestionsBox.style.display==='block'){
-        if(e.key==='ArrowDown'){ e.preventDefault(); selectedIndex=(selectedIndex+1)%items.length; }
-        else if(e.key==='ArrowUp'){ e.preventDefault(); selectedIndex=(selectedIndex-1+items.length)%items.length; }
-        else if(e.key==='Enter' && selectedIndex>-1){ e.preventDefault(); items[selectedIndex].click(); return; }
+    input.addEventListener('input', () => { doSearch(); updateSuggestions(); });
+    input.addEventListener('keydown', e => {
+      const items = suggestionsBox.querySelectorAll('div');
+      if(items.length && suggestionsBox.style.display===
+      'block') {
+        if(e.key==='ArrowDown') { e.preventDefault(); selectedIndex = (selectedIndex+1) % items.length; }
+        else if(e.key==='ArrowUp') { e.preventDefault(); selectedIndex = (selectedIndex-1+items.length) % items.length; }
+        else if(e.key==='Enter' && selectedIndex>-1) { e.preventDefault(); items[selectedIndex].click(); return; }
         else return;
-        items.forEach(i=>i.classList.remove('selected'));
+        items.forEach(i => i.classList.remove('selected'));
         items[selectedIndex].classList.add('selected');
         items[selectedIndex].scrollIntoView({block:'nearest'});
       }
     });
-    clearBtn.addEventListener('click',()=>{input.value='';doSearch();suggestionsBox.style.display='none';input.focus();});
-    suggestionsBox.addEventListener('click',e=>{if(e.target.dataset.val){
-      // replace last segment
-      const before = input.value.includes(',')? input.value.slice(0,input.value.lastIndexOf(',')+1) : '';
+    clearBtn.addEventListener('click', () => { input.value=''; doSearch(); suggestionsBox.style.display='none'; input.focus(); });
+    suggestionsBox.addEventListener('click', e => { if(e.target.dataset.val) {
+      const before = input.value.includes(',') ? input.value.slice(0,input.value.lastIndexOf(',')+1) : '';
       input.value = before + ' ' + e.target.dataset.val;
       doSearch();
-      suggestionsBox.style.display='none';
+      suggestionsBox.style.display = 'none';
     }});
 
-    document.querySelectorAll('th.sortable').forEach(th=>th.addEventListener('click',()=>{const key=th.dataset.key;if(sortKey===key)sortDir*=-1;else{sortKey=key;sortDir=1;}document.querySelectorAll('th.sortable').forEach(h=>h.style.fontWeight='normal');th.style.fontWeight='bold';applySort();render();}));
-    document.querySelector('#resultsTable tbody').addEventListener('click',e=>{if(e.target.classList.contains('clickable')){const f=e.target.dataset.field,t=e.target.dataset.term;const parts=input.value.split(',').map(s=>s.trim()).filter(s=>s);const filtered=parts.filter(p=>!p.toLowerCase().startsWith(f+':'));filtered.push(`${f}:${t}`);input.value=filtered.join(', ');doSearch();}});
+    document.querySelectorAll('th.sortable').forEach(th => th.addEventListener('click', () => { const key=th.dataset.key; if(sortKey===key) sortDir*=-1; else { sortKey=key; sortDir=1; } document.querySelectorAll('th.sortable').forEach(h=>h.style.fontWeight='normal'); th.style.fontWeight='bold'; applySort(); render(); }));
+    document.querySelector('#resultsTable tbody').addEventListener('click', e => { if(e.target.classList.contains('clickable')) { const f=e.target.dataset.field, t=e.target.dataset.term; const parts = input.value.split(',').map(s=>s.trim()).filter(s=>s); const filtered = parts.filter(p=>!p.toLowerCase().startsWith(f+':')); filtered.push(`${f}:${t}`); input.value = filtered.join(', '); doSearch(); }});
 
-    const btn=document.getElementById('backToTop');
-    window.addEventListener('scroll',()=>{btn.style.display=window.scrollY>300?'block':'none';});
-    btn.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+    const btn = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => { btn.style.display = window.scrollY>300 ? 'block' : 'none'; });
+    btn.addEventListener('click', () => window.scrollTo({top:0,behavior:'smooth'}));
   });
 </script>
