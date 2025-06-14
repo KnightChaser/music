@@ -1,4 +1,3 @@
-```html
 ---
 layout: "base.njk"
 ---
@@ -65,7 +64,6 @@ layout: "base.njk"
     background: #f4f4f4;
     cursor: pointer;
   }
-  /* center-align Artist, Title, Release, Language columns */
   table#resultsTable th:nth-child(-n+3),
   table#resultsTable td:nth-child(-n+3),
   table#resultsTable th[data-key="language"],
@@ -79,7 +77,6 @@ layout: "base.njk"
     user-select: none;
   }
 
-  /* Badge style for clickable filters */
   .clickable {
     display: inline-block;
     background-color: #fdecea;
@@ -94,7 +91,6 @@ layout: "base.njk"
     background-color: #f9d6d5;
   }
 
-  /* Back-to-top button */
   #backToTop {
     position: fixed;
     right: 1rem;
@@ -112,8 +108,7 @@ layout: "base.njk"
   }
 </style>
 
-<h1 class="site-title">KnightChaser’s Music Curation List</h1>
-<!-- GitHub link -->
+<h1 class="site-title">KnightChaser's Music Curation List</h1>
 <a href="https://github.com/KnightChaser/music" target="_blank" style="position:absolute; top:1rem; right:1rem;">
   <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub" width="32" height="32" title="Music Repo on GitHub">
 </a>
@@ -146,78 +141,107 @@ layout: "base.njk"
   const langEmoji = { en:'🇺🇸', pt:'🇧🇷', ja:'🇯🇵', es:'🇪🇸', fr:'🇫🇷' };
 
   function parseCriteria(str) {
-    return str.split(',').map(s=>s.trim()).filter(s=>s.includes(':')).reduce((a,p)=>{const[rawKey,...r]=p.split(':');const k=rawKey.trim().toLowerCase();const v=r.join(':').trim().toLowerCase();if(k&&v)a[k]=v;return a},{ });
+    return str.split(',').map(s=>s.trim()).filter(s=>s.includes(':')).reduce((a,p)=>{const [rawKey,...r] = p.split(':'); const k = rawKey.trim().toLowerCase(); const v = r.join(':').trim().toLowerCase(); if(k&&v) a[k] = v; return a;}, {});
   }
 
   function filterData(data, criteria) {
-    return data.filter(item=>Object.entries(criteria).every(([k,v])=>{
+    return data.filter(item => Object.entries(criteria).every(([k,v]) => {
       switch(k) {
         case 'artist': return item.artist.toLowerCase().includes(v);
         case 'title':  return item.title.toLowerCase().includes(v);
         case 'release':return item.release.toLowerCase().includes(v);
         case 'tags':   return item.tags.some(t=>t.toLowerCase().includes(v));
         case 'note':   return (item.note||'').toLowerCase().includes(v);
-        case 'language':return item.language && item.language.toLowerCase()===v;
+        case 'language': return item.language && item.language.toLowerCase()===v;
         default: return false;
       }
     }));
   }
 
-  fetch('{{ "/search.json" | url }}').then(r=>r.json()).then(data=>{
-    const total=data.length;
-    const input=document.getElementById('search');
-    const clearBtn=document.getElementById('clear');
-    const tbody=document.querySelector('#resultsTable tbody');
-    const countEl=document.getElementById('count');
-    let current=[];
-    let sortKey='release', sortDir=-1;
+  fetch('{{ "/search.json" | url }}').then(r=>r.json()).then(data => {
+    const total = data.length;
+    const input = document.getElementById('search');
+    const clearBtn = document.getElementById('clear');
+    const tbody = document.querySelector('#resultsTable tbody');
+    const countEl = document.getElementById('count');
 
-    function updateCount(){countEl.textContent=`${current.length} / ${total} songs shown`;}
-    function applySort(){current.sort((a,b)=>{let av=a[sortKey],bv=b[sortKey];if(sortKey==='release'){av=new Date(av);bv=new Date(bv);}else{av=String(av).toLowerCase();bv=String(bv).toLowerCase();}return(av<bv?-1:av>bv?1:0)*sortDir;});}
+    // compute tag counts across full dataset
+    const tagCounts = data.flatMap(item => item.tags)
+      .reduce((acc, tag) => (acc[tag] = (acc[tag] || 0) + 1, acc), {});
+
+    let current = [];
+    let sortKey = 'release', sortDir = -1;
+
+    function updateCount(){ countEl.textContent = `${current.length} / ${total} songs shown`; }
+    function applySort(){ current.sort((a,b) => {
+        let av = a[sortKey], bv = b[sortKey];
+        if(sortKey === 'release'){ av = new Date(av); bv = new Date(bv); }
+        else { av = String(av).toLowerCase(); bv = String(bv).toLowerCase(); }
+        return (av < bv ? -1 : av > bv ? 1 : 0) * sortDir;
+      });
+    }
+
     function render(){
-      if(!current.length){tbody.innerHTML='<tr><td colspan="6" style="text-align:center;">No matches</td></tr>';updateCount();return;}      
-      tbody.innerHTML=current.map(item=>`<tr>
-        <td><span class="clickable" data-field="artist" data-term="${item.artist}">${item.artist}</span></td>
-        <td>${item.title}</td>
-        <td style="white-space: nowrap;">${item.release}</td>
-        <td>${item.tags.slice().sort().map(t=>`<span class="clickable" data-field="tags" data-term="${t}">#${t}</span>`).join(' ')}</td>
-        <td>${item.note||'N/A'}</td>
-        <td>${item.language?`<span class="clickable" data-field="language" data-term="${item.language}">${item.language}${langEmoji[item.language]||''}</span>`:''}</td>
-      </tr>`).join('');
+      if(!current.length){
+        tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;">No matches</td></tr>';
+        updateCount();
+        return;
+      }
+      tbody.innerHTML = current.map(item => {
+        const sortedTags = item.tags.slice().sort();
+        const tagsHtml = sortedTags.map(t =>
+          `<span class="clickable" data-field="tags" data-term="${t}">#${t} (${tagCounts[t]})</span>`
+        ).join(' ');
+        return `
+          <tr>
+            <td><span class="clickable" data-field="artist" data-term="${item.artist}">${item.artist}</span></td>
+            <td>${item.title}</td>
+            <td style="white-space: nowrap;">${item.release}</td>
+            <td>${tagsHtml}</td>
+            <td>${item.note || 'N/A'}</td>
+            <td>${item.language ? `<span class="clickable" data-field="language" data-term="${item.language}">${item.language}${langEmoji[item.language]||''}</span>` : ''}</td>
+          </tr>`;
+      }).join('');
       updateCount();
     }
 
-    function doSearch(){const crit=parseCriteria(input.value);current=Object.keys(crit).length?filterData(data,crit):data.slice().sort((a,b)=>new Date(b.release)-new Date(a.release));applySort();render();}
+    function doSearch(){
+      const crit = parseCriteria(input.value);
+      current = Object.keys(crit).length
+        ? filterData(data, crit)
+        : data.slice().sort((a,b) => new Date(b.release) - new Date(a.release));
+      applySort(); render();
+    }
 
-    // init
     doSearch();
-    input.addEventListener('input',doSearch);
-    clearBtn.addEventListener('click',()=>{input.value='';doSearch();input.focus();});
+    input.addEventListener('input', doSearch);
+    clearBtn.addEventListener('click', () => { input.value = ''; doSearch(); input.focus(); });
 
-    document.querySelectorAll('th.sortable').forEach(th=>{
-      th.addEventListener('click',()=>{
-        const key=th.dataset.key;
-        if(sortKey===key){sortDir*=-1;}else{sortKey=key;sortDir=1;}
-        document.querySelectorAll('th.sortable').forEach(h=>h.style.fontWeight='normal');
-        th.style.fontWeight='bold';
-        applySort();render();
+    document.querySelectorAll('th.sortable').forEach(th => {
+      th.addEventListener('click', () => {
+        const key = th.dataset.key;
+        if(sortKey === key) sortDir *= -1;
+        else{ sortKey = key; sortDir = 1; }
+        document.querySelectorAll('th.sortable').forEach(h => h.style.fontWeight = 'normal');
+        th.style.fontWeight = 'bold';
+        applySort(); render();
       });
     });
 
-    tbody.addEventListener('click',e=>{
+    tbody.addEventListener('click', e => {
       if(e.target.classList.contains('clickable')){
-        const f=e.target.dataset.field, t=e.target.dataset.term;
-        const parts=input.value.split(',').map(s=>s.trim()).filter(s=>s);
-        const filtered=parts.filter(p=>!p.toLowerCase().startsWith(f+':'));
+        const f = e.target.dataset.field;
+        const t = e.target.dataset.term;
+        const parts = input.value.split(',').map(s => s.trim()).filter(s => s);
+        const filtered = parts.filter(p => !p.toLowerCase().startsWith(f + ':'));
         filtered.push(`${f}:${t}`);
-        input.value=filtered.join(', ');
+        input.value = filtered.join(', ');
         doSearch();
       }
     });
 
-    // back to top
-    const btn=document.getElementById('backToTop');
-    window.addEventListener('scroll',()=>{btn.style.display=window.scrollY>300?'block':'none';});
-    btn.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+    const btn = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => { btn.style.display = window.scrollY > 300 ? 'block' : 'none'; });
+    btn.addEventListener('click', () => window.scrollTo({ top:0, behavior:'smooth' }));
   });
 </script>
