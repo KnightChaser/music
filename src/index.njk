@@ -60,7 +60,6 @@ layout: "base.njk"
         language: Array.from(new Set(data.map(d => d.language).filter(l => l))).sort(),
         note: Array.from(new Set(data.map(d => d.note).filter(n => n))).sort()
       };
-
       const tagCounts = data.flatMap(d => d.tags)
         .reduce((a, t) => ((a[t] = (a[t] || 0) + 1), a), {});
 
@@ -100,17 +99,22 @@ layout: "base.njk"
           const listenHtml = (item.listen || []).map(entry => {
             const key = Object.keys(entry)[0];
             const url = entry[key];
-            let hover;
-            if (key === 'ORG') hover = 'Listen to the original song';
-            else if (key.startsWith('RX')) {
-              const m = key.match(/\((.*)\)/);
-              hover = m ? `Listen to the remix version (${m[1]})` : 'Listen to the remix version';
-            } else if (key === 'NCR') {
-              hover = 'Listen to the nightcore version';
-            } else {
-              hover = key;
-            }
-            return `<a href="${url}" class="clickable listen-badge" data-hover="${hover}" target="_blank" rel="noopener noreferrer">${key}</a>`;
+            let emoji = '';
+            let bg = ''; let color = '#000';
+            if (key === 'ORG') { emoji = '🎧'; bg = '#e0e0e0'; }
+            else if (key.startsWith('RX')) { emoji = '🔀'; bg = '#e0f7fa'; color = '#006064'; }
+            else if (key === 'NCR') { emoji = '⚡'; bg = '#fff8e1'; color = '#ff6f00'; }
+            const hover = key === 'ORG'
+              ? 'Listen to the original song'
+              : key.startsWith('RX')
+                ? `Listen to the remix version${key.includes('(')? ' (' + key.match(/\((.*)\)/)[1] + ')' : ''}`
+                : 'Listen to the nightcore version';
+            return `<a href="${url}"
+                       class="clickable listen-badge"
+                       style="background:${bg};color:${color};margin:0 0.2rem;"
+                       data-hover="${hover}"
+                       target="_blank"
+                       rel="noopener noreferrer">${key} ${emoji}</a>`;
           }).join(' ');
 
           const lang = item.language || '';
@@ -127,7 +131,7 @@ layout: "base.njk"
               <td style="white-space: nowrap;">${item.release}</td>
               <td>${tagsHtml}</td>
               <td>${item.note || 'N/A'}</td>
-              <td>${listenHtml}</td>
+              <td style="text-align:center">${listenHtml}</td>
               <td>${badge}</td>
             </tr>`;
         }).join('');
@@ -176,9 +180,9 @@ layout: "base.njk"
           else if (e.key === 'ArrowUp') { e.preventDefault(); selectedIndex = (selectedIndex - 1 + items.length) % items.length; }
           else if (e.key === 'Enter' && selectedIndex > -1) { e.preventDefault(); items[selectedIndex].click(); return; }
           else return;
-          items.forEach(i => i.classList.remove('selected'));
+          items.forEach(i => i.classList.remove('selected')); 
           items[selectedIndex].classList.add('selected');
-          items[selectedIndex].scrollIntoView({ block: 'nearest' });
+          items[selectedIndex].scrollIntoView({ block:'nearest' });
         }
       });
       clearBtn.addEventListener('click', () => { input.value = ''; doSearch(); suggestionsBox.style.display = 'none'; input.focus(); });
