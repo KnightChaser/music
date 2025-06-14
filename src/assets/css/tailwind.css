@@ -1,6 +1,15 @@
+/* src/assets/css/tailwind.css */
+/* 1. Load Google Font */
+@import url("https://fonts.googleapis.com/css2?family=Archivo:wght@400;700&display=swap");
+
+/* 2. Inject Tailwind’s layers */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Flowbite components */
-@import "flowbite";
+/* 3. Globally apply font-sans */
+@layer base {
+  body {
+    @apply font-sans;
+  }
+}

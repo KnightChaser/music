@@ -11,6 +11,7 @@ module.exports = function(eleventyConfig) {
    // Copy generated CSS & any Flowbite assets
    eleventyConfig.addPassthroughCopy({ "src/assets/css": "assets/css" });
    eleventyConfig.addPassthroughCopy({ "node_modules/flowbite/dist/flowbite.min.js": "assets/flowbite/flowbite.min.js" });
+   eleventyConfig.addWatchTarget("src/assets/css");
 
   // flip to true if either env var is set
   const isProd = 

@@ -125,15 +125,29 @@ layout: "base.njk"
             : '';
 
           return `
-            <tr>
-              <td><span class="clickable" data-field="artist" data-term="${item.artist}">${item.artist}</span></td>
-              <td>${item.title}</td>
-              <td style="white-space: nowrap;">${item.release}</td>
-              <td>${tagsHtml}</td>
-              <td>${item.note || 'N/A'}</td>
-              <td style="text-align:center">${listenHtml}</td>
-              <td>${badge}</td>
-            </tr>`;
+          <tr>
+            <td class="px-6 py-4 text-center">
+              <span class="clickable" data-field="artist" data-term="${item.artist}">${item.artist}</span>
+            </td>
+            <td class="px-6 py-4 text-center">
+              ${item.title}
+            </td>
+            <td class="px-6 py-4 text-center whitespace-nowrap">
+              ${item.release}
+            </td>
+            <td class="px-6 py-4 text-left">
+              ${tagsHtml}
+            </td>
+            <td class="px-6 py-4 text-left">
+              ${item.note || 'N/A'}
+            </td>
+            <td class="px-6 py-4 text-center">
+              ${listenHtml}
+            </td>
+            <td class="px-6 py-4 text-center">
+              ${badge}
+            </td>
+          </tr>`;
         }).join('');
         updateCount();
       }
