@@ -2,19 +2,18 @@
 
 - title: LUVORATORRRRRY!
   release: "2016-04-27"
-  mood: ["energetic", "playful", "confident"]
-  tags: ["J-Pop", "electronic", "solo"]
+  tags: ["energetic", "playful", "confident", "J-Pop", "electronic", "solo"]
   note: 
   language: ja
+
 - title: 妄想税
   release: "2013-09-07"
-  mood: ["playful", "quirky", "energetic"]
-  tags: ["J-Pop", "electronic", "solo"]
+  tags: ["playful", "quirky", "energetic", "J-Pop", "electronic", "solo"]
   note: "Song for myself in odd days."
   language: ja
+
 - title: ロジックエージェント
   release: "2015-06-29"
-  mood: ["retrospective", "nostalgic", "thoughtful", "powerful", "intrinsic"]
-  tags: ["J-Pop", "electronic", "electronic guitar", "solo", "hard", "anime"]
+  tags: ["retrospective", "nostalgic", "thoughtful", "powerful", "intrinsic", "J-Pop", "electronic", "electronic guitar", "solo", "hard", "anime"]
   note: "My #1 pick for Reol"
   language: ja

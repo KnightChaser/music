@@ -52,7 +52,6 @@ layout: "base.njk"
   table#resultsTable {
     margin: 0 auto;
     border-collapse: collapse;
-    /* widen to about 3/4 screen */
     width: 75%;
     font-family: 'Archivo', sans-serif;
   }
@@ -93,6 +92,23 @@ layout: "base.njk"
   .clickable:hover {
     background-color: #f9d6d5;
   }
+
+  /* Back-to-top button */
+  #backToTop {
+    position: fixed;
+    right: 1rem;
+    bottom: 1rem;
+    display: none;
+    background: #b71c1c;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 3rem;
+    height: 3rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+  }
 </style>
 
 <h1 class="site-title">KnightChaser’s Music Curation List</h1>
@@ -103,200 +119,104 @@ layout: "base.njk"
 <div class="count-container" id="count">0 / 0 songs shown</div>
 
 <div class="search-container">
-  <!-- User enters key:value pairs, comma-separated -->
-  <input id="search" placeholder="Artist:..., Mood:..., Tag:..., Note:..., Language:..." />
+  <input id="search" placeholder="artist:..., tag:..., note:..., language:..." />
   <button id="clear">Clear Query</button>
 </div>
 
 <table id="resultsTable">
   <thead>
     <tr>
-      <!-- Clickable headers for sorting -->
-      <th class="sortable" data-key="artist">
-        Artist <span class="sort-indicator">⇅</span>
-      </th>
-      <th class="sortable" data-key="title">
-        Title <span class="sort-indicator">⇅</span>
-      </th>
-      <th class="sortable" data-key="release">
-        Release <span class="sort-indicator">⇅</span>
-      </th>
-      <th>Mood</th>
-      <th>Tags</th>
+      <th class="sortable" data-key="artist">Artist <span class="sort-indicator">⇅</span></th>
+      <th class="sortable" data-key="title">Title <span class="sort-indicator">⇅</span></th>
+      <th class="sortable" data-key="release">Release <span class="sort-indicator">⇅</span></th>
+      <th class="sortable" data-key="tags">Tags <span class="sort-indicator">⇅</span></th>
       <th>Note</th>
-      <th class="sortable" data-key="language">
-        Language <span class="sort-indicator">⇅</span>
-      </th>
+      <th class="sortable" data-key="language">Language <span class="sort-indicator">⇅</span></th>
     </tr>
   </thead>
   <tbody>
-    <!-- Initial loading state -->
-    <tr><td colspan="7" style="text-align:center;">Loading…</td></tr>
+    <tr><td colspan="6" style="text-align:center;">Loading…</td></tr>
   </tbody>
 </table>
 
+<button id="backToTop" title="Top">↑</button>
+
 <script>
-  // Map language codes to emoji flags
-  const langEmoji = {
-    en: '🇺🇸',
-    pt: '🇧🇷',
-    ja: '🇯🇵',
-    es: '🇪🇸',
-    fr: '🇫🇷'
-  };
+  const langEmoji = { en:'🇺🇸', pt:'🇧🇷', ja:'🇯🇵', es:'🇪🇸', fr:'🇫🇷' };
 
-  /**
-   * Parse input string into criteria object.
-   * e.g. "Artist:Avril, Language:en" → { artist: 'avril', language: 'en' }
-   */
   function parseCriteria(str) {
-    return str.split(',')
-      .map(s => s.trim())
-      .filter(s => s.includes(':'))
-      .reduce((acc, pair) => {
-        const [rawKey, ...rest] = pair.split(':');
-        const key = rawKey.trim().toLowerCase();
-        const val = rest.join(':').trim().toLowerCase();
-        if (key && val) acc[key] = val;
-        return acc;
-      }, {});
+    return str.split(',').map(s=>s.trim()).filter(s=>s.includes(':')).reduce((a,p)=>{const[rawKey,...r]=p.split(':');const k=rawKey.trim().toLowerCase();const v=r.join(':').trim().toLowerCase();if(k&&v)a[k]=v;return a},{ });
   }
 
-  /**
-   * Filter songs by AND-ing all criteria fields.
-   */
   function filterData(data, criteria) {
-    return data.filter(item => {
-      return Object.entries(criteria).every(([key, val]) => {
-        switch(key) {
-          case 'artist':   return item.artist.toLowerCase().includes(val);
-          case 'title':    return item.title.toLowerCase().includes(val);
-          case 'release':  return item.release.toLowerCase().includes(val);
-          case 'mood':     return item.mood.some(m => m.toLowerCase().includes(val));
-          case 'tags':     return item.tags.some(t => t.toLowerCase().includes(val));
-          case 'note':     return (item.note||'').toLowerCase().includes(val);
-          case 'language': return item.language && item.language.toLowerCase() === val;
-          default:         return false;
-        }
-      });
-    });
+    return data.filter(item=>Object.entries(criteria).every(([k,v])=>{
+      switch(k) {
+        case 'artist': return item.artist.toLowerCase().includes(v);
+        case 'title':  return item.title.toLowerCase().includes(v);
+        case 'release':return item.release.toLowerCase().includes(v);
+        case 'tags':   return item.tags.some(t=>t.toLowerCase().includes(v));
+        case 'note':   return (item.note||'').toLowerCase().includes(v);
+        case 'language':return item.language && item.language.toLowerCase()===v;
+        default: return false;
+      }
+    }));
   }
 
-  // Fetch static JSON index
-  fetch('{{ "/search.json" | url }}')
-    .then(res => res.json())
-    .then(data => {
-      const total = data.length;
-      const input = document.getElementById('search');
-      const clearBtn = document.getElementById('clear');
-      const tbody = document.querySelector('#resultsTable tbody');
-      const countEl = document.getElementById('count');
-      let current = [];
-      let sortKey = null, sortDir = 1;
+  fetch('{{ "/search.json" | url }}').then(r=>r.json()).then(data=>{
+    const total=data.length;
+    const input=document.getElementById('search');
+    const clearBtn=document.getElementById('clear');
+    const tbody=document.querySelector('#resultsTable tbody');
+    const countEl=document.getElementById('count');
+    let current=[];
+    let sortKey='release', sortDir=-1;
 
-      // Update the count badge above table
-      function updateCount() {
-        countEl.textContent = `${current.length} / ${total} songs shown`;
-      }
+    function updateCount(){countEl.textContent=`${current.length} / ${total} songs shown`;}
+    function applySort(){current.sort((a,b)=>{let av=a[sortKey],bv=b[sortKey];if(sortKey==='release'){av=new Date(av);bv=new Date(bv);}else{av=String(av).toLowerCase();bv=String(bv).toLowerCase();}return(av<bv?-1:av>bv?1:0)*sortDir;});}
+    function render(){
+      if(!current.length){tbody.innerHTML='<tr><td colspan="6" style="text-align:center;">No matches</td></tr>';updateCount();return;}      
+      tbody.innerHTML=current.map(item=>`<tr>
+        <td><span class="clickable" data-field="artist" data-term="${item.artist}">${item.artist}</span></td>
+        <td>${item.title}</td>
+        <td style="white-space: nowrap;">${item.release}</td>
+        <td>${item.tags.map(t=>`<span class="clickable" data-field="tags" data-term="${t}">#${t}</span>`).join(' ')}</td>
+        <td>${item.note||'N/A'}</td>
+        <td>${item.language?`<span class="clickable" data-field="language" data-term="${item.language}">${item.language}${langEmoji[item.language]||''}</span>`:''}</td>
+      </tr>`).join('');
+      updateCount();
+    }
 
-      // Sort the current array by sortKey & sortDir
-      function applySort() {
-        if (!sortKey) return;
-        current.sort((a, b) => {
-          let av = a[sortKey], bv = b[sortKey];
-          if (sortKey === 'release') {
-            av = new Date(av); bv = new Date(bv);
-          } else {
-            av = String(av).toLowerCase();
-            bv = String(bv).toLowerCase();
-          }
-          return (av < bv ? -1 : av > bv ? 1 : 0) * sortDir;
-        });
-      }
+    function doSearch(){const crit=parseCriteria(input.value);current=Object.keys(crit).length?filterData(data,crit):data.slice().sort((a,b)=>new Date(b.release)-new Date(a.release));applySort();render();}
 
-      // Render table rows from current array
-      function render() {
-        if (current.length === 0) {
-          tbody.innerHTML = `<tr><td colspan="7" style="text-align:center;">No matches</td></tr>`;
-          updateCount();
-          return;
-        }
-        tbody.innerHTML = current.map(item => {
-          // Build clickable badges with data-field and data-term
-          const langCode = item.language || '';
-          const emoji = langEmoji[langCode] || '';
-          const langBadge = langCode
-            ? `<span class="clickable" data-field="language" data-term="${langCode}">${langCode}${emoji}</span>`
-            : '';
-          const moods = item.mood.map(m =>
-            `<span class="clickable" data-field="mood" data-term="${m}">#${m}</span>`
-          ).join(' ');
-          const tags = item.tags.map(t =>
-            `<span class="clickable" data-field="tags" data-term="${t}">#${t}</span>`
-          ).join(' ');
-          const note = item.note || 'N/A';
+    // init
+    doSearch();
+    input.addEventListener('input',doSearch);
+    clearBtn.addEventListener('click',()=>{input.value='';doSearch();input.focus();});
 
-          return `
-            <tr>
-              <td><span class="clickable" data-field="artist" data-term="${item.artist}">${item.artist}</span></td>
-              <td>${item.title}</td>
-              <td>${item.release}</td>
-              <td>${moods}</td>
-              <td>${tags}</td>
-              <td>${note}</td>
-              <td>${langBadge}</td>
-            </tr>`;
-        }).join('');
-        updateCount();
-      }
-
-      // Perform search and filtering based on criteria
-      function doSearch() {
-        const criteria = parseCriteria(input.value);
-        current = Object.keys(criteria).length
-          ? filterData(data, criteria)
-          : data.slice(0, 100);  // show first 100 if no filter
-        applySort();
-        render();
-      }
-
-      // Initial load
-      doSearch();
-
-      // User typing triggers filter
-      input.addEventListener('input', doSearch);
-
-      // Clear button resets input and refilters
-      clearBtn.addEventListener('click', () => {
-        input.value = '';
-        doSearch();
-        input.focus();
-      });
-
-      // Clicking headers toggles sort
-      document.querySelectorAll('th.sortable').forEach(th => {
-        th.addEventListener('click', () => {
-          const key = th.dataset.key;
-          if (sortKey === key) sortDir = -sortDir;
-          else { sortKey = key; sortDir = 1; }
-          applySort();
-          render();
-        });
-      });
-
-      // Clicking badges adds/replaces criteria and re-filters
-      tbody.addEventListener('click', e => {
-        if (e.target.classList.contains('clickable')) {
-          const field = e.target.dataset.field;
-          const term  = e.target.dataset.term;
-          const part = `${field}:${term}`;
-          const parts = input.value.split(',').map(s => s.trim()).filter(s => s);
-          // Replace same-field part
-          const filtered = parts.filter(p => !p.toLowerCase().startsWith(field + ':'));
-          filtered.push(part);
-          input.value = filtered.join(', ');
-          doSearch();
-        }
+    document.querySelectorAll('th.sortable').forEach(th=>{
+      th.addEventListener('click',()=>{
+        const key=th.dataset.key;
+        if(sortKey===key){sortDir*=-1;}else{sortKey=key;sortDir=1;}
+        document.querySelectorAll('th.sortable').forEach(h=>h.style.fontWeight='normal');
+        th.style.fontWeight='bold';
+        applySort();render();
       });
     });
+
+    tbody.addEventListener('click',e=>{
+      if(e.target.classList.contains('clickable')){
+        const f=e.target.dataset.field, t=e.target.dataset.term;
+        const parts=input.value.split(',').map(s=>s.trim()).filter(s=>s);
+        const filtered=parts.filter(p=>!p.toLowerCase().startsWith(f+':'));
+        filtered.push(`${f}:${t}`);
+        input.value=filtered.join(', ');
+        doSearch();
+      }
+    });
+
+    // back to top
+    const btn=document.getElementById('backToTop');
+    window.addEventListener('scroll',()=>{btn.style.display=window.scrollY>300?'block':'none';});
+    btn.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+  });
 </script>
