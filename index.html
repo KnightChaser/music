@@ -4,39 +4,22 @@
     <meta charset="UTF-8">
     <title>My Music</title>
 
-    <link rel="stylesheet" href="/assets/css/style.css" />
+    <link rel="stylesheet" href="/music/music/assets/css/style.css">
   </head>
   <body class="bg-white text-gray-800">
     <h1 class="site-title">KnightChaser's Music Curation List</h1>
-<a href="https://github.com/KnightChaser/music" target="_blank"
-   style="position:absolute; top:1rem; right:1rem;"
-   aria-label="Music Repo on GitHub">
-  <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
-       alt="GitHub" width="32" height="32">
+<a href="https://github.com/KnightChaser/music" target="_blank" style="position:absolute; top:1rem; right:1rem;" aria-label="Music Repo on GitHub">
+  <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub" width="32" height="32">
 </a>
 
 <div class="count-container" id="count">0 / 0 songs shown</div>
 <div class="flex justify-center my-6">
   <div class="relative w-3/5">
-    <input
-      type="text"
-      id="search"
-      placeholder="artist:…, tag:…, note:…, language:…"
-      autocomplete="off"
-      class="block w-full rounded-l-lg border border-gray-300 p-2.5 focus:border-red-600 focus:ring-4 focus:ring-red-200"
-    />
-    <button
-      id="clear"
-      type="button"
-      class="absolute right-0 top-0 rounded-r-lg bg-red-600 px-4 py-2 text-white hover:bg-red-700 focus:ring-4 focus:ring-red-200"
-    >
+    <input type="text" id="search" placeholder="artist:…, tag:…, note:…, language:…" autocomplete="off" class="block w-full rounded-l-lg border border-gray-300 p-2.5 focus:border-red-600 focus:ring-4 focus:ring-red-200">
+    <button id="clear" type="button" class="absolute right-0 top-0 rounded-r-lg bg-red-600 px-4 py-2 text-white hover:bg-red-700 focus:ring-4 focus:ring-red-200">
       reset
     </button>
-    <ul
-      id="suggestions"
-      class="absolute z-50 mt-1 w-full overflow-auto rounded-lg border border-gray-300 bg-white shadow-lg"
-      style="display:none;"
-    ></ul>
+    <ul id="suggestions" class="absolute z-50 mt-1 w-full overflow-auto rounded-lg border border-gray-300 bg-white shadow-lg" style="display:none;"></ul>
   </div>
 </div>
 
@@ -99,7 +82,7 @@
     }));
   }
 
-  fetch('/search.json')
+  fetch('/music/search.json')
     .then(r => r.json())
     .then(data => {
       const total = data.length;
@@ -254,6 +237,6 @@
 </script>
 
 
-    <script src="/assets/flowbite/flowbite.min.js"></script>
+    <script src="/music/music/assets/flowbite/flowbite.min.js"></script>
   </body>
 </html>
