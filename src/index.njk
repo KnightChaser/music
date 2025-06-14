@@ -1,3 +1,4 @@
+```html
 ---
 layout: "base.njk"
 ---
@@ -179,7 +180,7 @@ layout: "base.njk"
         <td><span class="clickable" data-field="artist" data-term="${item.artist}">${item.artist}</span></td>
         <td>${item.title}</td>
         <td style="white-space: nowrap;">${item.release}</td>
-        <td>${item.tags.map(t=>`<span class="clickable" data-field="tags" data-term="${t}">#${t}</span>`).join(' ')}</td>
+        <td>${item.tags.slice().sort().map(t=>`<span class="clickable" data-field="tags" data-term="${t}">#${t}</span>`).join(' ')}</td>
         <td>${item.note||'N/A'}</td>
         <td>${item.language?`<span class="clickable" data-field="language" data-term="${item.language}">${item.language}${langEmoji[item.language]||''}</span>`:''}</td>
       </tr>`).join('');
