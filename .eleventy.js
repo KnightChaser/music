@@ -8,11 +8,17 @@ module.exports = function(eleventyConfig) {
     return JSON.stringify(data, null, 2);
   });
 
+   // Copy generated CSS & any Flowbite assets
+   eleventyConfig.addPassthroughCopy({ "src/assets/css": "assets/css" });
+   eleventyConfig.addPassthroughCopy({ "node_modules/flowbite/dist/flowbite.min.js": "assets/flowbite/flowbite.min.js" });
+
+  const isProd = process.env.NODE_ENV === "production";
+
   return {
-    dir: {
-      input:  "src",
-      output: "_site"
+    dir: { 
+      input: "src", 
+      output: "_site" 
     },
-    pathPrefix: "/music/"
+    pathPrefix: isProd ? "/music/" : "/",
   };
 };

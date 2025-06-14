@@ -3,9 +3,12 @@
   <head>
     <meta charset="UTF-8">
     <title>My Music</title>
+
+    <link rel="stylesheet" href="{{ '/assets/css/style.css' | url }}" />
   </head>
-  <body>
+  <body class="bg-white text-gray-800">
     {{ content | safe }}
+
+    <script src="{{ '/assets/flowbite/flowbite.min.js' | url }}"></script>
   </body>
 </html>
-

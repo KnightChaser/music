@@ -3,8 +3,10 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "npx @11ty/eleventy"
+    "build:css": "postcss src/assets/css/tailwind.css -o src/assets/css/style.css",
+    "watch:css": "npm run build:css -- --watch",
+    "start": "npx @11ty/eleventy --serve",
+    "build": "npm run build:css -- --minify && npx @11ty/eleventy"
   },
   "repository": {
     "type": "git",
@@ -19,7 +21,12 @@
   "homepage": "https://github.com/KnightChaser/music#readme",
   "description": "",
   "devDependencies": {
-    "@11ty/eleventy": "^3.1.1"
+    "@11ty/eleventy": "^3.1.1",
+    "@tailwindcss/postcss": "^4.1.10",
+    "autoprefixer": "^10.4.21",
+    "flowbite": "^3.1.2",
+    "postcss": "^8.5.5",
+    "tailwindcss": "^3.4.17"
   },
   "dependencies": {
     "js-yaml": "^4.1.0"

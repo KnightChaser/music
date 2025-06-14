@@ -1,16 +1,18 @@
-<table id="resultsTable">
-  <thead>
+<table id="resultsTable" class="mx-auto w-3/4 table-auto border-collapse">
+  <thead class="bg-gray-100">
     <tr>
-      <th class="sortable" data-key="artist">Artist <span class="sort-indicator">⇅</span></th>
-      <th class="sortable" data-key="title">Title <span class="sort-indicator">⇅</span></th>
-      <th class="sortable" data-key="release">Release <span class="sort-indicator">⇅</span></th>
-      <th>Tags</th>
-      <th>Note</th>
-      <th>Listen</th>                <!-- new column -->
-      <th class="sortable" data-key="language">Language <span class="sort-indicator">⇅</span></th>
+      <th class="sortable px-4 py-2 text-left">Artist <span class="sort-indicator">⇅</span></th>
+      <th class="sortable px-4 py-2 text-left">Title <span class="sort-indicator">⇅</span></th>
+      <th class="sortable px-4 py-2 text-center">Release <span class="sort-indicator">⇅</span></th>
+      <th class="px-4 py-2">Tags</th>
+      <th class="px-4 py-2">Note</th>
+      <th class="px-4 py-2 text-center">Listen</th>
+      <th class="sortable px-4 py-2 text-center">Language <span class="sort-indicator">⇅</span></th>
     </tr>
   </thead>
-  <tbody>
-    <tr><td colspan="7" style="text-align:center;">Loading…</td></tr>  <!-- updated colspan -->
+  <tbody class="divide-y">
+    <tr>
+      <td colspan="7" class="py-4 text-center text-gray-500">Loading…</td>
+    </tr>
   </tbody>
 </table>
