@@ -189,7 +189,7 @@ layout: "base.njk"
       suggestionsBox.addEventListener('click', e => { if (e.target.dataset.val) { const before = input.value.includes(',') ? input.value.slice(0, input.value.lastIndexOf(',') + 1) : ''; input.value = before + ' ' + e.target.dataset.val; doSearch(); suggestionsBox.style.display = 'none'; } });
 
       document.querySelectorAll('th.sortable').forEach(th => th.addEventListener('click', () => { const key = th.dataset.key; if (sortKey === key) sortDir *= -1; else { sortKey = key; sortDir = 1; } document.querySelectorAll('th.sortable').forEach(h => h.style.fontWeight = 'normal'); th.style.fontWeight = 'bold'; applySort(); render(); }));
-      document.querySelector('#resultsTable tbody').addEventListener('click', e => { if (e.target.classList.contains('clickable')) { const f = e.target.dataset.field, t = e.target.dataset.term; const parts = input.value.split(',').map(s => s.trim()).filter(s => s); const filtered = parts.filter(p => !p.toLowerCase().startsWith(f + ':')); filtered.push(`${f}:${t}`); input.value = filtered.join(', '); doSearch(); } });
+      document.querySelector('#resultsTable tbody').addEventListener('click', e => { if (e.target.classList.contains('clickable') && e.target.dataset.field) { const f = e.target.dataset.field, t = e.target.dataset.term; const parts = input.value.split(',').map(s => s.trim()).filter(s => s); const filtered = parts.filter(p => !p.toLowerCase().startsWith(f + ':')); filtered.push(`${f}:${t}`); input.value = filtered.join(', '); doSearch(); } });
 
       const btn = document.getElementById('backToTop');
       window.addEventListener('scroll', () => { btn.style.display = window.scrollY > 300 ? 'block' : 'none'; });
