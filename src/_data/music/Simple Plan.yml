@@ -1,0 +1,8 @@
+# Simple Plan.yml
+
+- title: "Congratulations"
+  release: "2022-03-16"
+  mood: ["high tone", "guitar", "band", "revenge", "uplifting", "refreshing"]
+  tags: ["pop", "guitar", "band", "emo", "emo rock", "rock", "guitar rock"]
+  note: "A song to present to someone who has wronged you."
+  language: en
