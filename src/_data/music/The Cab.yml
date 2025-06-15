@@ -2,7 +2,21 @@
 
 - title: Angel With a Shotgun
   release: "2011-10-24"
-  tags: ["authentic", "guitar", "high", "pre-battle", "nostalgic", "flashback", "lovesick", "pop", "solo vocal", "coolness", "nightcore", "drum", "2010s"]
+  tags:
+    [
+      "authentic",
+      "guitar",
+      "high",
+      "pre-battle",
+      "nostalgic",
+      "flashback",
+      "lovesick",
+      "pop",
+      "solo vocal",
+      "coolness",
+      "nightcore",
+      "drum",
+    ]
   note: "A song defined my early teenage years."
   language: en
   listen:

@@ -1,0 +1,73 @@
+# BLACKPINK.yml
+
+- title: "마지막처럼 (As If It's Your Last)"
+  release: "2017-06-22"
+  tags:
+    [
+      "k-pop",
+      "dance-pop",
+      "electropop",
+      "summer vibes",
+      "upbeat",
+      "catchy",
+      "girl group",
+      "empowered",
+      "confident",
+      "party",
+      "fun",
+      "bubbly",
+      "youthful",
+      "vibrant",
+      "anthem",
+    ]
+  note:
+  language: ko
+  listen:
+    - ORG: https://youtu.be/Amq-qlqbjYA?si=eRJ7WaIlynPzTCPD
+
+- title: "Lovesick Girls"
+  release: "2020-10-02"
+  tags:
+    [
+      "k-pop",
+      "pop",
+      "dance-pop",
+      "electropop",
+      "empowered",
+      "confident",
+      "without regrets",
+      "heartbreak",
+      "upbeat",
+      "catchy",
+      "girl group",
+      "anthem",
+      "melancholic",
+      "nostalgic",
+      "youthful",
+    ]
+  note:
+  language: ko
+  listen:
+    - ORG: https://youtu.be/dyRsYk0LyA8?si=OASMZMo6bX9cfqaR
+
+- title: "Forever Young"
+  release: "2020-04-20"
+  tags:
+    [
+      "k-pop",
+      "dance-pop",
+      "electropop",
+      "without regrets",
+      "empowered",
+      "synth",
+      "edm",
+      "moombahton",
+      "regetton rhythms",
+      "laser-like house",
+      "mixed genres",
+    ]
+  note: "My first crush song in K-pop"
+  language: ko
+  listen:
+    - ORG: https://youtu.be/-gibBYpzZbI?si=qCXtFjCFHyPl6x6O
+    - NCR: https://youtu.be/cDKUA_oTB5Q?si=OYmHQQxHgzJkhY4U

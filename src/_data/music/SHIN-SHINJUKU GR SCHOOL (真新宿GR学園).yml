@@ -1,0 +1,77 @@
+# SHIN-SHINJUKU GR SCHOOL (真新宿GR学園).yml
+
+# A real Shinjuku vibe
+
+- title: "Crush (Prod. SHOW)"
+  release: "2023-02-09"
+  tags:
+    [
+      "cool",
+      "pop",
+      "street",
+      "hip hop",
+      "synth",
+      "electronic",
+      "dance",
+      "vibe",
+      "triple vocal",
+      "denobu project",
+      "crush",
+      "girl crush",
+    ]
+  note:
+  language: ja
+  listen:
+    - ORG: https://youtu.be/LkPPkD10oX4?si=9Xgu1vTPF-X-NQgg
+
+- title: "狐憑キ (Prod. Sho Okada)"
+  release: "2022-12-01"
+  tags:
+    [
+      "cool",
+      "pop",
+      "street",
+      "exotic vibe",
+      "exotic bgm",
+      "distorted bgm",
+      "hip hop",
+      "electronic",
+      "dance",
+      "beat",
+      "rhythmic",
+      "rap",
+      "vibe",
+      "double vocal",
+      "denobu project",
+      "fox spirit",
+      "new generation",
+    ]
+  note: "The most impressive and exotic Japanese song I've ever heard. (so far)"
+  language: ja
+  listen:
+    - ORG: https://youtu.be/H2NsarWg7YU?si=58P_GH1ak4rZd-Fh
+
+- title: "神パラサイト"
+  release: "2023-09-07"
+  tags:
+    [
+      "cool",
+      "pop",
+      "street",
+      "rap",
+      "remix",
+      "megamix",
+      "ado (artist)",
+      "giga (artist)",
+      "hip hop",
+      "synth",
+      "electronic",
+      "dance",
+      "vibe",
+      "multiple vocal",
+      "denobu project",
+    ]
+  note:
+  language: ja
+  listen:
+    - ORG: https://youtu.be/jf6jLfF2O6s?si=ZIyoO0BXQruZAY98

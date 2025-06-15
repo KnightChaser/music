@@ -2,7 +2,18 @@
 
 - title: Gotta Be Somebody
   release: "2008-09-29"
-  tags: ["authentic", "rock", "nostalgic", "rock", "alternative", "band", "guitar", "lovesick", "low vocal"]
+  tags:
+    [
+      "authentic",
+      "rock",
+      "nostalgic",
+      "rock",
+      "alternative",
+      "band",
+      "guitar",
+      "lovesick",
+      "low vocal",
+    ]
   note: "A rock for every man in hard times"
   language: en
   listen:

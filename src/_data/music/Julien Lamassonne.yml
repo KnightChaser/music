@@ -2,7 +2,22 @@
 
 - title: Un Monde Sans Danger (From “Code Lyoko”)
   release: "2006-01-01"
-  tags: ["nostalgic", "anime", "TV", "french", "theme song", "childhood", "electronic", "instrumental", "hopeful", "authentic", "sincere"]
+  tags:
+    [
+      "nostalgic",
+      "anime",
+      "tv",
+      "code lyoko",
+      "european",
+      "french",
+      "theme song",
+      "childhood",
+      "electronic",
+      "instrumental",
+      "hopeful",
+      "authentic",
+      "sincere",
+    ]
   note: "My first French song"
   language: fr
   listen:

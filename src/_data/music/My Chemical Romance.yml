@@ -2,7 +2,21 @@
 
 - title: "Welcome to the Black Parade"
   release: "2006-09-12"
-  tags: ["high tone", "guitar", "nostalgic", "powerful", "exciting", "rock", "emo", "anthem", "alternative", "uplifting", "screaming", "hard rock"]
+  tags:
+    [
+      "high tone",
+      "guitar",
+      "nostalgic",
+      "powerful",
+      "exciting",
+      "rock",
+      "emo",
+      "anthem",
+      "alternative",
+      "uplifting",
+      "screaming",
+      "hard rock",
+    ]
   note: "Probably #1 rock to sing in karaoke."
   language: en
   listen:

@@ -1,0 +1,27 @@
+# Katy Perry.yml
+
+- title: "Firework"
+  release: "2010-10-26"
+  tags:
+    [
+      "empowering",
+      "anthem",
+      "pop",
+      "uplifting",
+      "inspirational",
+      "party",
+      "celebration",
+      "self-love",
+      "confidence",
+      "high tone",
+      "building",
+      "hopeful",
+    ]
+  note: "My #2 favorite song of all time."
+  language: en
+  listen:
+    - ORG: https://youtu.be/QGJuMBdaqIw?si=2bCXfZwXFLtVicY9
+    - RX (Mike Tompkins Acapella): https://youtu.be/FyepYaE_JS4?si=A_amP1ac4CiW7N1J
+    - RX (Hatsune Miku Acapella): https://youtu.be/yo4gDrPD42U?si=Wtdzd7sY06ltn1Gk
+    - RX (J.Fla): https://youtu.be/0EeN4P-mTgU?si=kivY8B-6F1zEcTIq
+    - NCR: https://youtu.be/57NISIsOwG8?si=_IrMeNMS4_rxizS-

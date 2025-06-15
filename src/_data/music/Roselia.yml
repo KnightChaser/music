@@ -2,7 +2,23 @@
 
 - title: 陽だまりロードナイト
   release: "2020-01-22"
-  tags: ["nostalgic", "energetic", "happy", "sincere", "authentic", "uplifting", "J-Pop", "guitar", "band", "electronic guitar", "dual vocal", "Bang Dream", "OST", "anime"]
+  tags:
+    [
+      "nostalgic",
+      "energetic",
+      "happy",
+      "sincere",
+      "authentic",
+      "uplifting",
+      "j-pop",
+      "guitar",
+      "band",
+      "electronic guitar",
+      "dual vocal",
+      "Bang Dream",
+      "ost",
+      "anime",
+    ]
   note: "My #1 pick of BanG_Dream! songs"
   language: ja
   listen:
@@ -10,7 +26,22 @@
 
 - title: Neo-Aspect
   release: "2018-07-25"
-  tags: ["bass guitar", "sincere", "powerful", "authentic", "dual vocal", "Bang Dream", "anime", "OST", "J-Pop", "electronic guitar", "band", "girl rock", "rock"]
+  tags:
+    [
+      "bass guitar",
+      "sincere",
+      "powerful",
+      "authentic",
+      "dual vocal",
+      "Bang Dream",
+      "anime",
+      "ost",
+      "j-pop",
+      "electronic guitar",
+      "band",
+      "girl rock",
+      "rock",
+    ]
   note:
   language: ja
   listen:

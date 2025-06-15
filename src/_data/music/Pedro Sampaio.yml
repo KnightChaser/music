@@ -2,7 +2,20 @@
 
 - title: SEQUÊNCIA STRIPTEASE
   release: "2024-12-23"
-  tags: ["sensual", "energetic", "speedy", "playing","funk", "brazilian", "edm", "party", "club", "brazilian punk", "dj"]
+  tags:
+    [
+      "sensual",
+      "energetic",
+      "speedy",
+      "playing",
+      "funk",
+      "brazilian",
+      "edm",
+      "party",
+      "club",
+      "brazilian punk",
+      "dj",
+    ]
   note: "Best song to dance to at the club"
   language: pt
   listen:
@@ -10,7 +23,21 @@
 
 - title: SEQUÊNCIA COLOCADÃO
   release: "2024-03-28"
-  tags: ["sensual", "energeic", "funk", "trance", "midi", "brazilian", "edm", "party", "club", "brazilian punk", "dj", "synth"]
+  tags:
+    [
+      "sensual",
+      "energeic",
+      "funk",
+      "trance",
+      "midi",
+      "brazilian",
+      "edm",
+      "party",
+      "club",
+      "brazilian punk",
+      "dj",
+      "synth",
+    ]
   note:
   language: pt
   listen:
@@ -18,7 +45,21 @@
 
 - title: DANÇARINA
   release: "2023-12-01"
-  tags: ["sensual", "speedy", "dance", "beat", "alcoholic", "brazilian", "dance", "party", "street", "female vocal", "dual vocal", "modern"]
+  tags:
+    [
+      "sensual",
+      "speedy",
+      "dance",
+      "beat",
+      "alcoholic",
+      "brazilian",
+      "dance",
+      "party",
+      "street",
+      "female vocal",
+      "dual vocal",
+      "modern",
+    ]
   note: "Best song to dance to at the club"
   language: pt
   listen:

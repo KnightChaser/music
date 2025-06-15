@@ -1,0 +1,46 @@
+# WAGAMAMARAKIA (我儘ラキア).yml
+
+- title: "rain"
+  release: "2020-03-29"
+  tags:
+    [
+      "rock",
+      "emo rock",
+      "metal",
+      "hardcore",
+      "high tone",
+      "melancholic",
+      "new generation",
+      "electronic guitar",
+      "bass guitar",
+      "survivalism",
+      "cool",
+    ]
+  note: "A song that guides you through the storm."
+  language: ja
+  listen:
+    - ORG: https://youtu.be/09wDMFn9oTE?si=sgI7rHG7JDRDReS6
+
+- title: "GR4VITY GAME"
+  release: "2022-03-30"
+  tags:
+    [
+      "rock",
+      "emo rock",
+      "metal",
+      "hardcore",
+      "high tone",
+      "melancholic",
+      "authentic",
+      "sincere",
+      "new generation",
+      "electronic guitar",
+      "bass guitar",
+      "rap",
+      "multi vocal",
+      "cool",
+    ]
+  note: "My first song from WAGAMAMARAKIA."
+  language: ja
+  listen:
+    - ORG: https://youtu.be/RioRNa2xYKg?si=C0MFV4yZRBeZwn4B
