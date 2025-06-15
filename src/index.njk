@@ -130,33 +130,35 @@ layout: "base.njk"
           const lang = item.language || '';
           const names = langNames[lang] || ['', ''];
           const titleAttr = names.join('\n');
-          const badge = lang
-            ? `<span class="clickable inline-block bg-blue-100 rounded px-2 py-1 font-bold hover:bg-blue-200 cursor-pointer transition-colors lang-badge" data-field="language" data-term="${lang}" data-emoji="${langEmoji[lang]||''}" data-native="${names[0]}" data-english="${names[1]||''}" title="${titleAttr}">${lang}${langEmoji[lang]||''}</span>`
+            const badge = lang
+            ? `<span class="clickable inline-block bg-blue-100 rounded px-2 py-1 font-bold hover:bg-blue-200 cursor-pointer transition-colors lang-badge" data-field="language" data-term="${lang}" data-emoji="${langEmoji[lang]||''}" data-native="${names[0]}" data-english="${names[1]||''}" title="${titleAttr}" style="margin-right:0.25rem; margin-bottom:0.15rem;">${lang}${langEmoji[lang]||''}</span>`
             : '';
 
-          return `
+            return `
             <tr>
               <td class="px-6 py-4 text-center">
-                <span class="clickable inline-block bg-blue-100 rounded px-2 py-1 font-bold hover:bg-blue-200 cursor-pointer transition-colors" data-field="artist" data-term="${item.artist}">${item.artist}</span>
+              <span class="clickable inline-block bg-blue-100 rounded px-2 py-1 font-bold hover:bg-blue-200 cursor-pointer transition-colors" data-field="artist" data-term="${item.artist}" style="margin-right:0.25rem; margin-bottom:0.15rem;">${item.artist}</span>
               </td>
               <td class="px-6 py-4 text-center">
-                       ${item.title}
-                     </td>
+                   ${item.title}
+              </td>
               <td class="px-6 py-4 text-center whitespace-nowrap">
-                       ${item.release}
-                     </td>
+                   ${item.release}
+              </td>
               <td class="px-6 py-4 text-left">
-                       ${tagsHtml}
-                     </td>
+                   ${item.tags.slice().sort().map(t =>
+                    `<span class="clickable inline-block bg-blue-100 rounded px-2 py-1 font-bold hover:bg-blue-200 cursor-pointer transition-colors" data-field="tags" data-term="${t}" style="margin-right:0.25rem; margin-bottom:0.15rem;">#${t} (${tagCounts[t]})</span>`
+                   ).join(' ')}
+              </td>
               <td class="px-6 py-4 text-left">
-                       ${item.note || 'N/A'}
-                     </td>
+                   ${item.note || 'N/A'}
+              </td>
               <td class="px-6 py-4 text-center">
                        ${listenHtml}
-                     </td>
+              </td>
               <td class="px-6 py-4 text-center">
-                       ${badge}
-                     </td>
+                   ${badge}
+              </td>
             </tr>`;
         }).join('');
         updateCount();
