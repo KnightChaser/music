@@ -40,7 +40,7 @@
         </svg>
       </div>
 
-      <input id="search" type="text" placeholder="artist:…, tag:…, note:…, language:…" autocomplete="off" class="block w-full pl-12 pr-24 py-4 text-xl text-gray-900
+      <input id="search" type="text" placeholder="artist:…, tags:…, note:…, language:…" autocomplete="off" class="block w-full pl-12 pr-24 py-4 text-xl text-gray-900
                border border-red-500 rounded-lg
                focus:border-red-600 focus:ring-red-600 transition">
 
@@ -134,12 +134,13 @@ btn.addEventListener('click', () => {
 <script>
   const langEmoji = {
     en: '🇺🇸', pt: '🇵🇹', ja: '🇯🇵', es: '🇪🇸', fr: '🇫🇷',
-    ko: '🇰🇷', ru: '🇷🇺', zh: '🇨🇳'
+    ko: '🇰🇷', ru: '🇷🇺', zh: '🇨🇳', de: '🇩🇪'
   };
   const langNames = {
     en: ['English'], pt: ['Português', 'Portuguese'], ja: ['日本語', 'Japanese'],
     es: ['Español', 'Spanish'], fr: ['Français', 'French'],
-    ko: ['한국어', 'Korean'], ru: ['Русский', 'Russian'], zh: ['中文', 'Chinese']
+    ko: ['한국어', 'Korean'], ru: ['Русский', 'Russian'], zh: ['中文', 'Chinese'],
+    de: ['Deutsch', 'German']
   };
 
   function parseCriteria(str) {
@@ -228,6 +229,22 @@ btn.addEventListener('click', () => {
             <span class="clickable inline-block bg-blue-100 rounded px-2 py-1 font-bold hover:bg-blue-200 cursor-pointer transition-colors" data-field="tags" data-term="${t}">#${t} (${tagCounts[t]})</span>`
           ).join(' ');
 
+          // Compute relative release time
+          const releaseDate = new Date(item.release);
+          const now = new Date();
+          const diffDays = Math.floor((now - releaseDate) / (1000*60*60*24));
+          const diffYears = (diffDays/365).toFixed(2);
+          const releaseHtml = `
+            <span class="relative inline-block group cursor-default">
+              <span>${item.release}</span>
+              <div
+                class="absolute bottom-full mb-1 left-1/2 transform -translate-x-1/2
+                       hidden group-hover:block bg-gray-800 text-white text-xs rounded
+                       p-2 whitespace-pre-line text-center z-10 w-max px-2"
+              >${diffDays} days ago\n(${diffYears} years ago)</div>
+            </span>
+          `;
+
           const listenHtml = (item.listen || []).map(entry => {
             const key = Object.keys(entry)[0];
             const url = entry[key];
@@ -305,7 +322,7 @@ btn.addEventListener('click', () => {
                 </div>
               </td>
               <td class="px-6 py-4 text-center whitespace-nowrap">
-                   ${item.release}
+                   ${releaseHtml}
               </td>
               <td class="px-6 py-4 text-left">
                    ${item.tags.slice().sort().map(t =>
