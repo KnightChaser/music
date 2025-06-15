@@ -43,15 +43,21 @@ layout: "base.njk"
     }));
   }
 
-    fetch('{{ "/search.json" | url }}')
+  fetch('{{ "/search.json" | url }}')
     .then(r => r.json())
     .then(data => {
-      const total = data.length;
       const input = document.getElementById('search');
       const clearBtn = document.getElementById('clear');
       const suggestionsBox = document.getElementById('suggestions');
+      const total = data.length;
       const tbody = document.querySelector('#resultsTable tbody');
       const countEl = document.getElementById('count');
+      const tagCounts = data.flatMap(d=>d.tags)
+        .reduce((a,t)=>(a[t]=(a[t]||0)+1,a),{});
+      const artistCounts = data.reduce((a,d)=>(a[d.artist]=(a[d.artist]||0)+1,a),{});
+      const languageCounts = data.reduce((a,d)=>(d.language&&(a[d.language]=(a[d.language]||0)+1),a),{});
+      const countsMap = { tags: tagCounts, artist: artistCounts, language: languageCounts };
+
 
       const sources = {
         artist: Array.from(new Set(data.map(d => d.artist))).sort(),
@@ -60,8 +66,7 @@ layout: "base.njk"
         language: Array.from(new Set(data.map(d => d.language).filter(l => l))).sort(),
         note: Array.from(new Set(data.map(d => d.note).filter(n => n))).sort()
       };
-      const tagCounts = data.flatMap(d => d.tags)
-        .reduce((a, t) => ((a[t] = (a[t] || 0) + 1), a), {});
+
 
       let current = [];
       let sortKey = 'release', sortDir = -1;
@@ -85,16 +90,19 @@ layout: "base.njk"
         });
       }
 
-      
       function render() {
         if (!current.length) {
-          tbody.innerHTML = '<tr><td colspan="7" style="text-align:center;">No matches</td></tr>';
+          tbody.innerHTML = `
+            <tr>
+              <td colspan="7" style="text-align:center;">No matches</td>
+            </tr>`;
           updateCount();
           return;
         }
         tbody.innerHTML = current.map(item => {
           const tagsHtml = item.tags.slice().sort().map(t =>
-            `<span class="clickable inline-block bg-blue-100 rounded px-2 py-1 font-bold hover:bg-blue-200 cursor-pointer transition-colors" data-field="tags" data-term="${t}">#${t} (${tagCounts[t]})</span>`
+            `
+            <span class="clickable inline-block bg-blue-100 rounded px-2 py-1 font-bold hover:bg-blue-200 cursor-pointer transition-colors" data-field="tags" data-term="${t}">#${t} (${tagCounts[t]})</span>`
           ).join(' ');
 
           const listenHtml = (item.listen || []).map(entry => {
@@ -110,7 +118,8 @@ layout: "base.njk"
               : key.startsWith('RX')
                 ? `Listen to the remix version${key.includes('(')? ' (' + key.match(/\((.*)\)/)[1] + ')' : ''}`
                 : 'Listen to the nightcore version';
-            return `<a href="${url}"
+            return `
+  <a href="${url}"
                        class="clickable listen-badge font-bold"
                        style="background:${bg};color:${color};margin:0 0.2rem;"
                        data-hover="${hover}"
@@ -126,88 +135,162 @@ layout: "base.njk"
             : '';
 
           return `
-          <tr>
-            <td class="px-6 py-4 text-center">
-              <span class="clickable inline-block bg-blue-100 rounded px-2 py-1 font-bold hover:bg-blue-200 cursor-pointer transition-colors" data-field="artist" data-term="${item.artist}">${item.artist}</span>
-            </td>
-            <td class="px-6 py-4 text-center">
-              ${item.title}
-            </td>
-            <td class="px-6 py-4 text-center whitespace-nowrap">
-              ${item.release}
-            </td>
-            <td class="px-6 py-4 text-left">
-              ${tagsHtml}
-            </td>
-            <td class="px-6 py-4 text-left">
-              ${item.note || 'N/A'}
-            </td>
-            <td class="px-6 py-4 text-center">
-              ${listenHtml}
-            </td>
-            <td class="px-6 py-4 text-center">
-              ${badge}
-            </td>
-          </tr>`;
+            <tr>
+              <td class="px-6 py-4 text-center">
+                <span class="clickable inline-block bg-blue-100 rounded px-2 py-1 font-bold hover:bg-blue-200 cursor-pointer transition-colors" data-field="artist" data-term="${item.artist}">${item.artist}</span>
+              </td>
+              <td class="px-6 py-4 text-center">
+                       ${item.title}
+                     </td>
+              <td class="px-6 py-4 text-center whitespace-nowrap">
+                       ${item.release}
+                     </td>
+              <td class="px-6 py-4 text-left">
+                       ${tagsHtml}
+                     </td>
+              <td class="px-6 py-4 text-left">
+                       ${item.note || 'N/A'}
+                     </td>
+              <td class="px-6 py-4 text-center">
+                       ${listenHtml}
+                     </td>
+              <td class="px-6 py-4 text-center">
+                       ${badge}
+                     </td>
+            </tr>`;
         }).join('');
         updateCount();
       }
 
       function doSearch() {
-        const crit = parseCriteria(input.value);
-        current = Object.keys(crit).length
-          ? filterData(data, crit)
-          : data.slice().sort((a, b) => new Date(b.release) - new Date(a.release));
+        const criteria = parseCriteria(input.value);
+        current = filterData(data, criteria);
         applySort();
         render();
+        suggestionsBox.style.display = 'none'; // Hide suggestions after search
       }
 
       function updateSuggestions() {
         const raw = input.value;
-        const lastSeg = raw.includes(',') ? raw.slice(raw.lastIndexOf(',') + 1).trim() : raw.trim();
+        const lastSeg = raw.includes(',')
+          ? raw.slice(raw.lastIndexOf(',') + 1).trim()
+          : raw.trim();
         const m = lastSeg.match(/^(\w+):\s*([^,]*)$/);
-        if (m) {
-          const field = m[1].toLowerCase();
-          const term = m[2].toLowerCase();
-          const list = sources[field];
-          if (list) {
-            const matches = list.filter(v => v.toLowerCase().startsWith(term)).slice(0, 10);
-            if (matches.length) {
-              suggestionsBox.innerHTML = matches.map((v, i) => {
-                const bold = `<strong>${field}: ${v.substring(0, term.length)}</strong>`;
-                return `<div data-val="${field}:${v}" data-index="${i}">${bold}${v.substring(term.length)}</div>`;
-              }).join('');
-              selectedIndex = -1;
-              suggestionsBox.style.display = 'block';
-              return;
-            }
-          }
+
+        if (!m) {
+          suggestionsBox.style.display = 'none';
+          return;
         }
-        suggestionsBox.style.display = 'none';
+
+        const field = m[1].toLowerCase();
+        const term  = m[2].toLowerCase();
+        const countsMap = { artist: artistCounts, tags: tagCounts, language: languageCounts };
+        const rawList   = sources[field] || [];
+        const counts    = countsMap[field] || {};
+
+        const matches = rawList
+          .filter(v => v.toLowerCase().startsWith(term))
+          .sort((a, b) => (counts[b] || 0) - (counts[a] || 0) || a.localeCompare(b))
+          .slice(0, 50);
+
+        if (!matches.length) {
+          suggestionsBox.style.display = 'none';
+          return;
+        }
+
+        suggestionsBox.innerHTML = matches.map((v, i) => {
+          return `
+            <div
+              data-val="${field}:${v}"
+              data-index="${i}"
+              tabindex="0"
+              class="flex justify-between px-4 py-2 hover:bg-gray-100 cursor-pointer"
+            >
+              <span><strong>${field}:</strong> ${v}</span>
+              <span class="ml-2 text-gray-500">(${counts[v] || 0})</span>
+            </div>
+          `;
+        }).join('');
+
+        selectedIndex = -1;
+        suggestionsBox.style.display = 'block';
       }
 
-      doSearch();
-      input.addEventListener('input', () => { doSearch(); updateSuggestions(); });
+      // Event Listeners
+      input.addEventListener('input', () => {
+        doSearch();
+        updateSuggestions();
+      });
+
       input.addEventListener('keydown', e => {
-        const items = suggestionsBox.querySelectorAll('div');
-        if (items.length && suggestionsBox.style.display === 'block') {
-          if (e.key === 'ArrowDown') { e.preventDefault(); selectedIndex = (selectedIndex + 1) % items.length; }
-          else if (e.key === 'ArrowUp') { e.preventDefault(); selectedIndex = (selectedIndex - 1 + items.length) % items.length; }
-          else if (e.key === 'Enter' && selectedIndex > -1) { e.preventDefault(); items[selectedIndex].click(); return; }
-          else return;
-          items.forEach(i => i.classList.remove('selected')); 
-          items[selectedIndex].classList.add('selected');
-          items[selectedIndex].scrollIntoView({ block:'nearest' });
+        const items = Array.from(suggestionsBox.children);
+        if (!items.length || suggestionsBox.style.display !== 'block') return;
+      
+        if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+          e.preventDefault();
+          let idx = selectedIndex;
+          if (e.key === 'ArrowDown')   idx = (idx + 1) % items.length;
+          else if (e.key === 'ArrowUp') idx = (idx - 1 + items.length) % items.length;
+      
+          // clear, highlight, and scroll into view
+          items.forEach(i => i.classList.remove('bg-gray-200'));
+          items[idx].classList.add('bg-gray-200');
+          items[idx].scrollIntoView({ block: 'nearest' });
+      
+          selectedIndex = idx;
+        } else if (e.key === 'Enter' && selectedIndex > -1) {
+          e.preventDefault();
+          items[selectedIndex].click();
+          selectedIndex = -1;
         }
       });
-      clearBtn.addEventListener('click', () => { input.value = ''; doSearch(); suggestionsBox.style.display = 'none'; input.focus(); });
-      suggestionsBox.addEventListener('click', e => { if (e.target.dataset.val) { const before = input.value.includes(',') ? input.value.slice(0, input.value.lastIndexOf(',') + 1) : ''; input.value = before + ' ' + e.target.dataset.val; doSearch(); suggestionsBox.style.display = 'none'; } });
 
-      document.querySelectorAll('th.sortable').forEach(th => th.addEventListener('click', () => { const key = th.dataset.key; if (sortKey === key) sortDir *= -1; else { sortKey = key; sortDir = 1; } document.querySelectorAll('th.sortable').forEach(h => h.style.fontWeight = 'normal'); th.style.fontWeight = 'bold'; applySort(); render(); }));
-      document.querySelector('#resultsTable tbody').addEventListener('click', e => { if (e.target.classList.contains('clickable') && e.target.dataset.field) { const f = e.target.dataset.field, t = e.target.dataset.term; const parts = input.value.split(',').map(s => s.trim()).filter(s => s); const filtered = parts.filter(p => !p.toLowerCase().startsWith(f + ':')); filtered.push(`${f}:${t}`); input.value = filtered.join(', '); doSearch(); } });
+      clearBtn.addEventListener('click', () => {
+        input.value = '';
+        doSearch();
+        suggestionsBox.style.display = 'none';
+        input.focus();
+      });
+
+      suggestionsBox.addEventListener('click', e => {
+        const val = e.target.closest('div')?.dataset.val;
+        if(val){
+          const parts = input.value.split(',').map(s => s.trim()).filter(s => s);
+          const [field, term] = val.split(':');
+          const filtered = parts.filter(p => !p.toLowerCase().startsWith(field + ':'));
+          input.value = filtered.join(', ') + (filtered.length ? ', ' : '') + val;
+          doSearch(); // Perform search immediately after selecting a suggestion
+          suggestionsBox.style.display = 'none'; // Hide suggestions after selection
+        }
+      });
+
+      // Initial render on page load
+      doSearch();
+
+      document.querySelectorAll('th.sortable').forEach(th => th.addEventListener('click', () => {
+        const key = th.dataset.key;
+        if (sortKey === key) sortDir *= -1;
+        else { sortKey = key; sortDir = 1; }
+        document.querySelectorAll('th.sortable').forEach(h => h.style.fontWeight = 'normal');
+        th.style.fontWeight = 'bold';
+        applySort();
+        render();
+      }));
+
+      document.querySelector('#resultsTable tbody').addEventListener('click', e => {
+        if (e.target.classList.contains('clickable') && e.target.dataset.field) {
+          const f = e.target.dataset.field, t = e.target.dataset.term;
+          const parts = input.value.split(',').map(s => s.trim()).filter(s => s);
+          const filtered = parts.filter(p => !p.toLowerCase().startsWith(f + ':'));
+          filtered.push(`${f}:${t}`);
+          input.value = filtered.join(', ');
+          doSearch();
+        }
+      });
 
       const btn = document.getElementById('backToTop');
       window.addEventListener('scroll', () => { btn.style.display = window.scrollY > 300 ? 'block' : 'none'; });
       btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
     });
+
 </script>

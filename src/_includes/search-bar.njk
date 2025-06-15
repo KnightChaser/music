@@ -1,44 +1,44 @@
 {# src/_includes/search-bar.njk #}
 <div class="flex justify-center my-6 px-4">
   <div class="relative w-full max-w-4xl">
-    <!-- Left search icon -->
-    <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-      <svg aria-hidden="true" class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor"
-           viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-              d="M21 21l-4.35-4.35m0 0A7.5 7.5 0 1 0 6.65 6.65a7.5 7.5 0 0 0 10.6 10.6z"/>
-      </svg>
+    <!-- Search field wrapper -->
+    <div class="relative">
+      <!-- Left search icon -->
+      <div class="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+          <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+        </svg>
+      </div>
+
+      <input
+        id="search"
+        type="text"
+        placeholder="artist:…, tag:…, note:…, language:…"
+        autocomplete="off"
+        class="block w-full pl-12 pr-24 py-4 text-xl text-gray-900
+               border border-red-500 rounded-lg
+               focus:border-red-600 focus:ring-red-600 transition"
+      />
+
+      <!-- Reset button -->
+      <button
+        id="clear"
+        type="button"
+        class="absolute inset-y-0 right-0 flex items-center justify-center
+               px-6 py-4 bg-red-600 text-white rounded-r-lg
+               hover:bg-red-700 focus:outline-none focus:ring-4 focus:ring-red-200
+               transition"
+      >
+        reset
+      </button>
+
+      <!-- Suggestions dropdown -->
+      <div
+        id="suggestions"
+        class="absolute z-50 mt-1 w-full max-h-80 overflow-auto rounded-b-lg
+               border border-t-0 border-gray-300 bg-white shadow-lg"
+        style="display: none;"
+      ></div>
     </div>
-
-    <!-- Input spans full container -->
-    <input
-      id="search"
-      type="text"
-      placeholder="artist:…, tag:…, note:…, language:…"
-      autocomplete="off"
-      class="block w-full pl-10 pr-24 py-3 text-lg text-gray-900
-             border border-gray-300 rounded-lg
-             focus:border-red-500 focus:ring-red-500 transition"
-    />
-
-    <!-- Reset button -->
-    <button
-      id="clear"
-      type="button"
-      class="absolute inset-y-0 right-0 flex items-center justify-center
-             px-6 py-3 bg-red-600 text-white rounded-r-lg
-             hover:bg-red-700 focus:outline-none focus:ring-4 focus:ring-red-200
-             transition"
-    >
-      reset
-    </button>
-
-    <!-- Suggestions dropdown -->
-    <ul
-      id="suggestions"
-      class="absolute z-50 mt-1 w-full overflow-auto rounded-b-lg
-             border border-t-0 border-gray-300 bg-white shadow-lg"
-      style="display: none;"
-    ></ul>
   </div>
 </div>
