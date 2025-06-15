@@ -19,10 +19,12 @@
       "ost",
       "anime",
     ]
-  note: "My #1 pick of BanG_Dream! songs"
+  note: "My #1 pick of BanG_Dream! Roselia songs"
   language: ja
   listen:
     - ORG: https://youtu.be/KjgjeK-ppd0?si=xw-3L3Wc1PK-yu4p
+    - RX(Guitar Boost): https://youtu.be/hVKpnnfr9JU?si=mAbXBDFQFUP0-JcL
+    - RX(OZFSZ Tab Guitar Cover): https://youtu.be/YVcGa7gSBFo?si=FNtj8xgE38njWV1A
 
 - title: Neo-Aspect
   release: "2018-07-25"
