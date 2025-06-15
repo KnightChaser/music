@@ -39,3 +39,8 @@ This project requires two processes to run simultaneously in separate terminal w
     ```
 
 Once both commands are running successfully, you can view your website at **`http://localhost:8080`**. The site will automatically reload in your browser when you save changes to content or template files.
+
+4. **Simulate the GitHub CI/CD pipeline locally**
+    - Go to the GitHub account and create a new classic GitHub token for `repo:public` and `workflow`.
+    - Set the environment flag `GITHUB_TOKEN` for that flag. (Refer to `.actrc`)
+    - Run `act push` to see how it goes.
