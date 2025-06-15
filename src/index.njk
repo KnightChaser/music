@@ -120,28 +120,24 @@ layout: "base.njk"
                 ? `Listen to the remix version${ key.includes('(') ? ' (' + key.match(/\((.*)\)/)[1] + ')' : '' }`
                 : 'Listen to the nightcore version';
 
-            return `
+             return `
               <span class="relative inline-block group">
                 <a
                   href="${url}"
-                  class="inline-block rounded px-2 py-1 font-bold transition-colors group-hover:bg-blue-300 cursor-pointer clickable"
-                  style="background:${bg}; color:${color}; margin:0 0.2rem;"
+                  class="rounded px-2 py-1 font-bold text-sm transition-colors group-hover:bg-blue-300 cursor-pointer clickable"
+                  style="background:${bg}; color:${color};"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   ${key} ${emoji}
                 </a>
                 <div
-                  class="absolute bottom-full mb-2 left-1/2 transform -translate-x-1/2
-                     hidden group-hover:block bg-gray-800 text-white text-xs
-                     rounded p-2 max-w-2xl whitespace-pre-line text-center"
-                  style="min-width: 16rem;"
-                >${hover}</div>
+                  class="absolute bottom-full mb-1 left-1/2 transform -translate-x-1/2
+                         hidden group-hover:block bg-gray-800 text-white text-xs
+                         rounded p-2 px-4 w-max max-w-sm whitespace-pre-line text-center z-10">${hover}</div>
               </span>
             `;
           }).join(' ');
-
-
 
           const lang = item.language || '';
           const names = langNames[lang] || ['', ''];
@@ -175,10 +171,15 @@ layout: "base.njk"
           return `
             <tr>
               <td class="px-6 py-4 text-center">
-              <span class="clickable inline-block bg-blue-100 rounded px-2 py-1 font-bold hover:bg-blue-200 cursor-pointer transition-colors" data-field="artist" data-term="${item.artist}" style="margin-right:0.25rem; margin-bottom:0.15rem;">${item.artist}</span>
+                <span class="clickable inline-block bg-blue-100 rounded px-2 py-1 font-bold hover:bg-blue-200 cursor-pointer transition-colors" data-field="artist" data-term="${item.artist}" style="margin-right:0.25rem; margin-bottom:0.15rem;">${item.artist}</span>
               </td>
-              <td class="px-6 py-4 text-center">
-                   ${item.title}
+              <td class="px-6 py-4 text-center align-center">
+                <!-- SONG title a bit larger -->
+                <div class="text-xl font-semibold">${item.title}</div>
+                <!-- badges stacked, centered, with a little gap -->
+                <div class="mt-2 flex flex-col items-center space-y-1">
+                  ${listenHtml}
+                </div>
               </td>
               <td class="px-6 py-4 text-center whitespace-nowrap">
                    ${item.release}
@@ -190,9 +191,6 @@ layout: "base.njk"
               </td>
               <td class="px-6 py-4 text-left">
                    ${item.note || 'N/A'}
-              </td>
-              <td class="px-6 py-4 text-center">
-                       ${listenHtml}
               </td>
               <td class="px-6 py-4 text-center">
                    ${badge}
