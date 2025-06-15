@@ -43,7 +43,7 @@ layout: "base.njk"
     }));
   }
 
-  fetch('{{ "/search.json" | url }}')
+    fetch('{{ "/search.json" | url }}')
     .then(r => r.json())
     .then(data => {
       const total = data.length;
@@ -85,6 +85,7 @@ layout: "base.njk"
         });
       }
 
+      
       function render() {
         if (!current.length) {
           tbody.innerHTML = '<tr><td colspan="7" style="text-align:center;">No matches</td></tr>';
@@ -93,7 +94,7 @@ layout: "base.njk"
         }
         tbody.innerHTML = current.map(item => {
           const tagsHtml = item.tags.slice().sort().map(t =>
-            `<span class="clickable" data-field="tags" data-term="${t}">#${t} (${tagCounts[t]})</span>`
+            `<span class="clickable inline-block bg-blue-100 rounded px-2 py-1 font-bold hover:bg-blue-200 cursor-pointer transition-colors" data-field="tags" data-term="${t}">#${t} (${tagCounts[t]})</span>`
           ).join(' ');
 
           const listenHtml = (item.listen || []).map(entry => {
@@ -110,7 +111,7 @@ layout: "base.njk"
                 ? `Listen to the remix version${key.includes('(')? ' (' + key.match(/\((.*)\)/)[1] + ')' : ''}`
                 : 'Listen to the nightcore version';
             return `<a href="${url}"
-                       class="clickable listen-badge"
+                       class="clickable listen-badge font-bold"
                        style="background:${bg};color:${color};margin:0 0.2rem;"
                        data-hover="${hover}"
                        target="_blank"
@@ -121,13 +122,13 @@ layout: "base.njk"
           const names = langNames[lang] || ['', ''];
           const titleAttr = names.join('\n');
           const badge = lang
-            ? `<span class="clickable lang-badge" data-field="language" data-term="${lang}" data-emoji="${langEmoji[lang]||''}" data-native="${names[0]}" data-english="${names[1]||''}" title="${titleAttr}">${lang}${langEmoji[lang]||''}</span>`
+            ? `<span class="clickable inline-block bg-blue-100 rounded px-2 py-1 font-bold hover:bg-blue-200 cursor-pointer transition-colors lang-badge" data-field="language" data-term="${lang}" data-emoji="${langEmoji[lang]||''}" data-native="${names[0]}" data-english="${names[1]||''}" title="${titleAttr}">${lang}${langEmoji[lang]||''}</span>`
             : '';
 
           return `
           <tr>
             <td class="px-6 py-4 text-center">
-              <span class="clickable" data-field="artist" data-term="${item.artist}">${item.artist}</span>
+              <span class="clickable inline-block bg-blue-100 rounded px-2 py-1 font-bold hover:bg-blue-200 cursor-pointer transition-colors" data-field="artist" data-term="${item.artist}">${item.artist}</span>
             </td>
             <td class="px-6 py-4 text-center">
               ${item.title}
