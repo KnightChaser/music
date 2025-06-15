@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>My Music</title>
 
-    <link rel="stylesheet" href="/assets/css/style.css" />
+    <link rel="stylesheet" href="/music/music/assets/css/style.css">
   </head>
   <body class="font-sans bg-white text-gray-800">
     
@@ -15,25 +15,13 @@
   </h1>
 
   <!-- GitHub link in the top-right -->
-  <a
-    href="https://github.com/KnightChaser/music"
-    target="_blank"
-    aria-label="Music Repo on GitHub"
-    class="absolute top-4 right-4"
-  >
-    <img
-      src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
-      alt="GitHub"
-      class="w-8 h-8"
-    />
+  <a href="https://github.com/KnightChaser/music" target="_blank" aria-label="Music Repo on GitHub" class="absolute top-4 right-4">
+    <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub" class="w-8 h-8">
   </a>
 </header>
 
 
-<div
-  id="count"
-  class="text-center mb-2 text-base text-gray-600"
->
+<div id="count" class="text-center mb-2 text-base text-gray-600">
   0 / 0 songs shown
 </div>
 
@@ -42,52 +30,34 @@
   <div class="relative w-full max-w-4xl">
     <!-- Left search icon -->
     <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-      <svg aria-hidden="true" class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor"
-           viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-              d="M21 21l-4.35-4.35m0 0A7.5 7.5 0 1 0 6.65 6.65a7.5 7.5 0 0 0 10.6 10.6z"/>
+      <svg aria-hidden="true" class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35m0 0A7.5 7.5 0 1 0 6.65 6.65a7.5 7.5 0 0 0 10.6 10.6z"></path>
       </svg>
     </div>
 
     <!-- Input spans full container -->
-    <input
-      id="search"
-      type="text"
-      placeholder="artist:…, tag:…, note:…, language:…"
-      autocomplete="off"
-      class="block w-full pl-10 pr-24 py-3 text-lg text-gray-900
+    <input id="search" type="text" placeholder="artist:…, tag:…, note:…, language:…" autocomplete="off" class="block w-full pl-10 pr-24 py-3 text-lg text-gray-900
              border border-gray-300 rounded-lg
-             focus:border-red-500 focus:ring-red-500 transition"
-    />
+             focus:border-red-500 focus:ring-red-500 transition">
 
     <!-- Reset button -->
-    <button
-      id="clear"
-      type="button"
-      class="absolute inset-y-0 right-0 flex items-center justify-center
+    <button id="clear" type="button" class="absolute inset-y-0 right-0 flex items-center justify-center
              px-6 py-3 bg-red-600 text-white rounded-r-lg
              hover:bg-red-700 focus:outline-none focus:ring-4 focus:ring-red-200
-             transition"
-    >
+             transition">
       reset
     </button>
 
     <!-- Suggestions dropdown -->
-    <ul
-      id="suggestions"
-      class="absolute z-50 mt-1 w-full overflow-auto rounded-b-lg
-             border border-t-0 border-gray-300 bg-white shadow-lg"
-      style="display: none;"
-    ></ul>
+    <ul id="suggestions" class="absolute z-50 mt-1 w-full overflow-auto rounded-b-lg
+             border border-t-0 border-gray-300 bg-white shadow-lg" style="display: none;"></ul>
   </div>
 </div>
 
 
 <div class="px-4 sm:px-6 lg:px-8">
   <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-    <table
-      id="resultsTable"
-      class="w-full text-lg text-black bg-white">
+    <table id="resultsTable" class="w-full text-lg text-black bg-white">
       <thead class="text-lg text-black uppercase bg-gray-50">
         <tr>
           <th scope="col" data-key="artist" class="sortable px-6 py-3 text-center">
@@ -137,13 +107,9 @@
 </div>
 
 
-<button
-  id="backToTop"
-  aria-label="Back to top"
-  class="fixed bottom-6 right-6 w-12 h-12 bg-red-600 text-white rounded-full shadow-md
+<button id="backToTop" aria-label="Back to top" class="fixed bottom-6 right-6 w-12 h-12 bg-red-600 text-white rounded-full shadow-md
          flex items-center justify-center opacity-0 pointer-events-none
-         transition-opacity duration-300 ease-in-out"
->
+         transition-opacity duration-300 ease-in-out">
   TOP
 </button>
 
@@ -199,7 +165,7 @@ btn.addEventListener('click', () => {
     }));
   }
 
-  fetch('/search.json')
+  fetch('/music/search.json')
     .then(r => r.json())
     .then(data => {
       const total = data.length;
@@ -368,6 +334,6 @@ btn.addEventListener('click', () => {
 </script>
 
 
-    <script src="/assets/flowbite/flowbite.min.js"></script>
+    <script src="/music/music/assets/flowbite/flowbite.min.js"></script>
   </body>
 </html>
