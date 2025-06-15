@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <title>My Music</title>
 
-    <link rel="stylesheet" href="{{ '/assets/css/style.css' | url }}" />
+    <!-- raw absolute path; EleventyHtmlBasePlugin will inject <base href> -->
+    <link rel="stylesheet" href="/assets/css/style.css" />
   </head>
   <body class="font-sans bg-white text-gray-800">
     {{ content | safe }}
 
-    <script src="{{ '/assets/flowbite/flowbite.min.js' | url }}"></script>
+    <script src="/assets/flowbite/flowbite.min.js"></script>
   </body>
 </html>
