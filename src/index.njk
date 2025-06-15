@@ -110,17 +110,17 @@ layout: "base.njk"
             const url = entry[key];
             let emoji = '';
             let bg = '', color = '#000';
-          
+
             if (key === 'ORG')       { emoji = '🎧'; bg = '#e0e0e0'; }
             else if (key.startsWith('RX')) { emoji = '🔀'; bg = '#e0f7fa'; color = '#006064'; }
             else if (key === 'NCR')  { emoji = '⚡'; bg = '#fff8e1'; color = '#ff6f00'; }
-          
+
             const hover = key === 'ORG'
               ? 'Listen to the original song'
               : key.startsWith('RX')
                 ? `Listen to the remix version${key.includes('(') ? ' (' + key.match(/\((.*)\)/)[1] + ')' : ''}`
                 : 'Listen to the nightcore version';
-          
+
             return `
               <a
                 href="${url}"
@@ -137,11 +137,33 @@ layout: "base.njk"
           const lang = item.language || '';
           const names = langNames[lang] || ['', ''];
           const titleAttr = names.join('\n');
-            const badge = lang
-            ? `<span class="clickable inline-block bg-blue-100 rounded px-2 py-1 font-bold hover:bg-blue-200 cursor-pointer transition-colors lang-badge" data-field="language" data-term="${lang}" data-emoji="${langEmoji[lang]||''}" data-native="${names[0]}" data-english="${names[1]||''}" title="${titleAttr}" style="margin-right:0.25rem; margin-bottom:0.15rem;">${lang}${langEmoji[lang]||''}</span>`
+          const badge = lang
+            ? `
+              <span class="relative inline-block group">
+                <!-- the pill itself -->
+                <span
+                  class="clickable inline-block bg-blue-100 rounded px-2 py-1 font-bold hover:bg-blue-200 cursor-pointer transition-colors lang-badge"
+                  data-field="language"
+                  data-term="${lang}"
+                >
+                  ${lang}${langEmoji[lang] || ''}
+                </span>
+                <!-- tooltip: hidden until hover -->
+                <div
+                  class="absolute bottom-full mb-2 left-1/2 transform -translate-x-1/2
+                         hidden group-hover:block px-2 py-1 text-sm text-white bg-gray-800
+                         rounded whitespace-pre-line text-center z-10"
+                > ${langEmoji[lang] || ''}
+                  ${langNames[lang][0]}
+                    ${lang !== 'en'
+                    ? `${langNames[lang][1] || langNames[lang][0]} (${lang})`
+                    : `(${lang})`}
+                </div>
+              </span>
+            `
             : '';
 
-            return `
+          return `
             <tr>
               <td class="px-6 py-4 text-center">
               <span class="clickable inline-block bg-blue-100 rounded px-2 py-1 font-bold hover:bg-blue-200 cursor-pointer transition-colors" data-field="artist" data-term="${item.artist}" style="margin-right:0.25rem; margin-bottom:0.15rem;">${item.artist}</span>
