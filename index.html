@@ -70,9 +70,9 @@
               <span class="sort-indicator ml-1">⇅</span>
             </div>
           </th>
-          <th scope="col" data-key="title" class="w-2/12 sortable px-6 py-3 text-center border-b border-gray-200">
+          <th scope="col" data-key="title" class="w-3/12 sortable px-6 py-3 text-center border-b border-gray-200">
             <div class="flex items-center justify-center">
-              Title
+              Song
               <span class="sort-indicator ml-1">⇅</span>
             </div>
           </th>
@@ -88,9 +88,6 @@
           <th scope="col" class="w-2/12 px-6 py-3 text-center border-b border-gray-200">
             Note
           </th>
-          <th scope="col" class="w-1/12 px-6 py-3 text-center border-b border-gray-200">
-            Listen
-          </th>
           <th scope="col" data-key="language" class="w-1/12 sortable px-6 py-3 text-center border-b border-gray-200">
             <div class="flex items-center justify-center">
               Language
@@ -101,7 +98,7 @@
       </thead>
       <tbody class="divide-y">
         <tr>
-          <td colspan="7" class="px-6 py-4 text-center text-black/50">
+          <td colspan="6" class="px-6 py-4 text-center text-black/50">
             Loading…
           </td>
         </tr>
@@ -234,39 +231,78 @@ btn.addEventListener('click', () => {
           const listenHtml = (item.listen || []).map(entry => {
             const key = Object.keys(entry)[0];
             const url = entry[key];
-            let emoji = '';
-            let bg = ''; let color = '#000';
-            if (key === 'ORG') { emoji = '🎧'; bg = '#e0e0e0'; }
-            else if (key.startsWith('RX')) { emoji = '🔀'; bg = '#e0f7fa'; color = '#006064'; }
-            else if (key === 'NCR') { emoji = '⚡'; bg = '#fff8e1'; color = '#ff6f00'; }
+            let emoji = '', bg = '', color = '#000';
+
+            if (key === 'ORG')            { emoji = '🎧'; bg = '#e0e0e0'; }
+            else if (key.startsWith('RX')){ emoji = '🔀'; bg = '#e0f7fa'; color = '#006064'; }
+            else if (key === 'NCR')       { emoji = '⚡'; bg = '#fff8e1'; color = '#ff6f00'; }
+
             const hover = key === 'ORG'
               ? 'Listen to the original song'
               : key.startsWith('RX')
-                ? `Listen to the remix version${key.includes('(')? ' (' + key.match(/\((.*)\)/)[1] + ')' : ''}`
+                ? `Listen to the remix version${ key.includes('(') ? ' (' + key.match(/\((.*)\)/)[1] + ')' : '' }`
                 : 'Listen to the nightcore version';
-            return `
-  <a href="${url}"
-                       class="clickable listen-badge font-bold"
-                       style="background:${bg};color:${color};margin:0 0.2rem;"
-                       data-hover="${hover}"
-                       target="_blank"
-                       rel="noopener noreferrer">${key} ${emoji}</a>`;
+
+             return `
+              <span class="relative inline-block group">
+                <a
+                  href="${url}"
+                  class="rounded px-2 py-1 font-bold text-sm transition-colors group-hover:bg-blue-300 cursor-pointer clickable"
+                  style="background:${bg}; color:${color};"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  ${key} ${emoji}
+                </a>
+                <div
+                  class="absolute bottom-full mb-1 left-1/2 transform -translate-x-1/2
+                         hidden group-hover:block bg-gray-800 text-white text-xs
+                         rounded p-2 px-4 w-max max-w-sm whitespace-pre-line text-center z-10">${hover}</div>
+              </span>
+            `;
           }).join(' ');
 
           const lang = item.language || '';
           const names = langNames[lang] || ['', ''];
           const titleAttr = names.join('\n');
-            const badge = lang
-            ? `<span class="clickable inline-block bg-blue-100 rounded px-2 py-1 font-bold hover:bg-blue-200 cursor-pointer transition-colors lang-badge" data-field="language" data-term="${lang}" data-emoji="${langEmoji[lang]||''}" data-native="${names[0]}" data-english="${names[1]||''}" title="${titleAttr}" style="margin-right:0.25rem; margin-bottom:0.15rem;">${lang}${langEmoji[lang]||''}</span>`
+          const badge = lang
+            ? `
+              <span class="relative inline-block group">
+                <!-- the pill itself -->
+                <span
+                  class="clickable inline-block bg-blue-100 rounded px-2 py-1 font-bold hover:bg-blue-200 cursor-pointer transition-colors lang-badge"
+                  data-field="language"
+                  data-term="${lang}"
+                >
+                  ${lang}${langEmoji[lang] || ''}
+                </span>
+                <!-- tooltip: hidden until hover -->
+                <div
+                  class="absolute bottom-full mb-2 left-1/2 transform -translate-x-1/2
+                         hidden group-hover:block px-2 py-1 text-sm text-white bg-gray-800
+                         rounded whitespace-pre-line text-center z-10"
+                > ${langEmoji[lang] || ''}
+                  ${langNames[lang][0]}
+                    ${lang !== 'en'
+                    ? `${langNames[lang][1] || langNames[lang][0]} (${lang})`
+                    : `(${lang})`}
+                </div>
+              </span>
+            `
             : '';
 
-            return `
+          return `
             <tr>
               <td class="px-6 py-4 text-center">
-              <span class="clickable inline-block bg-blue-100 rounded px-2 py-1 font-bold hover:bg-blue-200 cursor-pointer transition-colors" data-field="artist" data-term="${item.artist}" style="margin-right:0.25rem; margin-bottom:0.15rem;">${item.artist}</span>
+                <span class="clickable inline-block bg-blue-100 rounded px-2 py-1 font-bold hover:bg-blue-200 cursor-pointer transition-colors" data-field="artist" data-term="${item.artist}" style="margin-right:0.25rem; margin-bottom:0.15rem;">${item.artist}</span>
               </td>
-              <td class="px-6 py-4 text-center">
-                   ${item.title}
+              <td class="px-6 py-4 text-center align-center">
+                <!-- SONG title a bit larger -->
+                <div class="text-xl font-semibold">${item.title}</div>
+                <!-- badges stacked, centered, with a little gap -->
+                <div class="mt-2 flex flex-col items-center space-y-1">
+                  ${listenHtml}
+                </div>
               </td>
               <td class="px-6 py-4 text-center whitespace-nowrap">
                    ${item.release}
@@ -278,9 +314,6 @@ btn.addEventListener('click', () => {
               </td>
               <td class="px-6 py-4 text-left">
                    ${item.note || 'N/A'}
-              </td>
-              <td class="px-6 py-4 text-center">
-                       ${listenHtml}
               </td>
               <td class="px-6 py-4 text-center">
                    ${badge}
