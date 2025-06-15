@@ -109,23 +109,30 @@ layout: "base.njk"
             const key = Object.keys(entry)[0];
             const url = entry[key];
             let emoji = '';
-            let bg = ''; let color = '#000';
-            if (key === 'ORG') { emoji = '🎧'; bg = '#e0e0e0'; }
+            let bg = '', color = '#000';
+          
+            if (key === 'ORG')       { emoji = '🎧'; bg = '#e0e0e0'; }
             else if (key.startsWith('RX')) { emoji = '🔀'; bg = '#e0f7fa'; color = '#006064'; }
-            else if (key === 'NCR') { emoji = '⚡'; bg = '#fff8e1'; color = '#ff6f00'; }
+            else if (key === 'NCR')  { emoji = '⚡'; bg = '#fff8e1'; color = '#ff6f00'; }
+          
             const hover = key === 'ORG'
               ? 'Listen to the original song'
               : key.startsWith('RX')
-                ? `Listen to the remix version${key.includes('(')? ' (' + key.match(/\((.*)\)/)[1] + ')' : ''}`
+                ? `Listen to the remix version${key.includes('(') ? ' (' + key.match(/\((.*)\)/)[1] + ')' : ''}`
                 : 'Listen to the nightcore version';
+          
             return `
-  <a href="${url}"
-                       class="clickable listen-badge font-bold"
-                       style="background:${bg};color:${color};margin:0 0.2rem;"
-                       data-hover="${hover}"
-                       target="_blank"
-                       rel="noopener noreferrer">${key} ${emoji}</a>`;
+              <a
+                href="${url}"
+                class="inline-block rounded px-2 py-1 font-bold hover:bg-blue-200 cursor-pointer transition-colors clickable"
+                style="background:${bg}; color:${color}; margin:0 0.2rem;"
+                data-hover="${hover}"
+                target="_blank"
+                rel="noopener noreferrer"
+              >${key} ${emoji}</a>
+            `;
           }).join(' ');
+
 
           const lang = item.language || '';
           const names = langNames[lang] || ['', ''];
