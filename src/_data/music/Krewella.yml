@@ -1,0 +1,35 @@
+# Krewella.yml
+
+- title: "Enjoy The Ride"
+  release: "2014-03-07"
+  tags: ["edm", "electronic", "free", "powerful", "uplifting", "empowering"]
+  note: ""
+  language: en
+  listen:
+    - ORG: https://youtu.be/97xnWVZYq_Q?si=DdFq48_uAVd6-LN4
+
+- title: "Alive"
+  release: "2012-12-18"
+  tags:
+    [
+      "edm",
+      "electronic",
+      "free",
+      "powerful",
+      "liberty",
+      "rebellious",
+      "uplifting",
+      "empowering",
+      "party",
+      "festival",
+      "anthem",
+      "declaration",
+      "defiant",
+      "light sky",
+      "white",
+    ]
+  note: "An audical leader of the freedom movement. One of my favorite songs."
+  language: en
+  listen:
+    - ORG: https://youtu.be/J-gYJBsln-w?si=w8OlalQ-dys18HqC
+    - NCR: https://youtu.be/RE15Av09NJc?si=RhSyIpV4yNrKrU4_
