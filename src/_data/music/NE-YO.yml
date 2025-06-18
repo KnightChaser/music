@@ -1,0 +1,22 @@
+# NE-YO.yml
+
+- title: "Mad"
+  release: "2009-10-09"
+  tags:
+    [
+      "pop",
+      "r&b",
+      "midtempo",
+      "regretful",
+      "emotional",
+      "heartfelt",
+      "nostalgic",
+      "silent",
+      "reflective",
+      "soulful",
+    ]
+  note: "Blue sky doesn't appear right after the rain..."
+  language: en
+  listen:
+    - ORG: https://youtu.be/sAYuOc7_TKg?si=e5eKOjK08Fwx4F6b
+    - NCR: https://youtu.be/wDp9Xt__--A?si=c7SIgXfFo6C9eyKP

@@ -19,7 +19,7 @@
       "happy",
       "confident",
       "teen band",
-      "Bang Dream",
+      "bang dream",
       "friendship",
       "youthful",
       "upbeat",
@@ -29,3 +29,84 @@
   listen:
     - ORG: https://youtu.be/zB2aqNpT8ak?si=3U9GRHBUjRxMsaec
     - RX(JINZO guitar cover): https://youtu.be/Qg5u_dhXjFY?si=TZgakXYIGbcnNMyy
+
+- title: "I knew it!"
+  release: "2021-03-24"
+  tags:
+    [
+      "one of us",
+      "j-pop",
+      "j-rock",
+      "anime",
+      "anime rock",
+      "happy",
+      "teen band",
+      "bang dream",
+      "friendship",
+      "youthful",
+      "upbeat",
+      "200bpm",
+      "fast",
+      "drum",
+      "multiple vocal",
+      "electric guitar",
+      "bass guitar",
+    ]
+  note: ""
+  language: ja
+  listen:
+    - ORG: https://youtu.be/q-TEDPBUv7M?si=SDFnKBE_N3H4FRjA
+
+- title: "Y.O.L.O!!!!"
+  release: "2021-03-24"
+  tags:
+    [
+      "one of us",
+      "j-pop",
+      "j-rock",
+      "anime",
+      "anime rock",
+      "teen band",
+      "bang dream",
+      "friendship",
+      "upbeat",
+      "200bpm",
+      "fast",
+      "drum",
+      "multiple vocal",
+      "electric guitar",
+      "bass guitar",
+      "performance",
+      "unique",
+      "characteristic",
+      "speedy",
+    ]
+  note: ""
+  language: ja
+  listen:
+    - ORG: https://youtu.be/NWTkdgPu9v8?si=GZGSSperxlCsHeUJ
+
+- title: "Easy Come, Easy Go!"
+  release: "2021-03-24"
+  tags:
+    [
+      "one of us",
+      "j-pop",
+      "j-rock",
+      "anime",
+      "anime rock",
+      "confident",
+      "energetic",
+      "electric guitar",
+      "performance",
+      "multiple vocal",
+      "teen band",
+      "bang dream",
+      "speedy",
+    ]
+  note: "Probably my favorite song from Afterglow."
+  language: ja
+  listen:
+    - ORG: https://youtu.be/erY4I7Irk0E?si=UNgtTKUT5AKN_iB9
+    - RX(penerope guitar cover): https://youtu.be/Sfe9vr6cg10?si=bhiG7jgSruHuCGQs
+    - RX(touryo drum cover): https://youtu.be/d-h5I3VkhwA?si=Zw5cRZB9amwLZR-y

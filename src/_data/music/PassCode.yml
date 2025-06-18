@@ -54,3 +54,53 @@
   language: ja
   listen:
     - ORG: https://youtu.be/vuTaH8D5RzU?si=Ie-GOzw6QVb48XS0
+
+- title: "It's You"
+  release: "2019-04-01"
+  tags:
+    [
+      "hard rock",
+      "emo rock",
+      "heavy metal",
+      "speedy",
+      "sincere",
+      "j-pop",
+      "j-rock",
+      "electronic guitar",
+      "band",
+      "new generation",
+      "hardcore",
+      "lyrical",
+    ]
+  note: ""
+  language:
+  listen:
+    - ORG: https://youtu.be/f1DkoAihRAc?si=t2vZfhMVj7TfEVe8
+
+- title: "Freely"
+  release: "2021-10-29"
+  tags:
+    [
+      "hardcore",
+      "metal",
+      "emo rock",
+      "heavy metal",
+      "screaming",
+      "authentic",
+      "sincere",
+      "j-pop",
+      "j-rock",
+      "next generation",
+      "exotic",
+      "hallucination",
+      "midnight",
+      "navy blue",
+      "deep black",
+      "cyberpunk",
+      "synthetic",
+      "powerful",
+    ]
+  note: ""
+  language:
+  listen:
+    - ORG: https://youtu.be/5So0weQzo5I?si=_gjY06AwWlyoYeRG

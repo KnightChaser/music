@@ -15,7 +15,7 @@
       "band",
       "electronic guitar",
       "dual vocal",
-      "Bang Dream",
+      "bang dream",
       "ost",
       "anime",
     ]
@@ -35,7 +35,7 @@
       "powerful",
       "authentic",
       "dual vocal",
-      "Bang Dream",
+      "bang dream",
       "anime",
       "ost",
       "j-pop",
@@ -48,3 +48,30 @@
   language: ja
   listen:
     - ORG: https://youtu.be/03iVXFZ8jrs?si=VZOmmPZ8a5Zuzx1E
+
+- title: "Sanctuary"
+  release: "2018-12-12"
+  tags:
+    [
+      "brave jewel",
+      "anime",
+      "ost",
+      "bang dream",
+      "j-pop",
+      "rock",
+      "electronic guitar",
+      "aqua",
+      "authentic",
+      "sincere",
+      "powerful",
+      "dreamlike",
+      "submarine",
+      "empowering",
+      "honest",
+    ]
+  note: "Even guitar under the deep sea sounds great."
+  language: ja
+  listen:
+    - ORG: https://youtu.be/LAPLzxHzaHY?si=JqliCVAYH4aS8Zaz
+    - RX(JINZO guitar cover): https://youtu.be/YXSfI3-sFiw?si=8FEOR4ILobOoUj0D
+    - RX(touryo drum cover): https://youtu.be/MpD35PYs6S0?si=fKUUXVO-BLfbwSUz

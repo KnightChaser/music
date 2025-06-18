@@ -1,0 +1,82 @@
+# BIGBANG.yml
+
+- title: "LOSER"
+  release: "2015-05-01"
+  tags:
+    [
+      "k-pop",
+      "blue",
+      "sad",
+      "emo",
+      "melancholic",
+      "gloomy",
+      "reflective",
+      "introspective",
+      "melodic",
+      "vocal",
+      "dawn",
+      "solo",
+      "honest",
+      "bile",
+      "mournful",
+    ]
+  note: "An unfamiliar similarity to my life."
+  language: ko
+  listen:
+    - ORG: https://youtu.be/1CTced9CMMk?si=k3DQcNscO60KD4RX
+
+- title: "삐딱하게 (CROOKED)"
+  release: "2013-09-05"
+  tags:
+    [
+      "k-pop",
+      "red",
+      "angry",
+      "rebellious",
+      "defiant",
+      "bold",
+      "confident",
+      "energetic",
+      "upbeat",
+      "catchy",
+      "without regrets",
+      "sincere",
+      "midnight",
+      "melancholic",
+      "dark",
+      "club",
+      "black",
+    ]
+  note: ""
+  language: ko
+  listen:
+    - ORG: https://youtu.be/RKhsHGfrFmY?si=LTJTviKI58NOpwB_
+
+- title: "BLUE"
+  release: "2012-02-22"
+  tags:
+    [
+      "k-pop",
+      "blue",
+      "sad",
+      "emo",
+      "melancholic",
+      "gloomy",
+      "reflective",
+      "introspective",
+      "melodic",
+      "vocal",
+      "dawn",
+      "solo",
+      "honest",
+      "nostalgic",
+      "despondent",
+      "downcast",
+      "dejected",
+      "subdued",
+      "mournful",
+    ]
+  note: ""
+  language: ko
+  listen:
+    - ORG: https://youtu.be/2GRP1rkE4O0?si=Y9MkT8yJa-12OfCg
