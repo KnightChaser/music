@@ -11,7 +11,7 @@ To run this project on your local machine, please follow these steps.
 
 ### Prerequisites
 
-- [Node.js](https://nodejs.org/) (which includes npm) must be installed on your system.
+-   [Node.js](https://nodejs.org/) (which includes npm) must be installed on your system.
 
 ### Setup & local development
 
@@ -23,9 +23,9 @@ To run this project on your local machine, please follow these steps.
 This project requires two processes to run simultaneously in separate terminal windows for development.
 
 2.  **Terminal 1: Watch for CSS Changes**
-    
+
     Open a terminal and run the following command. This task compiles the Tailwind CSS and automatically rebuilds it whenever you make style changes.
-    
+
     ```bash
     npm run watch:css
     ```
@@ -33,7 +33,7 @@ This project requires two processes to run simultaneously in separate terminal w
 3.  **Terminal 2: Run the Eleventy Server**
 
     Open a second terminal and run this command. This will start the Eleventy development server.
-    
+
     ```bash
     npm run start
     ```
@@ -46,6 +46,33 @@ Once both commands are running successfully, you can view your website at **`htt
     - Run `act push` to see how it goes.
 
 ### [Repomix](https://github.com/yamadashy/repomix) command
+
 ```bash
 repomix --ignore "src/_data/music/*,*.md,.gitignore," --style markdown
+```
+
+### VSCode music data YAML snippet
+
+Use the following YAML snippet for less painful data insertion!
+
+```json
+{
+    "Add Music Entry": {
+        "prefix": "song",
+        "body": [
+            "- title: \"$1\"",
+            "  release: \"$2\"",
+            "  tags: [",
+            "    \"$3\", \"$4\", \"$5\", \"$6\", \"$7\", \"$8\"",
+            "  ]",
+            "  note: \"$9\"",
+            "  language: $10",
+            "  listen:",
+            "    - ORG: $11",
+            "    - RX: $12",
+            "    - NCR: $13"
+        ],
+        "description": "Insert a YAML music entry"
+    }
+}
 ```
