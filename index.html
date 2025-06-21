@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
+    <head>
+        <meta charset="UTF-8">
 
-    
-    <link rel="icon" href="/music/assets/images/favicon.ico" type="image/x-icon">
-    <title>KnightChaser's Music Curation</title>
+        
+        <link rel="icon" href="/music/assets/images/favicon.ico" type="image/x-icon">
+        <title>KnightChaser's Music Curation</title>
 
-    <link rel="stylesheet" href="/music/assets/css/style.css">
-  </head>
-  <body class="font-sans bg-white text-gray-800">
-    
+        <link rel="stylesheet" href="/music/assets/css/style.css">
+    </head>
+    <body class="font-sans bg-white text-gray-800">
+        
 <header class="relative">
   <!-- Site title -->
   <h1 class="mt-4 text-2xl font-bold text-center">
@@ -47,7 +47,7 @@
         </svg>
       </div>
 
-      <input id="search" type="text" placeholder="artist:…, tags:…, note:…, language:…" autocomplete="off" class="block w-full pl-12 pr-24 py-4 text-xl text-gray-900
+      <input id="search" type="text" placeholder="artist:..., title:..., tags:..., note:..., language:..." autocomplete="off" class="block w-full pl-12 pr-24 py-4 text-xl text-gray-900
                border border-red-500 rounded-lg
                focus:border-red-600 focus:ring-red-600 transition">
 
@@ -142,17 +142,31 @@ btn.addEventListener('click', () => {
   const langEmoji = {
     en: '🇺🇸', pt: '🇵🇹', ja: '🇯🇵', es: '🇪🇸', fr: '🇫🇷',
     ko: '🇰🇷', ru: '🇷🇺', zh: '🇨🇳', de: '🇩🇪', sv: '🇸🇪',
-    th: '🇹🇭', cn: '🇨🇳',
+    th: '🇹🇭', cn: '🇨🇳', vn: '🇻🇳',
     none: '💭'
   };
+  
   const langNames = {
     en: ['English'], pt: ['Português', 'Portuguese'], ja: ['日本語', 'Japanese'],
     es: ['Español', 'Spanish'], fr: ['Français', 'French'],
     ko: ['한국어', 'Korean'], ru: ['Русский', 'Russian'], zh: ['中文', 'Chinese'],
     de: ['Deutsch', 'German'], sv: ['Svenska', 'Swedish'], th: ['ไทย', 'Thai'],
-    cn: ['中文', 'Chinese'],
+    cn: ['中文', 'Chinese'], vn: ['Tiếng Việt', 'Vietnamese'],
     none: ['None', 'No specific language']
   };
+
+  // Fuzzy matching function (very cheap)
+  // This function checks if the pattern can be found in the text in order
+  function fuzzyMatch(pattern, text) {
+    pattern = pattern.toLowerCase();
+    text    = text.toLowerCase();
+    let i = 0, j = 0;
+    while (i < pattern.length && j < text.length) {
+      if (pattern[i] === text[j]) i++;
+      j++;
+    }
+    return i === pattern.length;
+  }
 
   function parseCriteria(str) {
     return str.split(',').map(s => s.trim()).filter(s => s.includes(':')).reduce((a,p) => {
@@ -166,13 +180,20 @@ btn.addEventListener('click', () => {
 
   function filterData(data, criteria) {
     return data.filter(item => Object.entries(criteria).every(([k,v]) => {
+      const needle = v.trim();
       switch (k) {
-        case 'artist': return item.artist.toLowerCase().includes(v);
-        case 'title': return item.title.toLowerCase().includes(v);
-        case 'release': return item.release.toLowerCase().includes(v);
-        case 'tags': return item.tags.some(t => t.toLowerCase().includes(v));
-        case 'note': return (item.note||'').toLowerCase().includes(v);
-        case 'language': return item.language && item.language.toLowerCase() === v;
+        case 'artist': 
+          return fuzzyMatch(needle, item.artist);
+        case 'title': 
+          return fuzzyMatch(needle, item.title);
+        case 'release': 
+          return fuzzyMatch(needle, item.release);
+        case 'tags': 
+          return item.tags.some(t => fuzzyMatch(needle, t));
+        case 'note': 
+          return fuzzyMatch(needle, item.note || '');
+        case 'language': 
+          return item.language && item.language.toLowerCase() === needle;
         default: return false;
       }
     }));
@@ -326,7 +347,11 @@ btn.addEventListener('click', () => {
               </td>
               <td class="px-6 py-4 text-center align-center">
                 <!-- SONG title a bit larger -->
-                <div class="text-xl font-semibold">${item.title}</div>
+                <div
+                  class="text-xl font-semibold copy-title cursor-pointer transition-transform duration-150 hover:scale-110"
+                  title="Click to copy">
+                  ${item.title}
+                </div>
                 <!-- badges stacked, centered, with a little gap -->
                 <div class="mt-2 flex flex-col items-center space-y-1">
                   ${listenHtml}
@@ -378,7 +403,7 @@ btn.addEventListener('click', () => {
         const counts    = countsMap[field] || {};
 
         const matches = rawList
-          .filter(v => v.toLowerCase().startsWith(term))
+          .filter(v => fuzzyMatch(term, v))
           .sort((a, b) => (counts[b] || 0) - (counts[a] || 0) || a.localeCompare(b))
           .slice(0, 50);
 
@@ -388,16 +413,24 @@ btn.addEventListener('click', () => {
         }
 
         suggestionsBox.innerHTML = matches.map((v, i) => {
-          return `
-            <div
-              data-val="${field}:${v}"
-              data-index="${i}"
-              tabindex="0"
-              class="flex justify-between px-4 py-2 hover:bg-gray-100 cursor-pointer"
-            >
-              <span><strong>${field}:</strong> ${v}</span>
-              <span class="ml-2 text-gray-500">(${counts[v] || 0})</span>
-            </div>
+      
+        // escape user input for regex
+        const esc = term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        const regex = new RegExp(`(${esc})`, 'ig');
+
+        // wrap the matched substring in <strong>
+        const highlighted = v.replace(regex, '<strong>$1</strong>');
+
+        return `
+          <div
+            data-val="${field}:${v}"
+            data-index="${i}"
+            tabindex="0"
+            class="flex justify-between px-4 py-2 hover:bg-gray-100 cursor-pointer"
+          >
+            <span><strong>${field}:</strong> ${highlighted}</span>
+            <span class="ml-2 text-gray-500">(${counts[v] || 0} matches)</span>
+          </div>
           `;
         }).join('');
 
@@ -477,6 +510,22 @@ btn.addEventListener('click', () => {
         }
       });
 
+      document
+        .getElementById('resultsTable')
+        .addEventListener('click', e => {
+          if (!e.target.classList.contains('copy-title')) return;
+
+          const txt = e.target.textContent.trim();
+          navigator.clipboard.writeText(txt).then(() => {
+            const toastEl = document.getElementById('toast-default');
+            // show
+            toastEl.classList.remove('hidden');
+            // auto-hide after 2s
+            setTimeout(() => toastEl.classList.add('hidden'), 2000);
+          });
+      });
+
+
       const btn = document.getElementById('backToTop');
       window.addEventListener('scroll', () => { btn.style.display = window.scrollY > 300 ? 'block' : 'none'; });
       btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
@@ -484,6 +533,25 @@ btn.addEventListener('click', () => {
 
 </script>
 
-    <script src="/music/assets/flowbite/flowbite.min.js"></script>
-  </body>
+        <script src="/music/assets/flowbite/flowbite.min.js"></script>
+
+        <!-- hidden by default -->
+        <div id="toast-default" class="hidden fixed top-5 right-5 z-50 w-full max-w-xs p-4 text-gray-500 bg-white rounded-lg shadow-sm dark:text-gray-400 dark:bg-gray-800 flex items-center" role="alert">
+            <div class="inline-flex items-center justify-center shrink-0 w-8 h-8 text-blue-500 bg-blue-100 rounded-lg dark:bg-blue-800 dark:text-blue-200">
+                <!-- Clipboard icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" fill="currentColor" class="w-4 h-4">
+                    <!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
+                    <path d="M320 64h-56.81C259.06 46.42 242.06 32 224 32h-64c-18.06 0-35.06 14.42-39.19 32H64C28.65 64 0 92.65 0 128v320c0 35.35 28.65 64 64 64h256c35.35 0 64-28.65 64-64V128c0-35.35-28.65-64-64-64zM160 48h64c8.82 0 16 7.18 16 16s-7.18 16-16 16h-64c-8.82 0-16-7.18-16-16s7.18-16 16-16zm192 400c0 17.64-14.36 32-32 32H64c-17.64 0-32-14.36-32-32V128c0-17.64 14.36-32 32-32h56.81c4.13 17.58 21.13 32 39.19 32h64c18.06 0 35.06-14.42 39.19-32H320c17.64 0 32 14.36 32 32v320z"></path>
+                </svg>
+                <span class="sr-only">Clipboard icon</span>
+            </div>
+            <div class="ms-3 text-sm font-normal flex-1">Title copied!</div>
+            <button type="button" class="ms-auto -mx-1.5 -my-1.5 bg-white text-gray-400 hover:text-gray-900 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex items-center justify-center h-8 w-8 dark:text-gray-500 dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700" data-dismiss-target="#toast-default" aria-label="Close">
+                <span class="sr-only">Close</span>
+                <svg class="w-2 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1l12 12M13 1L1 13"></path>
+                </svg>
+            </button>
+        </div>
+    </body>
 </html>
