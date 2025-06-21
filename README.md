@@ -44,3 +44,8 @@ Once both commands are running successfully, you can view your website at **`htt
     - Go to the GitHub account and create a new classic GitHub token for `repo:public` and `workflow`.
     - Set the environment flag `GITHUB_TOKEN` for that flag. (Refer to `.actrc`)
     - Run `act push` to see how it goes.
+
+### [Repomix](https://github.com/yamadashy/repomix) command
+```bash
+repomix --ignore "src/_data/music/*,*.md,.gitignore," --style markdown
+```
