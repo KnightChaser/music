@@ -196,7 +196,11 @@ layout: "base.njk"
               </td>
               <td class="px-6 py-4 text-center align-center">
                 <!-- SONG title a bit larger -->
-                <div class="text-xl font-semibold">${item.title}</div>
+                <div
+                  class="text-xl font-semibold copy-title cursor-pointer transition-transform duration-150 hover:scale-110"
+                  title="Click to copy">
+                  ${item.title}
+                </div>
                 <!-- badges stacked, centered, with a little gap -->
                 <div class="mt-2 flex flex-col items-center space-y-1">
                   ${listenHtml}
@@ -346,6 +350,22 @@ layout: "base.njk"
           doSearch();
         }
       });
+
+      document
+        .getElementById('resultsTable')
+        .addEventListener('click', e => {
+          if (!e.target.classList.contains('copy-title')) return;
+
+          const txt = e.target.textContent.trim();
+          navigator.clipboard.writeText(txt).then(() => {
+            const toastEl = document.getElementById('toast-default');
+            // show
+            toastEl.classList.remove('hidden');
+            // auto-hide after 2s
+            setTimeout(() => toastEl.classList.add('hidden'), 2000);
+          });
+      });
+
 
       const btn = document.getElementById('backToTop');
       window.addEventListener('scroll', () => { btn.style.display = window.scrollY > 300 ? 'block' : 'none'; });
