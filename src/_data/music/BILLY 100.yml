@@ -1,0 +1,31 @@
+# BILLY 100.yml
+
+- title: "BILLY100 x Hổ"
+  release: "2021-02-01"
+  tags:
+      [
+          "hip-hop",
+          "rap",
+          "vietnamese",
+          "tiktok",
+          "chill",
+          "urban",
+          "restless",
+          "continued",
+          "banger",
+          "vibe",
+          "viral",
+      ]
+  note: ""
+  language: vn
+  listen:
+      - ORG: https://youtu.be/T6y9i4W9TXE?si=XE8JcodoCj4_tafn
+
+- title: "CHƠI"
+  release: "2020-02-28"
+  tags:
+      ["loco contigo", "remix", "hip-hop", "rap", "chill", "viral", "bg", "mix"]
+  note: ""
+  language: vn
+  listen:
+      - ORG: https://youtu.be/E2rsb3-5JlM?si=egWIc5lR6yKu53rO

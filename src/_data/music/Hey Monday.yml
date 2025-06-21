@@ -1,0 +1,22 @@
+# Hey Monday.yml
+
+- title: "Josey"
+  release: "2008-10-07"
+  tags:
+      [
+          "pop-punk",
+          "drum",
+          "solo vocal",
+          "guitar",
+          "american",
+          "nostalgic",
+          "teenage",
+          "light orange",
+          "upbeat",
+          "hopeful",
+          "smiling",
+      ]
+  note: "Hear this song when you drive with the windows down, along the I-95, on a sunny day."
+  language: en
+  listen:
+      - ORG: https://youtu.be/IfEM8I2vGPM?si=hA4RcleuEna7YroT

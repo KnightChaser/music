@@ -1,0 +1,20 @@
+# DJ snake.yml
+
+- title: "Loco Contigo"
+  release: "2019-06-14"
+  tags:
+      [
+          "desert",
+          "latin",
+          "latin vibe",
+          "reggaeton",
+          "cloudy",
+          "light blue",
+          "light gray",
+          "chill",
+          "urban",
+      ]
+  note: ""
+  language: es
+  listen:
+      - ORG: https://youtu.be/zNl00mOSnJI?si=taWRgeahQXOeFmkf

@@ -1,0 +1,29 @@
+# Farruko.yml
+
+- title: "Pepas"
+  release: "2021-06-24"
+  tags:
+      [
+          "synthetic",
+          "reggaeton",
+          "latin",
+          "banger",
+          "urban",
+          "vibe",
+          "energetic",
+          "party",
+          "night",
+          "dance",
+          "summer",
+          "festival",
+          "club",
+          "viral",
+          "hit",
+          "synthesizer",
+          "edm",
+          "electronic",
+      ]
+  note: ""
+  language: es
+  listen:
+      - ORG: https://youtu.be/gNBkFme2BPE?si=JHXxNfgnzpGkRDZr
