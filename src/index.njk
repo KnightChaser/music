@@ -15,6 +15,7 @@ layout: "base.njk"
     th: '🇹🇭', cn: '🇨🇳',
     none: '💭'
   };
+  
   const langNames = {
     en: ['English'], pt: ['Português', 'Portuguese'], ja: ['日本語', 'Japanese'],
     es: ['Español', 'Spanish'], fr: ['Français', 'French'],
@@ -23,6 +24,19 @@ layout: "base.njk"
     cn: ['中文', 'Chinese'],
     none: ['None', 'No specific language']
   };
+
+  // Fuzzy matching function (very cheap)
+  // This function checks if the pattern can be found in the text in order
+  function fuzzyMatch(pattern, text) {
+    pattern = pattern.toLowerCase();
+    text    = text.toLowerCase();
+    let i = 0, j = 0;
+    while (i < pattern.length && j < text.length) {
+      if (pattern[i] === text[j]) i++;
+      j++;
+    }
+    return i === pattern.length;
+  }
 
   function parseCriteria(str) {
     return str.split(',').map(s => s.trim()).filter(s => s.includes(':')).reduce((a,p) => {
@@ -36,13 +50,20 @@ layout: "base.njk"
 
   function filterData(data, criteria) {
     return data.filter(item => Object.entries(criteria).every(([k,v]) => {
+      const needle = v.trim();
       switch (k) {
-        case 'artist': return item.artist.toLowerCase().includes(v);
-        case 'title': return item.title.toLowerCase().includes(v);
-        case 'release': return item.release.toLowerCase().includes(v);
-        case 'tags': return item.tags.some(t => t.toLowerCase().includes(v));
-        case 'note': return (item.note||'').toLowerCase().includes(v);
-        case 'language': return item.language && item.language.toLowerCase() === v;
+        case 'artist': 
+          return fuzzyMatch(needle, item.artist);
+        case 'title': 
+          return fuzzyMatch(needle, item.title);
+        case 'release': 
+          return fuzzyMatch(needle, item.release);
+        case 'tags': 
+          return item.tags.some(t => fuzzyMatch(needle, t));
+        case 'note': 
+          return fuzzyMatch(needle, item.note || '');
+        case 'language': 
+          return item.language && item.language.toLowerCase() === needle;
         default: return false;
       }
     }));
@@ -252,7 +273,7 @@ layout: "base.njk"
         const counts    = countsMap[field] || {};
 
         const matches = rawList
-          .filter(v => v.toLowerCase().startsWith(term))
+          .filter(v => fuzzyMatch(term, v))
           .sort((a, b) => (counts[b] || 0) - (counts[a] || 0) || a.localeCompare(b))
           .slice(0, 50);
 
@@ -262,16 +283,24 @@ layout: "base.njk"
         }
 
         suggestionsBox.innerHTML = matches.map((v, i) => {
-          return `
-            <div
-              data-val="${field}:${v}"
-              data-index="${i}"
-              tabindex="0"
-              class="flex justify-between px-4 py-2 hover:bg-gray-100 cursor-pointer"
-            >
-              <span><strong>${field}:</strong> ${v}</span>
-              <span class="ml-2 text-gray-500">(${counts[v] || 0})</span>
-            </div>
+      
+        // escape user input for regex
+        const esc = term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        const regex = new RegExp(`(${esc})`, 'ig');
+
+        // wrap the matched substring in <strong>
+        const highlighted = v.replace(regex, '<strong>$1</strong>');
+
+        return `
+          <div
+            data-val="${field}:${v}"
+            data-index="${i}"
+            tabindex="0"
+            class="flex justify-between px-4 py-2 hover:bg-gray-100 cursor-pointer"
+          >
+            <span><strong>${field}:</strong> ${highlighted}</span>
+            <span class="ml-2 text-gray-500">(${counts[v] || 0} matches)</span>
+          </div>
           `;
         }).join('');
 
