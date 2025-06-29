@@ -1,0 +1,26 @@
+# Pitbull.yml
+
+- title: "Timber"
+  release: "2013-11-26"
+  tags:
+    [
+      "party",
+      "electronic",
+      "dance",
+      "saxophone",
+      "countryside",
+      "rap",
+      "upbeat",
+      "catchy",
+      "feel good",
+      "happy",
+      "traditional",
+      "american",
+      "western",
+      "nostalgic",
+      "festival",
+    ]
+  note: ""
+  language: en
+  listen:
+    - ORG: https://youtu.be/hHUbLv4ThOo?si=p4JJmxdDB9SspB52

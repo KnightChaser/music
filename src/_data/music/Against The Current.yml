@@ -1,0 +1,46 @@
+# Against The Current.yml
+
+- title: "Wildfire"
+  release: "2022-01-22"
+  tags:
+    [
+      "pop",
+      "rock",
+      "anthemic",
+      "powerful",
+      "modern",
+      "female vocal",
+      "high tone",
+      "defiant",
+      "intense",
+      "emotional",
+      "band",
+      "wild",
+      "uplifting",
+    ]
+  note: ""
+  language: en
+  listen:
+    - ORG: https://youtu.be/JkRUHiJ2qSU?si=2XBJ71lix9oM4H4N
+
+- title: "Gravity"
+  release: "2014-11-01"
+  tags:
+    [
+      "pop",
+      "rock",
+      "anthemic",
+      "powerful",
+      "honest",
+      "authentic",
+      "emotional",
+      "story",
+      "nostalgic",
+      "wishful",
+      "confessing",
+    ]
+  note: ""
+  language: en
+  listen:
+    - ORG: https://youtu.be/S34KpOAgyTg?si=ZD_Z3xhTxlXSZH9y
+    - NCR: https://youtu.be/4ydyspst8NY?si=VtJpSyGLCTYNHeM9
