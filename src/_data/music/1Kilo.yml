@@ -1,0 +1,67 @@
+# 1Kilo.yml
+
+- title: "Deixe-me Ir"
+  release: "2017-03-16"
+  tags:
+    [
+      "portuguese rap",
+      "acoustic guitar",
+      "triple vocals",
+      "emotional",
+      "intimate",
+      "reflective",
+      "silent",
+      "restrained",
+      "cloudy",
+      "nostalgic",
+      "1kilo2017",
+      "brazilian",
+    ]
+  note: ""
+  language: pt
+  listen:
+    - ORG: https://youtu.be/TQ5DUv_ZwRg?si=7wfILn9ejTNSjGjv
+
+- title: "Duro Igual Concreto"
+  release: "2017-07-18"
+  tags:
+    [
+      "portuguese rap",
+      "brazilian",
+      "street",
+      "acoustic guitar",
+      "restrained",
+      "basement",
+      "intimate",
+      "classic",
+      "1kilo2017",
+    ]
+  note: ""
+  language: pt
+  listen:
+    - ORG: https://youtu.be/vTKP99Kll5E?si=iw5z08cHM9TUeIQi
+
+- title: "Relação"
+  release: "2017-08-10"
+  tags:
+    [
+      "acoustic guitar",
+      "nostalgic",
+      "reflective",
+      "relationship",
+      "silent",
+      "midnight",
+      "dawn",
+      "intimate",
+      "classic",
+      "1kilo2017",
+      "sensitive",
+      "husky",
+      "beat",
+      "brazilian",
+    ]
+  note: "Without drama, there is no relationship."
+  language: pt
+  listen:
+    - ORG: https://youtu.be/vxI3BWYCVX0?si=3urm88JrRn-5rzf-
+    - RX(Day Limins): https://youtu.be/6YMqOjKYSkY?si=Ldj55hBk0gcwa8Ub
