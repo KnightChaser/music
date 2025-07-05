@@ -8,7 +8,6 @@ let suggestionsBox;
 let sources;
 let countsMap;
 let onSelectCallback; // This will be the doSearch function from main.js
-
 let selectedIndex = -1;
 
 /**
@@ -51,13 +50,18 @@ function render(matches, field, term) {
   suggestionsBox.style.display = "block";
 }
 
-// Parses the input, finds matching suggestions, and calls the renderer.
+/**
+ * Parses the input, finds matching suggestions, and calls the renderer.
+ * (This is the function we are modifying)
+ */
 function update() {
   const rawValue = searchInput.value;
   const lastSegment = rawValue.includes(",")
     ? rawValue.slice(rawValue.lastIndexOf(",") + 1).trim()
     : rawValue.trim();
 
+  // Regex now has an optional non-capturing group for the search term
+  // It will match "field:" or "field: term"
   const match = lastSegment.match(/^(\w+):\s*([^,]*)$/);
 
   if (!match) {
@@ -66,21 +70,35 @@ function update() {
   }
 
   const field = match[1].toLowerCase();
-  const term = match[2].toLowerCase();
+  const term = match[2].toLowerCase(); // This will be an empty string if user just typed "(searchable category): "
   const suggestionsSource = sources[field] || [];
   const counts = countsMap[field] || {};
 
-  if (!term) {
-    suggestionsBox.style.display = "none";
-    return;
+  let matches;
+
+  // If the term is empty, it means the user has typed "field:" and nothing else.
+  // In this case, we show all available options for that field.
+  if (term === "") {
+    matches = suggestionsSource
+      .slice() // Create a shallow copy to avoid sorting the original `sources` array
+      .sort(
+        (a, b) => (counts[b] || 0) - (counts[a] || 0) || a.localeCompare(b)
+      );
+  }
+  // Otherwise, if there is a term, we use the existing fuzzy matching logic.
+  else {
+    matches = suggestionsSource
+      .filter((v) => fuzzyMatch(term, v))
+      .sort(
+        (a, b) => (counts[b] || 0) - (counts[a] || 0) || a.localeCompare(b)
+      );
   }
 
-  const matches = suggestionsSource
-    .filter((v) => fuzzyMatch(term, v))
-    .sort((a, b) => (counts[b] || 0) - (counts[a] || 0) || a.localeCompare(b))
-    .slice(0, 50); // Limit to 50 suggestions
+  // Limit the number of suggestions to prevent overwhelming the user.
+  const finalMatches = matches.slice(0, 50);
 
-  render(matches, field, term);
+  // The rest of the function remains the same. It just uses the result from our new logic.
+  render(finalMatches, field, term);
 }
 
 /**
