@@ -1266,9 +1266,6 @@ body{
 .pointer-events-none{
   pointer-events: none;
 }
-.pointer-events-auto{
-  pointer-events: auto;
-}
 .visible{
   visibility: visible;
 }
@@ -1763,6 +1760,9 @@ body{
 }
 .text-center{
   text-align: center;
+}
+.align-middle{
+  vertical-align: middle;
 }
 .font-sans{
   font-family: Archivo, sans-serif;
