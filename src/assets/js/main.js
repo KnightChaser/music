@@ -90,7 +90,7 @@ function handleTableClick(e) {
 
 // --- INITIALIZATION ---
 async function init() {
-  const response = await fetch("/search.json");
+  const response = await fetch("search.json");
   allSongs = await response.json();
 
   // Prepare data for the suggestions module
