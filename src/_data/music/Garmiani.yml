@@ -1,26 +1,29 @@
 # Garmiani.yml
 
-- title: "Fogo (Feat. Julimar Santos)"
-  release: "2017-08-19"
-  tags:
-    [
-      "edm",
-      "dance",
-      "latin",
-      "drum",
-      "catchy",
-      "reggaeton",
-      "exotic beats",
-      "melodic banjo",
-      "party",
-      "flute",
-      "triplet beats",
-      "summer vibes",
-      "burst",
-      "energetic",
-      "workout",
-    ]
-  note: ""
-  language: pt
-  listen:
-    - ORG: https://youtu.be/hCNC1CQs5Ek?si=zHmAgDL7NqX2dGRs
+nationality: SE
+
+songs:
+  - title: "Fogo (Feat. Julimar Santos)"
+    release: "2017-08-19"
+    tags:
+      [
+        "edm",
+        "dance",
+        "latin",
+        "drum",
+        "catchy",
+        "reggaeton",
+        "exotic beats",
+        "melodic banjo",
+        "party",
+        "flute",
+        "triplet beats",
+        "summer vibes",
+        "burst",
+        "energetic",
+        "workout",
+      ]
+    note: ""
+    language: pt
+    listen:
+      - ORG: https://youtu.be/hCNC1CQs5Ek?si=zHmAgDL7NqX2dGRs

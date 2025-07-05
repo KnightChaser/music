@@ -1,22 +1,25 @@
 # Jay Sean.yml
 
-- title: "Down"
-  release: "2009-11-25"
-  tags:
-    [
-      "pop",
-      "r&b",
-      "dance",
-      "club",
-      "upbeat",
-      "catchy",
-      "hit",
-      "collaboration",
-      "nostalgia",
-      "electropop",
-    ]
-  note: ""
-  language: en
-  listen:
-    - ORG: https://youtu.be/oUbpGmR1-QM?si=fYHRxue__e1PIcIx
-    - NCR: https://youtu.be/h09ZuMP7thM?si=2CQspvgW4o7nMHbe
+nationality: GB
+
+songs:
+  - title: "Down"
+    release: "2009-11-25"
+    tags:
+      [
+        "pop",
+        "r&b",
+        "dance",
+        "club",
+        "upbeat",
+        "catchy",
+        "hit",
+        "collaboration",
+        "nostalgia",
+        "electropop",
+      ]
+    note: ""
+    language: en
+    listen:
+      - ORG: https://youtu.be/oUbpGmR1-QM?si=fYHRxue__e1PIcIx
+      - NCR: https://youtu.be/h09ZuMP7thM?si=2CQspvgW4o7nMHbe

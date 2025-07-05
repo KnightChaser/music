@@ -1,23 +1,26 @@
 # USADAX.yml
 
-- title: "ระยะไก - rimshot"
-  release: "2024-10-04"
-  tags:
-    [
-      "thai rap",
-      "thai hip-hop",
-      "mixed language",
-      "exotic",
-      "transitional",
-      "beat",
-      "attractive",
-      "catchy",
-      "unique bg",
-      "dual vocals",
-      "banger",
-      "hip-hop",
-    ]
-  note: "banger!"
-  language: th
-  listen:
-    - ORG: https://youtu.be/4zehayfy-og?si=Ci6P_rF_BuZSeixY
+nationality: TH
+
+songs:
+  - title: "ระยะไก - rimshot"
+    release: "2024-10-04"
+    tags:
+      [
+        "thai rap",
+        "thai hip-hop",
+        "mixed language",
+        "exotic",
+        "transitional",
+        "beat",
+        "attractive",
+        "catchy",
+        "unique bg",
+        "dual vocals",
+        "banger",
+        "hip-hop",
+      ]
+    note: "banger!"
+    language: th
+    listen:
+      - ORG: https://youtu.be/4zehayfy-og?si=Ci6P_rF_BuZSeixY

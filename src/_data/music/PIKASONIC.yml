@@ -1,22 +1,25 @@
 # PIKASONIC.yml
 
-- title: "Fine (with PLEEG)"
-  release: "2019-01-30"
-  tags:
-    [
-      "nonlyrical",
-      "boost",
-      "hyper",
-      "uplifting",
-      "synth",
-      "drum",
-      "electronic",
-      "refreshing",
-      "aerial",
-      "light blue",
-      "vibe",
-    ]
-  note: ""
-  language: none
-  listen:
-    - ORG: https://youtu.be/L7Id3v46qSQ?si=_4Aol9Bgtu4tNZf7
+nationality: JP
+
+songs:
+  - title: "Fine (with PLEEG)"
+    release: "2019-01-30"
+    tags:
+      [
+        "nonlyrical",
+        "boost",
+        "hyper",
+        "uplifting",
+        "synth",
+        "drum",
+        "electronic",
+        "refreshing",
+        "aerial",
+        "light blue",
+        "vibe",
+      ]
+    note: ""
+    language: none
+    listen:
+      - ORG: https://youtu.be/L7Id3v46qSQ?si=_4Aol9Bgtu4tNZf7

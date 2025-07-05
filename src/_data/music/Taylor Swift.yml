@@ -1,158 +1,161 @@
 # Taylor_Swift.yml
 
-- title: "Blank Space"
-  artist: "Taylor Swift"
-  release: "2014-11-10"
-  language: en
-  tags:
+nationality: US
+
+songs:
+  - title: "Blank Space"
+    artist: "Taylor Swift"
+    release: "2014-11-10"
+    language: en
+    tags:
       [
-          "electropop",
-          "regretful",
-          "playful vanity",
-          "dramatic",
-          "confident",
-          "humorous",
-          "timeless",
-          "cool",
-          "pop",
-          "1989 era",
-          "satirical",
-          "ironic love",
+        "electropop",
+        "regretful",
+        "playful vanity",
+        "dramatic",
+        "confident",
+        "humorous",
+        "timeless",
+        "cool",
+        "pop",
+        "1989 era",
+        "satirical",
+        "ironic love",
       ]
-  note: "Killing so cleanly"
-  listen:
+    note: "Killing so cleanly"
+    listen:
       - ORG: https://youtu.be/e-ORhEE9VVg
       - NCR: https://youtu.be/qK3eHKKn2Lk?si=fGsxpNCRpofXn4c_
 
-- title: "Shake It Off"
-  artist: "Taylor Swift"
-  release: "2014-08-18"
-  language: en
-  tags:
+  - title: "Shake It Off"
+    artist: "Taylor Swift"
+    release: "2014-08-18"
+    language: en
+    tags:
       [
-          "dance-pop",
-          "upbeat",
-          "unapologetic",
-          "carefree",
-          "defiant",
-          "upbeat",
-          "catchy",
-          "positive",
-          "transformation",
-          "lead single",
-          "1989 era",
-          "stompy bridge",
-          "pop comeback",
+        "dance-pop",
+        "upbeat",
+        "unapologetic",
+        "carefree",
+        "defiant",
+        "upbeat",
+        "catchy",
+        "positive",
+        "transformation",
+        "lead single",
+        "1989 era",
+        "stompy bridge",
+        "pop comeback",
       ]
-  note: ""
-  listen:
+    note: ""
+    listen:
       - ORG: https://youtu.be/nfWlot6h_JM
 
-- title: "You Belong With Me"
-  artist: "Taylor Swift"
-  release: "2009-04-20"
-  language: en
-  tags:
+  - title: "You Belong With Me"
+    artist: "Taylor Swift"
+    release: "2009-04-20"
+    language: en
+    tags:
       [
-          "country pop",
-          "pop rock",
-          "storytelling",
-          "teen love",
-          "anthemic",
-          "hopeful",
-          "longing",
-          "earnest",
-          "vulnerable",
-          "romantic",
-          "bittersweet",
-          "heartfelt",
-          "sincere",
-          "relatable",
+        "country pop",
+        "pop rock",
+        "storytelling",
+        "teen love",
+        "anthemic",
+        "hopeful",
+        "longing",
+        "earnest",
+        "vulnerable",
+        "romantic",
+        "bittersweet",
+        "heartfelt",
+        "sincere",
+        "relatable",
       ]
-  note: ""
-  listen:
+    note: ""
+    listen:
       - ORG: https://youtu.be/VuNIsY6JdUw?si=mZRa5z0qmT2d0rdA
       - NCR: https://youtu.be/wrFTIS1VxZ4?si=8vnxhNYKcpy6DziC
 
-- title: "Bad Blood"
-  artist: "Taylor Swift"
-  release: "2015-05-17"
-  language: en
-  tags:
+  - title: "Bad Blood"
+    artist: "Taylor Swift"
+    release: "2015-05-17"
+    language: en
+    tags:
       [
-          "electropop",
-          "pop",
-          "revenge anthem",
-          "kendrick lamar (artist)",
-          "feud",
-          "remix",
-          "empowerment",
-          "conflict",
-          "strong",
-          "defiant",
-          "confrontational",
-          "drama",
-          "1989 era",
+        "electropop",
+        "pop",
+        "revenge anthem",
+        "kendrick lamar (artist)",
+        "feud",
+        "remix",
+        "empowerment",
+        "conflict",
+        "strong",
+        "defiant",
+        "confrontational",
+        "drama",
+        "1989 era",
       ]
-  note: "Traditional badass girl song"
-  listen:
+    note: "Traditional badass girl song"
+    listen:
       - ORG: https://youtu.be/QcIy9NiNbmo
       - NCR: https://youtu.be/6dhKhXMT34U?si=95kVJYCrRnoz9_4h
 
-- title: "Style"
-  artist: "Taylor Swift"
-  release: "2015-02-09"
-  language: en
-  tags:
+  - title: "Style"
+    artist: "Taylor Swift"
+    release: "2015-02-09"
+    language: en
+    tags:
       ["synth-pop", "funk-pop", "italo disco", "sleek", "1989 era", "timeless"]
-  note: ""
-  listen:
+    note: ""
+    listen:
       - ORG: https://youtu.be/-CmadmM5cOk
 
-- title: "22"
-  artist: "Taylor Swift"
-  release: "2013-03-12"
-  language: en
-  tags:
+  - title: "22"
+    artist: "Taylor Swift"
+    release: "2013-03-12"
+    language: en
+    tags:
       [
-          "dance-pop",
-          "bubblegum pop",
-          "youthful",
-          "celebratory",
-          "nostalgic",
-          "party anthem",
-          "upbeat",
-          "catchy",
-          "fun",
-          "carefree",
-          "pop",
-          "feel-good",
-          "red era",
-          "anthemic",
+        "dance-pop",
+        "bubblegum pop",
+        "youthful",
+        "celebratory",
+        "nostalgic",
+        "party anthem",
+        "upbeat",
+        "catchy",
+        "fun",
+        "carefree",
+        "pop",
+        "feel-good",
+        "red era",
+        "anthemic",
       ]
-  note: ""
-  listen:
+    note: ""
+    listen:
       - ORG: https://youtu.be/AgFeZr5ptV8
 
-- title: "...Ready For It?"
-  artist: "Taylor Swift"
-  release: "2017-10-24"
-  language: en
-  tags:
+  - title: "...Ready For It?"
+    artist: "Taylor Swift"
+    release: "2017-10-24"
+    language: en
+    tags:
       [
-          "electropop",
-          "dark pop",
-          "reputation era",
-          "anticipatory",
-          "dramatic",
-          "cinematic",
-          "bold",
-          "confident",
-          "edgy",
-          "synth-driven",
-          "intense",
-          "empowering",
+        "electropop",
+        "dark pop",
+        "reputation era",
+        "anticipatory",
+        "dramatic",
+        "cinematic",
+        "bold",
+        "confident",
+        "edgy",
+        "synth-driven",
+        "intense",
+        "empowering",
       ]
-  note: "Taylor Swift in the cyberpunk worldline"
-  listen:
+    note: "Taylor Swift in the cyberpunk worldline"
+    listen:
       - ORG: https://youtu.be/wIft-t-MQuE

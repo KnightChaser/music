@@ -1,28 +1,31 @@
 # aespa.yml
 
-- title: "Whiplash"
-  release: "2024-10-21"
-  tags:
-    [
-      "k-pop",
-      "white",
-      "white and black",
-      "restrained",
-      "calm",
-      "beat",
-      "drop",
-      "attention-gathering",
-      "cybernetic",
-      "next generation",
-      "exotic",
-      "dance",
-      "hip-hop",
-      "synthetic",
-      "synthesizer",
-      "house",
-      "captivating",
-    ]
-  note: ""
-  language: ko
-  listen:
-    - ORG: https://youtu.be/jWQx2f-CErU?si=jXhRA60pvpXSbIQJ
+nationality: KR
+
+songs:
+  - title: "Whiplash"
+    release: "2024-10-21"
+    tags:
+      [
+        "k-pop",
+        "white",
+        "white and black",
+        "restrained",
+        "calm",
+        "beat",
+        "drop",
+        "attention-gathering",
+        "cybernetic",
+        "next generation",
+        "exotic",
+        "dance",
+        "hip-hop",
+        "synthetic",
+        "synthesizer",
+        "house",
+        "captivating",
+      ]
+    note: ""
+    language: ko
+    listen:
+      - ORG: https://youtu.be/jWQx2f-CErU?si=jXhRA60pvpXSbIQJ

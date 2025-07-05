@@ -1,18 +1,21 @@
 # Girls' Generation (소녀시대).yml
 
-- title: "FOREVER 1"
-  release: "2022-08-05"
-  tags:
+nationality: KR
+
+songs:
+  - title: "FOREVER 1"
+    release: "2022-08-05"
+    tags:
       [
-          "k-pop",
-          "without regrets",
-          "youthful",
-          "vacation",
-          "upbeat",
-          "happy",
-          "exicting",
+        "k-pop",
+        "without regrets",
+        "youthful",
+        "vacation",
+        "upbeat",
+        "happy",
+        "exicting",
       ]
-  note: ""
-  language: ko
-  listen:
+    note: ""
+    language: ko
+    listen:
       - ORG: https://youtu.be/Qpf26PtBXgo?si=3RPfNrKKrsWr_YWl

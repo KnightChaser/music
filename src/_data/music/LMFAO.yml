@@ -1,28 +1,31 @@
 # LMFAO.yml
 
-- title: "Party Rock Anthem"
-  release: "2011-01-25"
-  tags:
-    [
-      "party",
-      "electronic",
-      "dance",
-      "club",
-      "hard",
-      "upbeat",
-      "energetic",
-      "catchy",
-      "powerful",
-      "nostalgic",
-      "feel good",
-      "festival",
-      "sensational",
-      "anthemic",
-      "electro house",
-      "electro pop",
-      "hip hop",
-    ]
-  note: "Legend never gets old. My dendrite cells are still dancing to this song."
-  language: en
-  listen:
-    - ORG: https://youtu.be/KQ6zr6kCPj8?si=BgtO_-5k9ysJCnPg
+nationality: US
+
+songs:
+  - title: "Party Rock Anthem"
+    release: "2011-01-25"
+    tags:
+      [
+        "party",
+        "electronic",
+        "dance",
+        "club",
+        "hard",
+        "upbeat",
+        "energetic",
+        "catchy",
+        "powerful",
+        "nostalgic",
+        "feel good",
+        "festival",
+        "sensational",
+        "anthemic",
+        "electro house",
+        "electro pop",
+        "hip hop",
+      ]
+    note: "Legend never gets old. My dendrite cells are still dancing to this song."
+    language: en
+    listen:
+      - ORG: https://youtu.be/KQ6zr6kCPj8?si=BgtO_-5k9ysJCnPg

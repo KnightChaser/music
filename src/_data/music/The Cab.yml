@@ -1,27 +1,30 @@
 # The Cab
 
-- title: Angel With a Shotgun
-  release: "2011-10-24"
-  tags:
-    [
-      "authentic",
-      "guitar",
-      "high",
-      "pre-battle",
-      "nostalgic",
-      "flashback",
-      "lovesick",
-      "pop",
-      "solo vocal",
-      "coolness",
-      "nightcore",
-      "drum",
-    ]
-  note: "A song defined my early teenage years."
-  language: en
-  listen:
-    - ORG: https://youtu.be/9YuO6np8Ma8?si=ZfUW1KlcSSC8UYx-
-    - RX(Derivakat): https://youtu.be/KwWUN9LNVcE?si=bzgBKjUaoScsFukA
-    - RX(Neuro-sama): https://youtu.be/_3KB0-6Rb3U?si=jo1tmNeAhYKrhbSJ
-    - RX(AmatsukaUto): https://youtu.be/_BSSJi-sHh8?si=F4frzjXzhzYy5bbG
-    - NCR: https://youtu.be/cvaIgq5j2Q8?si=fE5l9UudbdwwbiuK
+nationality: US
+
+songs:
+  - title: Angel With a Shotgun
+    release: "2011-10-24"
+    tags:
+      [
+        "authentic",
+        "guitar",
+        "high",
+        "pre-battle",
+        "nostalgic",
+        "flashback",
+        "lovesick",
+        "pop",
+        "solo vocal",
+        "coolness",
+        "nightcore",
+        "drum",
+      ]
+    note: "A song defined my early teenage years."
+    language: en
+    listen:
+      - ORG: https://youtu.be/9YuO6np8Ma8?si=ZfUW1KlcSSC8UYx-
+      - RX(Derivakat): https://youtu.be/KwWUN9LNVcE?si=bzgBKjUaoScsFukA
+      - RX(Neuro-sama): https://youtu.be/_3KB0-6Rb3U?si=jo1tmNeAhYKrhbSJ
+      - RX(AmatsukaUto): https://youtu.be/_BSSJi-sHh8?si=F4frzjXzhzYy5bbG
+      - NCR: https://youtu.be/cvaIgq5j2Q8?si=fE5l9UudbdwwbiuK

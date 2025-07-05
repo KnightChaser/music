@@ -1,19 +1,22 @@
 # Mr.T.yml
 
-- title: "Thu Cuối (feat. Yanbi & Hằng BingBoong)"
-  release: "2013-03-25"
-  tags:
+nationality: VN
+
+songs:
+  - title: "Thu Cuối (feat. Yanbi & Hằng BingBoong)"
+    release: "2013-03-25"
+    tags:
       [
-          "emotional",
-          "classic",
-          "dual vocals",
-          "rap",
-          "antique",
-          "contemporary",
-          "retrospective",
-          "self-reflection",
+        "emotional",
+        "classic",
+        "dual vocals",
+        "rap",
+        "antique",
+        "contemporary",
+        "retrospective",
+        "self-reflection",
       ]
-  note: ""
-  language: vn
-  listen:
+    note: ""
+    language: vn
+    listen:
       - ORG: https://youtu.be/tN1TZAuL4P8?si=ERqs7UGzxgzhmXYm

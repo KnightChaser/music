@@ -1,65 +1,68 @@
 # ONE OK ROCK.yml
 
-- title: "The Beginning"
-  artist: "ONE OK ROCK"
-  release: "2012-08-22"
-  tags:
-    [
-      "j-rock",
-      "pop punk",
-      "post hardcore",
-      "movie theme",
-      "anthemic",
-      "emo",
-      "emo rock",
-      "powerful vocals",
-      "rurouni kenshin",
-      "arena rock",
-    ]
-  note: "Rock and Emo. I like it."
-  language: ja
-  listen:
-    - ORG: https://youtu.be/Hh9yZWeTmVM?si=uNEcXPpRjd3Jul2Z
-    - RX(道明寺ここあ): https://youtu.be/66w-rTTXHcs?si=_LnBn_AcJL4byitu
-    - NCR: https://youtu.be/qQ5YnoXvOjA?si=uve1DmicEXzy3jFO
+nationality: JP
 
-- title: "Clock Strikes"
-  artist: "ONE OK ROCK"
-  release: "2013-03-06"
-  tags:
-    [
-      "j-rock",
-      "pop rock",
-      "energetic",
-      "arena anthem",
-      "mid-tempo",
-      "hopeful",
-      "inspirational",
-      "catchy",
-      "powerful vocals",
-    ]
-  note:
-  language: ja
-  listen:
-    - ORG: https://www.youtube.com/watch?v=6YZlFdTIdzM
-    - NCR: https://youtu.be/riRhmrqDM44?si=AfzdWtLv0Lco3nhY
+songs:
+  - title: "The Beginning"
+    artist: "ONE OK ROCK"
+    release: "2012-08-22"
+    tags:
+      [
+        "j-rock",
+        "pop punk",
+        "post hardcore",
+        "movie theme",
+        "anthemic",
+        "emo",
+        "emo rock",
+        "powerful vocals",
+        "rurouni kenshin",
+        "arena rock",
+      ]
+    note: "Rock and Emo. I like it."
+    language: ja
+    listen:
+      - ORG: https://youtu.be/Hh9yZWeTmVM?si=uNEcXPpRjd3Jul2Z
+      - RX(道明寺ここあ): https://youtu.be/66w-rTTXHcs?si=_LnBn_AcJL4byitu
+      - NCR: https://youtu.be/qQ5YnoXvOjA?si=uve1DmicEXzy3jFO
 
-- title: "American Girls"
-  artist: "ONE OK ROCK"
-  release: "2017-02-03"
-  tags:
-    [
-      "pop rock",
-      "alternative rock",
-      "major label era",
-      "international",
-      "anthemic",
-      "radio friendly",
-      "nostalgic",
-      "upbeat",
-    ]
-  note:
-  language: en
-  listen:
-    - ORG: https://www.youtube.com/watch?v=RFZ9q4NLoWc
-    - NCR: https://youtu.be/W7PDayneTsQ?si=WHtHicm5LbEmr5Py
+  - title: "Clock Strikes"
+    artist: "ONE OK ROCK"
+    release: "2013-03-06"
+    tags:
+      [
+        "j-rock",
+        "pop rock",
+        "energetic",
+        "arena anthem",
+        "mid-tempo",
+        "hopeful",
+        "inspirational",
+        "catchy",
+        "powerful vocals",
+      ]
+    note:
+    language: ja
+    listen:
+      - ORG: https://www.youtube.com/watch?v=6YZlFdTIdzM
+      - NCR: https://youtu.be/riRhmrqDM44?si=AfzdWtLv0Lco3nhY
+
+  - title: "American Girls"
+    artist: "ONE OK ROCK"
+    release: "2017-02-03"
+    tags:
+      [
+        "pop rock",
+        "alternative rock",
+        "major label era",
+        "international",
+        "anthemic",
+        "radio friendly",
+        "nostalgic",
+        "upbeat",
+      ]
+    note:
+    language: en
+    listen:
+      - ORG: https://www.youtube.com/watch?v=RFZ9q4NLoWc
+      - NCR: https://youtu.be/W7PDayneTsQ?si=WHtHicm5LbEmr5Py

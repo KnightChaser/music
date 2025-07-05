@@ -1,24 +1,27 @@
 # Mac Miller.yml
 
-- title: "Dunno"
-  release: "2018-08-03"
-  tags:
-    [
-      "hip hop",
-      "chill",
-      "laid back",
-      "smooth",
-      "soulful",
-      "introspective",
-      "melodic",
-      "jazzy",
-      "summer vibes",
-      "feel good",
-      "sad",
-      "pale blue",
-      "swimming era",
-    ]
-  note: ""
-  language: en
-  listen:
-    - ORG: https://youtu.be/N6O2ncUKvlg?si=fRz-DIcQVFLFbx6G
+nationality: US
+
+songs:
+  - title: "Dunno"
+    release: "2018-08-03"
+    tags:
+      [
+        "hip hop",
+        "chill",
+        "laid back",
+        "smooth",
+        "soulful",
+        "introspective",
+        "melodic",
+        "jazzy",
+        "summer vibes",
+        "feel good",
+        "sad",
+        "pale blue",
+        "swimming era",
+      ]
+    note: ""
+    language: en
+    listen:
+      - ORG: https://youtu.be/N6O2ncUKvlg?si=fRz-DIcQVFLFbx6G

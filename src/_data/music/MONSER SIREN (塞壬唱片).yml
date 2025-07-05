@@ -1,23 +1,26 @@
 # MONSTER SIREN (塞壬唱片).yml
 
-- title: "Radiant (Arknights OST)"
-  release: "2021-11-02"
-  tags:
-    [
-      "speedy",
-      "dancefloor",
-      "electronic",
-      "energetic",
-      "drum and bass",
-      "liquid drum and bass",
-      "halftime",
-      "video game music",
-      "game",
-      "ost",
-      "arknights",
-      "constant lyrics",
-    ]
-  note: "It's not as bad as it sounds, it's actually quite good."
-  language: en
-  listen:
-    - ORG: https://youtu.be/eImNc6AIViQ?si=7bEOFGzreDYxdgsG
+nationality: CN
+
+songs:
+  - title: "Radiant (Arknights OST)"
+    release: "2021-11-02"
+    tags:
+      [
+        "speedy",
+        "dancefloor",
+        "electronic",
+        "energetic",
+        "drum and bass",
+        "liquid drum and bass",
+        "halftime",
+        "video game music",
+        "game",
+        "ost",
+        "arknights",
+        "constant lyrics",
+      ]
+    note: "It's not as bad as it sounds, it's actually quite good."
+    language: en
+    listen:
+      - ORG: https://youtu.be/eImNc6AIViQ?si=7bEOFGzreDYxdgsG

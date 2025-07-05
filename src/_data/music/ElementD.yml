@@ -1,28 +1,31 @@
 # ElementD.yml
 
-- title: "Ascend"
-  release: "2019-03-12"
-  tags:
-    [
-      "electronic",
-      "progressive house",
-      "uplifting",
-      "energetic",
-      "anthemic",
-      "festival anthem",
-      "melodic",
-      "epic",
-      "inspirational",
-      "powerful",
-      "high energy",
-      "lyrical",
-      "powerful",
-      "nocopyrightsounds",
-      "orange",
-      "evening sky",
-      "sunset",
-    ]
-  note: ""
-  language: en
-  listen:
-    - ORG: https://youtu.be/pZ6zwyZxmP0?si=G15YgKWfVoRMM1AG
+nationality: BE
+
+songs:
+  - title: "Ascend"
+    release: "2019-03-12"
+    tags:
+      [
+        "electronic",
+        "progressive house",
+        "uplifting",
+        "energetic",
+        "anthemic",
+        "festival anthem",
+        "melodic",
+        "epic",
+        "inspirational",
+        "powerful",
+        "high energy",
+        "lyrical",
+        "powerful",
+        "nocopyrightsounds",
+        "orange",
+        "evening sky",
+        "sunset",
+      ]
+    note: ""
+    language: en
+    listen:
+      - ORG: https://youtu.be/pZ6zwyZxmP0?si=G15YgKWfVoRMM1AG

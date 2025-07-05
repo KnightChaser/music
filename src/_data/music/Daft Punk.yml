@@ -1,27 +1,30 @@
 # Daft Punk.yml
 
-- title: "One More Time"
-  release: "2000-11-13"
-  tags:
-    [
-      "nostalgic",
-      "electronic",
-      "old",
-      "synthwave",
-      "disco",
-      "dance",
-      "feel good",
-      "pale blue",
-      "drum",
-      "futuristic",
-      "back to the future",
-      "retro",
-      "french",
-      "french house",
-      "house",
-      "galaxy express 999",
-    ]
-  note: "I used to hear this when I was drunken alone."
-  language: en
-  listen:
-    - ORG: https://youtu.be/FGBhQbmPwH8?si=Ud4EIu73f3uxtGNf
+nationality: FR
+
+songs:
+  - title: "One More Time"
+    release: "2000-11-13"
+    tags:
+      [
+        "nostalgic",
+        "electronic",
+        "old",
+        "synthwave",
+        "disco",
+        "dance",
+        "feel good",
+        "pale blue",
+        "drum",
+        "futuristic",
+        "back to the future",
+        "retro",
+        "french",
+        "french house",
+        "house",
+        "galaxy express 999",
+      ]
+    note: "I used to hear this when I was drunken alone."
+    language: en
+    listen:
+      - ORG: https://youtu.be/FGBhQbmPwH8?si=Ud4EIu73f3uxtGNf

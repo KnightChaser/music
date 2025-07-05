@@ -1,23 +1,26 @@
 # Khu Tao Wong.yml
 
-- title: "Wowy Karik"
-  release: "2012-07-05"
-  tags:
+nationality: VN
+
+songs:
+  - title: "Wowy Karik"
+    release: "2012-07-05"
+    tags:
       [
-          "hip-hop",
-          "rap",
-          "mild",
-          "afternoon",
-          "urban",
-          "slum",
-          "raw",
-          "vibe",
-          "colab",
-          "dual vocals",
-          "sunny days",
-          "hazy",
+        "hip-hop",
+        "rap",
+        "mild",
+        "afternoon",
+        "urban",
+        "slum",
+        "raw",
+        "vibe",
+        "colab",
+        "dual vocals",
+        "sunny days",
+        "hazy",
       ]
-  note: ""
-  language: vn
-  listen:
+    note: ""
+    language: vn
+    listen:
       - ORG: https://youtu.be/es0e6GA-EIw?si=IxquehdAXuhXyafq

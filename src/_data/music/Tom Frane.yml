@@ -1,46 +1,49 @@
 # Tom Frane.yml
 
-- title: "Tiny Fractures"
-  release: "2023-11-16"
-  tags:
-    [
-      "independent",
-      "pop",
-      "synth pop",
-      "bubblegum",
-      "catchy",
-      "upbeat",
-      "feel good",
-      "summer vibes",
-      "ordinary",
-      "dawn",
-      "electronic",
-      "purple",
-      "pink",
-      "gradation",
-    ]
-  note: ""
-  language: en
-  listen:
-    - ORG: https://youtu.be/LM1fmKIzFJ4?si=AE99k6tO9pArpZwx
+nationality: NL
 
-- title: "Hold Me Down"
-  release: "2024-03-28"
-  tags:
-    [
-      "blue",
-      "synth pop",
-      "drum and bass",
-      "light mood",
-      "upbeat",
-      "calm",
-      "laid back",
-      "feel good",
-      "summer vibes",
-      "electronic",
-      "modern",
-    ]
-  note: ""
-  language: en
-  listen:
-    - ORG: https://youtu.be/FORTH9sUBYw?si=o2IZ6nJAKxt7Ctey
+songs:
+  - title: "Tiny Fractures"
+    release: "2023-11-16"
+    tags:
+      [
+        "independent",
+        "pop",
+        "synth pop",
+        "bubblegum",
+        "catchy",
+        "upbeat",
+        "feel good",
+        "summer vibes",
+        "ordinary",
+        "dawn",
+        "electronic",
+        "purple",
+        "pink",
+        "gradation",
+      ]
+    note: ""
+    language: en
+    listen:
+      - ORG: https://youtu.be/LM1fmKIzFJ4?si=AE99k6tO9pArpZwx
+
+  - title: "Hold Me Down"
+    release: "2024-03-28"
+    tags:
+      [
+        "blue",
+        "synth pop",
+        "drum and bass",
+        "light mood",
+        "upbeat",
+        "calm",
+        "laid back",
+        "feel good",
+        "summer vibes",
+        "electronic",
+        "modern",
+      ]
+    note: ""
+    language: en
+    listen:
+      - ORG: https://youtu.be/FORTH9sUBYw?si=o2IZ6nJAKxt7Ctey

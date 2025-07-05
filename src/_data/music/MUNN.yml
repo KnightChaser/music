@@ -1,29 +1,32 @@
 # MUNN.yml
 
-- title: "i pick loneliness"
-  release: "2021-09-15"
-  tags:
-    [
-      "indie",
-      "dual vocals",
-      "conversational",
-      "toss and turn",
-      "nostalgic",
-      "reflective",
-      "intimate",
-      "heartbreak",
-      "sad",
-      "sensitive",
-      "modern",
-      "mellow",
-      "irreversible",
-      "soulful",
-      "emo",
-      "colab",
-      "switching vocals",
-      "extra clear",
-    ]
-  note: "This sings how couple fights before breakup in the most sweet and sensitive ways..."
-  language: en
-  listen:
-    - ORG: https://youtu.be/Lrpz8Hf-vAk?si=QmjILzNCICXGSCV9
+nationality: US
+
+songs:
+  - title: "i pick loneliness"
+    release: "2021-09-15"
+    tags:
+      [
+        "indie",
+        "dual vocals",
+        "conversational",
+        "toss and turn",
+        "nostalgic",
+        "reflective",
+        "intimate",
+        "heartbreak",
+        "sad",
+        "sensitive",
+        "modern",
+        "mellow",
+        "irreversible",
+        "soulful",
+        "emo",
+        "colab",
+        "switching vocals",
+        "extra clear",
+      ]
+    note: "This sings how couple fights before breakup in the most sweet and sensitive ways..."
+    language: en
+    listen:
+      - ORG: https://youtu.be/Lrpz8Hf-vAk?si=QmjILzNCICXGSCV9

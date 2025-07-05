@@ -4,6 +4,7 @@ import * as dom from "./dom.js";
 import * as search from "./search.js";
 import * as renderer from "./renderer.js";
 import * as suggestions from "./suggestions.js";
+import * as worldMap from "./worldMap.js";
 
 // --- STATE ---
 let allSongs = [];
@@ -125,6 +126,37 @@ async function init() {
 
   // Initial render
   doSearch();
+
+  // Render the artist nationality(origin) map (highcharts)
+  const mapToggleBtn = document.getElementById("map-toggle");
+  const mapContainer = document.getElementById("map-container");
+  const mapDataEl = document.getElementById("map-data");
+
+  if (mapToggleBtn && mapContainer && mapDataEl) {
+    let mapInitialized = false;
+
+    mapToggleBtn.addEventListener("click", () => {
+      mapContainer.classList.toggle("hidden");
+
+      // Lazy-initialize the map only when it's first shown
+      if (!mapContainer.classList.contains("hidden") && !mapInitialized) {
+        try {
+          const data = JSON.parse(mapDataEl.textContent);
+          if (data && data.length > 0) {
+            worldMap.createMap("map-container", data);
+            mapInitialized = true;
+          } else {
+            mapContainer.innerHTML =
+              '<p class="text-center text-gray-500">No geographic data available to display map.</p>';
+          }
+        } catch (e) {
+          console.error("Failed to parse or render map data:", e);
+          mapContainer.innerHTML =
+            '<p class="text-center text-red-500">Error loading map data.</p>';
+        }
+      }
+    });
+  }
 
   // Setup event listeners and modules
   dom.searchInput.addEventListener("input", doSearch);

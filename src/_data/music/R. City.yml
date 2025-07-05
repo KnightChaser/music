@@ -1,27 +1,30 @@
 # R. City.yml
 
-- title: "Locked Away (feat. Adam Levine)"
-  release: "2015-06-29"
-  tags:
+nationality: US
+
+songs:
+  - title: "Locked Away (feat. Adam Levine)"
+    release: "2015-06-29"
+    tags:
       [
-          "pop",
-          "r&b",
-          "romantic",
-          "uplifting",
-          "smooth",
-          "solo",
-          "beat",
-          "drum",
-          "dancehall",
-          "raggae fusion",
-          "raggeton",
-          "piano sound",
-          "lovesick",
-          "classic",
+        "pop",
+        "r&b",
+        "romantic",
+        "uplifting",
+        "smooth",
+        "solo",
+        "beat",
+        "drum",
+        "dancehall",
+        "raggae fusion",
+        "raggeton",
+        "piano sound",
+        "lovesick",
+        "classic",
       ]
-  note: "Will you still love me when I'm no longer young and beautiful?"
-  language: en
-  listen:
+    note: "Will you still love me when I'm no longer young and beautiful?"
+    language: en
+    listen:
       - ORG: https://youtu.be/6GUm5g8SG4o?si=b_jx_5A_JtKcuKGh
       - RX(Sam Tsui & Kirsten Collins): https://youtu.be/tDaUDStUERk?si=WYff7qEARbBiCZ5w
       - RX(Female version + NCR): https://youtu.be/cSumMAAF0w0?si=xZj9zZXNNajydMxg

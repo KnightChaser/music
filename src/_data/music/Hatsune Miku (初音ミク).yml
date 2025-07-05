@@ -1,42 +1,45 @@
 # Hatsune Miku (初音ミク)
 
-- title: "Satisfaction"
-  release: "2024-07-27"
-  tags:
-    [
-      "energetic",
-      "edm",
-      "vocaloid",
-      "miku",
-      "artificial voice",
-      "dance",
-      "high tone",
-      "project diva",
-      "playful",
-      "confident",
-      "happy",
-      "kz-livetune",
-    ]
-  note: "Perfectly restrained happiness voice of Miku."
-  language: ja
-  listen:
-    - ORG: https://youtu.be/4h6n6Q4BLVs?si=ozMFWTxe0kX6ecFh
+nationality: JP
 
-- title: "Yellow (Re:Dialed)"
-  release: "2018-09-15"
-  tags:
-    [
-      "vocaloid",
-      "miku",
-      "happy",
-      "playful",
-      "drum",
-      "piano",
-      "synth",
-      "high tone",
-      "kz-livetune",
-    ]
-  note:
-  language: ja
-  listen:
-    - ORG: https://youtu.be/uSijY6BEMRE?si=xi_f2HdEX8KJTH08
+songs:
+  - title: "Satisfaction"
+    release: "2024-07-27"
+    tags:
+      [
+        "energetic",
+        "edm",
+        "vocaloid",
+        "miku",
+        "artificial voice",
+        "dance",
+        "high tone",
+        "project diva",
+        "playful",
+        "confident",
+        "happy",
+        "kz-livetune",
+      ]
+    note: "Perfectly restrained happiness voice of Miku."
+    language: ja
+    listen:
+      - ORG: https://youtu.be/4h6n6Q4BLVs?si=ozMFWTxe0kX6ecFh
+
+  - title: "Yellow (Re:Dialed)"
+    release: "2018-09-15"
+    tags:
+      [
+        "vocaloid",
+        "miku",
+        "happy",
+        "playful",
+        "drum",
+        "piano",
+        "synth",
+        "high tone",
+        "kz-livetune",
+      ]
+    note:
+    language: ja
+    listen:
+      - ORG: https://youtu.be/uSijY6BEMRE?si=xi_f2HdEX8KJTH08

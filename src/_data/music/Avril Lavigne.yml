@@ -2,227 +2,230 @@
 
 # I love her and her songs!
 
-- title: "Wish You Were Here"
-  release: "2015-09-09"
-  tags:
+nationality: CA
+
+songs:
+  - title: "Wish You Were Here"
+    release: "2015-09-09"
+    tags:
       [
-          "sad",
-          "retrospective",
-          "nostalgic",
-          "longing",
-          "heartbreak",
-          "guitar",
-          "solo",
+        "sad",
+        "retrospective",
+        "nostalgic",
+        "longing",
+        "heartbreak",
+        "guitar",
+        "solo",
       ]
-  note: "I used to listen to this when I wish you were here."
-  language: en
-  listen:
+    note: "I used to listen to this when I wish you were here."
+    language: en
+    listen:
       - ORG: https://youtu.be/VT1-sitWRtY?si=rvslY4YXGRi2ukQp
       - NCR: https://youtu.be/6K_m_fxEe2E?si=F2w-w8WjIZ-uIjIt
 
-- title: "Complicated"
-  release: "2002-03-11"
-  tags: ["happy", "nostalgic", "conflicted", "guitar", "solo"]
-  note:
-  language: en
-  listen:
+  - title: "Complicated"
+    release: "2002-03-11"
+    tags: ["happy", "nostalgic", "conflicted", "guitar", "solo"]
+    note:
+    language: en
+    listen:
       - ORG: https://youtu.be/5NPBIwQyPWE?si=0hOAW2Co0lmaSyuE
       - NCR: https://youtu.be/zZiSX8VzHE8?si=5_tMDxp1JL3Y4luq
 
-- title: "Sk8er Boi"
-  release: "2002-11-09"
-  tags: ["happy", "nostalgic", "rebellious", "energetic", "guitar", "solo"]
-  note:
-  language: en
-  listen:
+  - title: "Sk8er Boi"
+    release: "2002-11-09"
+    tags: ["happy", "nostalgic", "rebellious", "energetic", "guitar", "solo"]
+    note:
+    language: en
+    listen:
       - ORG: https://youtu.be/TIy3n2b7V9k?si=0txZ1LlQwUF96g7T
       - NCR: https://youtu.be/8m5xepmZkzI?si=hqb37ZJYYVAb3Vo1
 
-- title: "I'm With You"
-  release: "2002-11-08"
-  tags: ["sad", "nostalgic", "longing", "guitar", "solo", "pop rock"]
-  note:
-  language: en
-  listen:
+  - title: "I'm With You"
+    release: "2002-11-08"
+    tags: ["sad", "nostalgic", "longing", "guitar", "solo", "pop rock"]
+    note:
+    language: en
+    listen:
       - ORG: https://youtu.be/dGR65RWwzg8?si=lA1Leu7S6BkUfh5c
 
-- title: "Young & Dumb"
-  release: "2025-05-10"
-  tags:
+  - title: "Young & Dumb"
+    release: "2025-05-10"
+    tags:
       [
-          "guitar",
-          "nostalgic",
-          "colab",
-          "simple plan (artist)",
-          "happy",
-          "energetic",
-          "without regrets",
-          "youth",
-          "drum",
-          "band",
-          "teenage",
+        "guitar",
+        "nostalgic",
+        "colab",
+        "simple plan (artist)",
+        "happy",
+        "energetic",
+        "without regrets",
+        "youth",
+        "drum",
+        "band",
+        "teenage",
       ]
-  note: "Avril is Avril even in 2025!"
-  language: en
-  listen:
+    note: "Avril is Avril even in 2025!"
+    language: en
+    listen:
       - ORG: https://youtu.be/gRX3Gm-YPRY?si=YD8hIgkdaNHLGseZ
 
-- title: "Girlfriend"
-  artist: "Avril Lavigne"
-  release: "2007-02-27"
-  tags:
+  - title: "Girlfriend"
+    artist: "Avril Lavigne"
+    release: "2007-02-27"
+    tags:
       [
-          "brazen confidence",
-          "playful",
-          "mischevious",
-          "bold",
-          "flirty",
-          "bratty",
-          "fun",
-          "energetic",
-          "rebellious",
-          "catchy",
-          "catchy swagger",
-          "pop-punk",
-          "high tone",
-          "speedy",
+        "brazen confidence",
+        "playful",
+        "mischevious",
+        "bold",
+        "flirty",
+        "bratty",
+        "fun",
+        "energetic",
+        "rebellious",
+        "catchy",
+        "catchy swagger",
+        "pop-punk",
+        "high tone",
+        "speedy",
       ]
-  note: "Now Avril is crushed on you?!"
-  language: en
-  listen:
+    note: "Now Avril is crushed on you?!"
+    language: en
+    listen:
       - ORG: https://youtu.be/Bg59q4puhmg?si=dY9kMXKRaCTkMVXe
       - NCR: https://youtu.be/5AHxklQ18o8?si=qXWhe9brqIoJEHZQ
 
-- title: "My Happy Ending"
-  artist: "Avril Lavigne"
-  release: "2004-05-03"
-  language: en
-  tags:
+  - title: "My Happy Ending"
+    artist: "Avril Lavigne"
+    release: "2004-05-03"
+    language: en
+    tags:
       [
-          "bitter",
-          "reflection",
-          "heartfelt",
-          "heartbreak",
-          "regretful",
-          "melancholic",
-          "nostalgia",
-          "angsty",
-          "realization",
-          "emo",
-          "pop",
-          "emo rock",
-          "emotional",
-          "sadness",
-          "wistful",
-          "confession",
+        "bitter",
+        "reflection",
+        "heartfelt",
+        "heartbreak",
+        "regretful",
+        "melancholic",
+        "nostalgia",
+        "angsty",
+        "realization",
+        "emo",
+        "pop",
+        "emo rock",
+        "emotional",
+        "sadness",
+        "wistful",
+        "confession",
       ]
-  note: ""
-  listen:
+    note: ""
+    listen:
       - ORG: https://youtu.be/s8QYxmpuyxg?si=sAje9DRj72YWz3jL
       - NCR: https://youtu.be/U6qFXVC-E30?si=KJeDy615e-MfSMsM
 
-- title: "Smile"
-  artist: "Avril Lavigne"
-  release: "2011-06-07"
-  language: en
-  tags:
+  - title: "Smile"
+    artist: "Avril Lavigne"
+    release: "2011-06-07"
+    language: en
+    tags:
       [
-          "pop",
-          "pop-punk",
-          "punk",
-          "emo",
-          "emo rock",
-          "sassy",
-          "vengeance",
-          "empowered",
-          "cheerful",
-          "playful",
-          "defiant",
-          "mocking",
+        "pop",
+        "pop-punk",
+        "punk",
+        "emo",
+        "emo rock",
+        "sassy",
+        "vengeance",
+        "empowered",
+        "cheerful",
+        "playful",
+        "defiant",
+        "mocking",
       ]
-  note: "From *Goodbye Lullaby*, a tongue-in-cheek takedown of an ex—fiery but smiling."
-  listen:
+    note: "From *Goodbye Lullaby*, a tongue-in-cheek takedown of an ex—fiery but smiling."
+    listen:
       - ORG: https://youtu.be/KagvExF-ijc?si=SK0wCusaPurrdzDi
       - NCR: https://youtu.be/JK8kYDtET9w?si=cJ1ksm5z2El2VxMu
 
-- title: "Nobody's Home"
-  artist: "Avril Lavigne"
-  release: "2004-11-15"
-  language: en
-  tags:
+  - title: "Nobody's Home"
+    artist: "Avril Lavigne"
+    release: "2004-11-15"
+    language: en
+    tags:
       [
-          "lonely",
-          "emo",
-          "rock",
-          "silent",
-          "melancholic",
-          "haunting",
-          "empty",
-          "sad",
-          "vulnerable",
-          "cry",
-          "reflection",
-          "heartache",
-          "heartbreak",
+        "lonely",
+        "emo",
+        "rock",
+        "silent",
+        "melancholic",
+        "haunting",
+        "empty",
+        "sad",
+        "vulnerable",
+        "cry",
+        "reflection",
+        "heartache",
+        "heartbreak",
       ]
-  note: ""
-  listen:
+    note: ""
+    listen:
       - ORG: https://youtu.be/NGFSNE18Ywc?si=-QFY4fSphwFXSdMV
 
-- title: "Rock N Roll"
-  artist: "Avril Lavigne"
-  release: "2013-01-17"
-  language: en
-  tags:
+  - title: "Rock N Roll"
+    artist: "Avril Lavigne"
+    release: "2013-01-17"
+    language: en
+    tags:
       [
-          "rebellious",
-          "wild",
-          "pop",
-          "rock",
-          "guitar",
-          "party anthem",
-          "energetic",
-          "punk-pop",
-          "brash",
-          "defiant",
-          "celebratory",
-          "raw",
-          "carefree",
-          "carefree swagger",
-          "free spirit",
-          "youthful",
+        "rebellious",
+        "wild",
+        "pop",
+        "rock",
+        "guitar",
+        "party anthem",
+        "energetic",
+        "punk-pop",
+        "brash",
+        "defiant",
+        "celebratory",
+        "raw",
+        "carefree",
+        "carefree swagger",
+        "free spirit",
+        "youthful",
       ]
-  note: "A song sings when Avril Lavigne is happy and free"
-  listen:
+    note: "A song sings when Avril Lavigne is happy and free"
+    listen:
       - ORG: https://youtu.be/uuNTO31FlY8?si=-BDS_08ptp4XeIyn
       - NCR: https://youtu.be/sEmNbGnDT3I?si=JZqQInnCcKVOW3eQ
 
-- title: "Bite Me"
-  artist: "Avril Lavigne"
-  release: "2021-04-15"
-  language: en
-  tags:
+  - title: "Bite Me"
+    artist: "Avril Lavigne"
+    release: "2021-04-15"
+    language: en
+    tags:
       [
-          "fiery",
-          "defiant",
-          "lovesick",
-          "without regrets",
-          "cinematic",
-          "meltdown",
-          "agressive",
-          "pop",
-          "rock",
-          "punk rock",
-          "taunting aggression",
-          "revenge",
-          "liberation",
-          "sarcastic",
-          "backlash",
-          "flashback",
-          "empowerment",
-          "reclaiming",
+        "fiery",
+        "defiant",
+        "lovesick",
+        "without regrets",
+        "cinematic",
+        "meltdown",
+        "agressive",
+        "pop",
+        "rock",
+        "punk rock",
+        "taunting aggression",
+        "revenge",
+        "liberation",
+        "sarcastic",
+        "backlash",
+        "flashback",
+        "empowerment",
+        "reclaiming",
       ]
-  note: "Love sux always"
-  listen:
+    note: "Love sux always"
+    listen:
       - ORG: https://youtu.be/ciqUEV9F0OY?si=V2NZQhRpLQgR6Pxk
       - NCR: https://youtu.be/1xkRSYlLlIY?si=_wFLUKf2J-ff2AZ8

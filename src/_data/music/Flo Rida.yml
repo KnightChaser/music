@@ -1,27 +1,30 @@
 # Flo Rida.yml
 
-- title: "Club Can't Handle Me"
-  release: "2010-07-16"
-  tags:
-    [
-      "anthemic",
-      "party",
-      "electronic",
-      "dance",
-      "club",
-      "rap",
-      "upbeat",
-      "american",
-      "energetic",
-      "catchy",
-      "feel good",
-      "happy",
-      "exciting",
-      "nostalgic",
-      "festival",
-      "summer",
-    ]
-  note: "Flo Rida, whatcha gonna do when the club ain't handle you anymore?"
-  language: en
-  listen:
-    - ORG: https://youtu.be/SgM3r8xKfGE?si=2UPpJ-8Y-GdNFksq
+nationality: US
+
+songs:
+  - title: "Club Can't Handle Me"
+    release: "2010-07-16"
+    tags:
+      [
+        "anthemic",
+        "party",
+        "electronic",
+        "dance",
+        "club",
+        "rap",
+        "upbeat",
+        "american",
+        "energetic",
+        "catchy",
+        "feel good",
+        "happy",
+        "exciting",
+        "nostalgic",
+        "festival",
+        "summer",
+      ]
+    note: "Flo Rida, whatcha gonna do when the club ain't handle you anymore?"
+    language: en
+    listen:
+      - ORG: https://youtu.be/SgM3r8xKfGE?si=2UPpJ-8Y-GdNFksq

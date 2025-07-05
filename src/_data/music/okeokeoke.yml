@@ -1,26 +1,29 @@
 # okeokeoke.yml
 
-- title: "Low G"
-  release: "2020-12-06"
-  tags:
+nationality: VN
+
+songs:
+  - title: "Low G"
+    release: "2020-12-06"
+    tags:
       [
-          "sensational",
-          "rap",
-          "hip-hop",
-          "banger",
-          "urban",
-          "vietnamese",
-          "viral",
-          "dark",
-          "smoky",
-          "beat",
-          "gray",
-          "cloudy",
-          "low-key",
-          "chill",
-          "repeated chorus",
+        "sensational",
+        "rap",
+        "hip-hop",
+        "banger",
+        "urban",
+        "vietnamese",
+        "viral",
+        "dark",
+        "smoky",
+        "beat",
+        "gray",
+        "cloudy",
+        "low-key",
+        "chill",
+        "repeated chorus",
       ]
-  note: "damn real banger from Vietnam"
-  language: vn
-  listen:
+    note: "damn real banger from Vietnam"
+    language: vn
+    listen:
       - ORG: https://youtu.be/TaZTsgc_bg8?si=v2DsOGGhhMbw03DI

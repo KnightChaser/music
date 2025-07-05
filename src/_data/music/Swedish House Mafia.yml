@@ -1,25 +1,28 @@
 # Swedish House Mafia.yml
 
-- title: "Save The World"
-  release: "2011-05-20"
-  tags:
-    [
-      "midnight",
-      "nostalgic",
-      "nostalgia",
-      "reflective",
-      "hopeful",
-      "electronic",
-      "dance",
-      "house",
-      "anthemic",
-      "emotional",
-      "dreamy",
-      "euphoric",
-    ]
-  note: "My forever nostalgia in nighttime."
-  language: en
-  listen:
-    - ORG: https://youtu.be/BXpdmKELE1k?si=e8ftqOyoyUJ_peE9
-    - RX:
-    - NCR:
+nationality: SE
+
+songs:
+  - title: "Save The World"
+    release: "2011-05-20"
+    tags:
+      [
+        "midnight",
+        "nostalgic",
+        "nostalgia",
+        "reflective",
+        "hopeful",
+        "electronic",
+        "dance",
+        "house",
+        "anthemic",
+        "emotional",
+        "dreamy",
+        "euphoric",
+      ]
+    note: "My forever nostalgia in nighttime."
+    language: en
+    listen:
+      - ORG: https://youtu.be/BXpdmKELE1k?si=e8ftqOyoyUJ_peE9
+      - RX:
+      - NCR:

@@ -1,32 +1,35 @@
 # Tinashe.yml
 
-- title: "2 On (Explicit) (feat. Schoolboy Q)"
-  release: "2014-02-21"
-  tags:
-    [
-      "hip hop",
-      "girl",
-      "sweet voice",
-      "bad ass",
-      "colab",
-      "explicit",
-      "party",
-      "club",
-      "smoke",
-      "laid back",
-      "cool",
-      "chill",
-      "girl crush",
-      "smooth",
-      "basement",
-      "aesthetic",
-      "sexy",
-      "sensual",
-      "purple",
-      "dark",
-    ]
-  note: ""
-  language: en
-  listen:
-    - ORG: https://youtu.be/-s7TCuCpB5c?si=Bju7pdcHEjEasrpT
-    - NCR: https://youtu.be/LDU2Ud-eqfQ?si=YNB71_ZvL8adVPpl
+nationality: US
+
+songs:
+  - title: "2 On (Explicit) (feat. Schoolboy Q)"
+    release: "2014-02-21"
+    tags:
+      [
+        "hip hop",
+        "girl",
+        "sweet voice",
+        "bad ass",
+        "colab",
+        "explicit",
+        "party",
+        "club",
+        "smoke",
+        "laid back",
+        "cool",
+        "chill",
+        "girl crush",
+        "smooth",
+        "basement",
+        "aesthetic",
+        "sexy",
+        "sensual",
+        "purple",
+        "dark",
+      ]
+    note: ""
+    language: en
+    listen:
+      - ORG: https://youtu.be/-s7TCuCpB5c?si=Bju7pdcHEjEasrpT
+      - NCR: https://youtu.be/LDU2Ud-eqfQ?si=YNB71_ZvL8adVPpl

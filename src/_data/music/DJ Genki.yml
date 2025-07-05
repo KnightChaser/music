@@ -1,96 +1,99 @@
 # DJ Genki.yml
 
-- title: "StarDust (feat. 柚木梨沙)"
-  release: "2020-03-22"
-  tags:
-    [
-      "j-core",
-      "hardcore",
-      "happy hardcore",
-      "yellow",
-      "light blue",
-      "vocal",
-      "synth",
-      "extreme",
-      "dope",
-      "screaming",
-      "speedy",
-      "bright",
-      "ultra vivid",
-      "revolution of happiness",
-    ]
-  note: "My favorite J-Core track."
-  language: ja
-  listen:
-    - ORG: https://youtu.be/n_MgKfUVyPE?si=tnspBsuOUaghl_4G
+nationality: JP
 
-- title: "1, 2, 3のLOVEサイン (feat. 藍月なくる)"
-  release: "2019-09-13"
-  tags:
-    [
-      "j-core",
-      "hardcore",
-      "happy hardcore",
-      "yellow",
-      "purple",
-      "green",
-      "vocal",
-      "speedy",
-      "happy",
-      "bright",
-      "energetic",
-      "high tone",
-      "upbeat",
-      "ultra vivid",
-      "ultra happy collection",
-    ]
-  note: ""
-  language: ja
-  listen:
-    - ORG: https://youtu.be/o1Ug5M8C1xY?si=DL0QGvR5Ac4A3Xqc
+songs:
+  - title: "StarDust (feat. 柚木梨沙)"
+    release: "2020-03-22"
+    tags:
+      [
+        "j-core",
+        "hardcore",
+        "happy hardcore",
+        "yellow",
+        "light blue",
+        "vocal",
+        "synth",
+        "extreme",
+        "dope",
+        "screaming",
+        "speedy",
+        "bright",
+        "ultra vivid",
+        "revolution of happiness",
+      ]
+    note: "My favorite J-Core track."
+    language: ja
+    listen:
+      - ORG: https://youtu.be/n_MgKfUVyPE?si=tnspBsuOUaghl_4G
 
-- title: "FLUFFY♡POPPING☆SUMMER!!! (EXTENDED MIX)"
-  release: "2021-01-03"
-  tags:
-    [
-      "j-core",
-      "hardcore",
-      "happy hardcore",
-      "yellow",
-      "orange",
-      "sky blue",
-      "light blue",
-      "dope",
-      "synth",
-      "speedy",
-      "bright",
-      "energetic",
-      "upbeat",
-      "ultra vivid",
-      "ultra happy carnival",
-    ]
-  note: ""
-  language: none
-  listen:
-    - ORG: https://youtu.be/-lm1cG_f6yM?si=P9adnaWothyXPM-r
+  - title: "1, 2, 3のLOVEサイン (feat. 藍月なくる)"
+    release: "2019-09-13"
+    tags:
+      [
+        "j-core",
+        "hardcore",
+        "happy hardcore",
+        "yellow",
+        "purple",
+        "green",
+        "vocal",
+        "speedy",
+        "happy",
+        "bright",
+        "energetic",
+        "high tone",
+        "upbeat",
+        "ultra vivid",
+        "ultra happy collection",
+      ]
+    note: ""
+    language: ja
+    listen:
+      - ORG: https://youtu.be/o1Ug5M8C1xY?si=DL0QGvR5Ac4A3Xqc
 
-- title: "YELL! (feat. moimoi)"
-  release: "2016-12-29"
-  tags:
-    [
-      "j-core",
-      "hardcore",
-      "happy hardcore",
-      "yellow",
-      "progressive",
-      "gradual",
-      "growing",
-      "orange",
-      "red",
-      "revolution of happy",
-      "vocal",
-    ]
-  note: ""
-  language: ja
-  listen:
-    - ORG: https://youtu.be/009RS6Eq_OA?si=ANkWmHqF231YZzug
+  - title: "FLUFFY♡POPPING☆SUMMER!!! (EXTENDED MIX)"
+    release: "2021-01-03"
+    tags:
+      [
+        "j-core",
+        "hardcore",
+        "happy hardcore",
+        "yellow",
+        "orange",
+        "sky blue",
+        "light blue",
+        "dope",
+        "synth",
+        "speedy",
+        "bright",
+        "energetic",
+        "upbeat",
+        "ultra vivid",
+        "ultra happy carnival",
+      ]
+    note: ""
+    language: none
+    listen:
+      - ORG: https://youtu.be/-lm1cG_f6yM?si=P9adnaWothyXPM-r
+
+  - title: "YELL! (feat. moimoi)"
+    release: "2016-12-29"
+    tags:
+      [
+        "j-core",
+        "hardcore",
+        "happy hardcore",
+        "yellow",
+        "progressive",
+        "gradual",
+        "growing",
+        "orange",
+        "red",
+        "revolution of happy",
+        "vocal",
+      ]
+    note: ""
+    language: ja
+    listen:
+      - ORG: https://youtu.be/009RS6Eq_OA?si=ANkWmHqF231YZzug

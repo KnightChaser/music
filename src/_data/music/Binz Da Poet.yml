@@ -1,22 +1,25 @@
 # Binz Da Poet.yml
 
-- title: "BIGCITYBOI"
-  release: "2020-07-05"
-  tags:
+nationality: VN
+
+songs:
+  - title: "BIGCITYBOI"
+    release: "2020-07-05"
+    tags:
       [
-          "club",
-          "silenet",
-          "vietnamese",
-          "modern",
-          "hip-hop",
-          "low-key",
-          "chill",
-          "neon",
-          "urban",
-          "vibe",
-          "viral",
+        "club",
+        "silenet",
+        "vietnamese",
+        "modern",
+        "hip-hop",
+        "low-key",
+        "chill",
+        "neon",
+        "urban",
+        "vibe",
+        "viral",
       ]
-  note: "Vietnamese silent banger"
-  language: vn
-  listen:
+    note: "Vietnamese silent banger"
+    language: vn
+    listen:
       - ORG: https://youtu.be/jgZkrA8E5do?si=51QXxEBmwHsEzkpg

@@ -1,20 +1,23 @@
 # Eric Prydz.yml
 
-- title: "Call on Me"
-  release: "2004-09-13"
-  tags:
-    [
-      "dance",
-      "nostalgic",
-      "beat",
-      "synth",
-      "club",
-      "disco",
-      "progressive house",
-      "house",
-      "repeating lyrics",
-    ]
-  note:
-  language: en
-  listen:
-    - ORG: https://youtu.be/IaPxPMbx6bM?si=iHA-pGzrt0nUKHFz
+nationality: SE
+
+songs:
+  - title: "Call on Me"
+    release: "2004-09-13"
+    tags:
+      [
+        "dance",
+        "nostalgic",
+        "beat",
+        "synth",
+        "club",
+        "disco",
+        "progressive house",
+        "house",
+        "repeating lyrics",
+      ]
+    note:
+    language: en
+    listen:
+      - ORG: https://youtu.be/IaPxPMbx6bM?si=iHA-pGzrt0nUKHFz

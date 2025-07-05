@@ -1,22 +1,25 @@
 # We The Kings.yml
 
-- title: "Check Yes Juliet"
-  release: "2010-09-22"
-  tags:
+nationality: US
+
+songs:
+  - title: "Check Yes Juliet"
+    release: "2010-09-22"
+    tags:
       [
-          "nostalgic",
-          "guitar",
-          "rock",
-          "pop-punk",
-          "american",
-          "crush",
-          "teenage",
-          "romantic",
-          "upbeat",
-          "without regrets",
-          "adventurous",
+        "nostalgic",
+        "guitar",
+        "rock",
+        "pop-punk",
+        "american",
+        "crush",
+        "teenage",
+        "romantic",
+        "upbeat",
+        "without regrets",
+        "adventurous",
       ]
-  note: ""
-  language: en
-  listen:
+    note: ""
+    language: en
+    listen:
       - ORG: https://youtu.be/5CUyWJ7UINM?si=9jVfu1lusloPPlLD

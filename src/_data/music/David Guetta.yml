@@ -1,19 +1,22 @@
 # David Guetta.yml
 
-- title: "Without You (feat. Usher)"
-  release: "2011-09-29"
-  tags:
-    [
-      "pop",
-      "dance",
-      "dance pop",
-      "edm",
-      "nostalgic",
-      "uplifting",
-      "colab",
-      "club",
-    ]
-  note: ""
-  language: en
-  listen:
-    - ORG: https://youtu.be/jUe8uoKdHao?si=iDpxVcN1L7LpOZ5L
+nationality: FR
+
+songs:
+  - title: "Without You (feat. Usher)"
+    release: "2011-09-29"
+    tags:
+      [
+        "pop",
+        "dance",
+        "dance pop",
+        "edm",
+        "nostalgic",
+        "uplifting",
+        "colab",
+        "club",
+      ]
+    note: ""
+    language: en
+    listen:
+      - ORG: https://youtu.be/jUe8uoKdHao?si=iDpxVcN1L7LpOZ5L

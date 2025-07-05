@@ -1,28 +1,31 @@
 # NCT 127.yml
 
-- title: "영웅 (英雄; Kick It)"
-  release: "2020-03-05"
-  tags:
-    [
-      "k-pop",
-      "red",
-      "yellow",
-      "black",
-      "theme",
-      "hero",
-      "energetic",
-      "powerful",
-      "restrained",
-      "multiple vocals",
-      "synchronized",
-      "midnight",
-      "boy crush",
-      "dance",
-      "hip-hop",
-      "dreamlike",
-      "next generation",
-    ]
-  note: ""
-  language: ko
-  listen:
-    - ORG: https://youtu.be/2OvyA2__Eas?si=cddnfAIsjS2duAfi
+nationality: KR
+
+songs:
+  - title: "영웅 (英雄; Kick It)"
+    release: "2020-03-05"
+    tags:
+      [
+        "k-pop",
+        "red",
+        "yellow",
+        "black",
+        "theme",
+        "hero",
+        "energetic",
+        "powerful",
+        "restrained",
+        "multiple vocals",
+        "synchronized",
+        "midnight",
+        "boy crush",
+        "dance",
+        "hip-hop",
+        "dreamlike",
+        "next generation",
+      ]
+    note: ""
+    language: ko
+    listen:
+      - ORG: https://youtu.be/2OvyA2__Eas?si=cddnfAIsjS2duAfi

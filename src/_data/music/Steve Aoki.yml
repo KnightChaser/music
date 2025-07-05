@@ -1,51 +1,54 @@
 # Steve Aoki.yml
 
-- title: "End Like This (feat. RUNN) (Arknights OST)"
-  release: "2021-01-09"
-  tags:
+nationality: US
+
+songs:
+  - title: "End Like This (feat. RUNN) (Arknights OST)"
+    release: "2021-01-09"
+    tags:
       [
-          "postapocalyptic",
-          "electronic",
-          "video-game",
-          "arknights",
-          "whispering",
-          "high tones",
-          "intense",
-          "slow beat",
-          "outcrying",
-          "without regrets",
-          "crossing fates",
-          "reminiscent",
-          "vengenece",
+        "postapocalyptic",
+        "electronic",
+        "video-game",
+        "arknights",
+        "whispering",
+        "high tones",
+        "intense",
+        "slow beat",
+        "outcrying",
+        "without regrets",
+        "crossing fates",
+        "reminiscent",
+        "vengenece",
       ]
-  note: "My #1 choice for the game OST"
-  language: en
-  listen:
+    note: "My #1 choice for the game OST"
+    language: en
+    listen:
       - ORG: https://youtu.be/rvIIiSWfa8E?si=DMDqQ42p2iU4xCuw
       - NCR: https://youtu.be/wo0eoj9wW9A?si=j8MwN-UOtwY3jIt6
 
-- title: "Azukita"
-  release: "2018-02-27"
-  tags:
+  - title: "Azukita"
+    release: "2018-02-27"
+    tags:
       [
-          "psychedelic",
-          "electronic",
-          "latin",
-          "reggaeton",
-          "dance",
-          "party",
-          "upbeat",
-          "summer",
-          "beach",
-          "sunny",
-          "strong beats",
-          "viral",
-          "vibe",
-          "catchy",
-          "hard dance",
-          "collaboration",
+        "psychedelic",
+        "electronic",
+        "latin",
+        "reggaeton",
+        "dance",
+        "party",
+        "upbeat",
+        "summer",
+        "beach",
+        "sunny",
+        "strong beats",
+        "viral",
+        "vibe",
+        "catchy",
+        "hard dance",
+        "collaboration",
       ]
-  note: ""
-  language: es
-  listen:
+    note: ""
+    language: es
+    listen:
       - ORG: https://youtu.be/SWiaqhNSXeg?si=3SXC79dUPkfK-KpS

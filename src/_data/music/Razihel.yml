@@ -1,26 +1,29 @@
 # Razihel.yml
 
-- title: "Love U"
-  release: "2016-03-24"
-  tags:
-    [
-      "edm",
-      "nocopyrightsounds",
-      "electronic",
-      "uplifting",
-      "happy",
-      "feel good",
-      "melodic",
-      "sky",
-      "blue",
-      "deep blue",
-      "atmospheric",
-      "chill",
-      "nostalgic",
-      "vibes",
-    ]
-  note: ""
-  language: none
-  listen:
-    - ORG: https://youtu.be/OJBxNA8cX-E?si=co4ZuskJk16DCo3p
-    - NCR: https://youtu.be/PfGoKod5n8U?si=8KNIsLGIZGJWdgtx
+nationality: US
+
+songs:
+  - title: "Love U"
+    release: "2016-03-24"
+    tags:
+      [
+        "edm",
+        "nocopyrightsounds",
+        "electronic",
+        "uplifting",
+        "happy",
+        "feel good",
+        "melodic",
+        "sky",
+        "blue",
+        "deep blue",
+        "atmospheric",
+        "chill",
+        "nostalgic",
+        "vibes",
+      ]
+    note: ""
+    language: none
+    listen:
+      - ORG: https://youtu.be/OJBxNA8cX-E?si=co4ZuskJk16DCo3p
+      - NCR: https://youtu.be/PfGoKod5n8U?si=8KNIsLGIZGJWdgtx

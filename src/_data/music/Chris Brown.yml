@@ -1,21 +1,24 @@
 # Chris Brown
 
-- title: "With You"
-  release: "2007-12-04"
-  tags:
-    [
-      "romantic",
-      "uplifting",
-      "smooth",
-      "r&b",
-      "pop",
-      "solo",
-      "guitar",
-      "lovesick",
-      "classic",
-    ]
-  note: "A real classic of downturned love and guitar"
-  language: en
-  listen:
-    - ORG: https://youtu.be/nmjdaBaZe8Y?si=cYiNjXk6S3qWMBxQ
-    - NCR: https://youtu.be/lWcerGOoR6A?si=6dYLNR_r3sQZ1N_m
+nationality: US
+
+songs:
+  - title: "With You"
+    release: "2007-12-04"
+    tags:
+      [
+        "romantic",
+        "uplifting",
+        "smooth",
+        "r&b",
+        "pop",
+        "solo",
+        "guitar",
+        "lovesick",
+        "classic",
+      ]
+    note: "A real classic of downturned love and guitar"
+    language: en
+    listen:
+      - ORG: https://youtu.be/nmjdaBaZe8Y?si=cYiNjXk6S3qWMBxQ
+      - NCR: https://youtu.be/lWcerGOoR6A?si=6dYLNR_r3sQZ1N_m

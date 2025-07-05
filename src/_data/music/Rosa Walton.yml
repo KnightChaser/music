@@ -1,25 +1,28 @@
 # Rosa Walton.yml
 
-- title: "I Really Want To Stay At Your House"
-  release: "2022-10-04"
-  tags:
-    [
-      "pop",
-      "ost",
-      "cyberpunk 2077",
-      "nostalgic",
-      "reflective",
-      "synth",
-      "distorted vocals",
-      "intimate",
-      "heartbreak",
-      "melancholic",
-      "synthwave",
-      "synthesizer",
-      "retro",
-      "dreamy",
-    ]
-  note: ""
-  language: en
-  listen:
-    - ORG: https://youtu.be/KvMY1uzSC1E?si=VK8EpMmeSQ5YI9t-
+nationality: GB
+
+songs:
+  - title: "I Really Want To Stay At Your House"
+    release: "2022-10-04"
+    tags:
+      [
+        "pop",
+        "ost",
+        "cyberpunk 2077",
+        "nostalgic",
+        "reflective",
+        "synth",
+        "distorted vocals",
+        "intimate",
+        "heartbreak",
+        "melancholic",
+        "synthwave",
+        "synthesizer",
+        "retro",
+        "dreamy",
+      ]
+    note: ""
+    language: en
+    listen:
+      - ORG: https://youtu.be/KvMY1uzSC1E?si=VK8EpMmeSQ5YI9t-

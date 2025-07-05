@@ -1,27 +1,30 @@
 # SIAM SHADE
 
-- title: 1/3の純情な感情 (1/3 Pure Heart Emotion)
-  release: "1997-11-27"
-  tags:
-    [
-      "rock",
-      "japanese",
-      "anime",
-      "anime rock",
-      "nostalgic",
-      "90s",
-      "opening",
-      "emotional",
-      "powerful",
-      "energetic",
-      "solo guitar",
-      "rurouni kenshin",
-      "samurai",
-      "nostalgia",
-    ]
-  note: "My first Japanese song released before 2000."
-  language: ja
-  listen:
-    - ORG: https://youtu.be/tDs0W-wo8dI?si=ZomMRAaH0S7ALIu6
-    - RX(Raise A Sulien): https://youtu.be/s-pwK80z6SA?si=udLDz3gCT_wCypas
-    - RX(アカツキ guitar cover): https://youtu.be/-DS1xbZyW6s?si=r6mHg5v9xXIbekh0)
+nationality: JP
+
+songs:
+  - title: 1/3の純情な感情 (1/3 Pure Heart Emotion)
+    release: "1997-11-27"
+    tags:
+      [
+        "rock",
+        "japanese",
+        "anime",
+        "anime rock",
+        "nostalgic",
+        "90s",
+        "opening",
+        "emotional",
+        "powerful",
+        "energetic",
+        "solo guitar",
+        "rurouni kenshin",
+        "samurai",
+        "nostalgia",
+      ]
+    note: "My first Japanese song released before 2000."
+    language: ja
+    listen:
+      - ORG: https://youtu.be/tDs0W-wo8dI?si=ZomMRAaH0S7ALIu6
+      - RX(Raise A Sulien): https://youtu.be/s-pwK80z6SA?si=udLDz3gCT_wCypas
+      - RX(アカツキ guitar cover): https://youtu.be/-DS1xbZyW6s?si=r6mHg5v9xXIbekh0)

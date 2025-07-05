@@ -1,33 +1,36 @@
 # Idina Menzel.yml
 
-- title: "Let It Go"
-  release: "2013-12-18"
-  tags:
-    [
-      "diseny",
-      "ost",
-      "frozen (movie)",
-      "powerful vocals",
-      "empowering",
-      "anthemic",
-      "authentic",
-      "emotional",
-      "inspirational",
-      "defiant",
-      "against the odds",
-      "self acceptance",
-      "confident",
-      "high tone",
-      "gradual build",
-      "orchestral",
-      "cinematic",
-      "pop ballad",
-      "show tune",
-    ]
-  note: "Song for children? Hehe, no. Song for everyone who has ever felt like they don't fit in."
-  language: en
-  listen:
-    - ORG: https://youtu.be/YVVTZgwYwVo?si=LUhr7WdW8oTsotQ5
-    - NCR: https://youtu.be/MIqcn3zA3zg?si=CJXOY1iAroBS8TAM
-    - RX(Demi Lovato): https://youtu.be/kHue-HaXXzg?si=SOaF5cctNQ2NhmiR
-    - RX(Demi Lovato, NCR): https://youtu.be/bcy4VwA7UzY?si=LFkP0aDaC-TomXM5
+nationality: US
+
+songs:
+  - title: "Let It Go"
+    release: "2013-12-18"
+    tags:
+      [
+        "diseny",
+        "ost",
+        "frozen (movie)",
+        "powerful vocals",
+        "empowering",
+        "anthemic",
+        "authentic",
+        "emotional",
+        "inspirational",
+        "defiant",
+        "against the odds",
+        "self acceptance",
+        "confident",
+        "high tone",
+        "gradual build",
+        "orchestral",
+        "cinematic",
+        "pop ballad",
+        "show tune",
+      ]
+    note: "Song for children? Hehe, no. Song for everyone who has ever felt like they don't fit in."
+    language: en
+    listen:
+      - ORG: https://youtu.be/YVVTZgwYwVo?si=LUhr7WdW8oTsotQ5
+      - NCR: https://youtu.be/MIqcn3zA3zg?si=CJXOY1iAroBS8TAM
+      - RX(Demi Lovato): https://youtu.be/kHue-HaXXzg?si=SOaF5cctNQ2NhmiR
+      - RX(Demi Lovato, NCR): https://youtu.be/bcy4VwA7UzY?si=LFkP0aDaC-TomXM5

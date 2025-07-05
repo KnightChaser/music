@@ -1,26 +1,29 @@
 # Westlife.yml
 
-- title: "My Love"
-  release: "2000-10-30"
-  tags:
-    [
-      "nostalgic",
-      "romantic",
-      "ballad",
-      "pop",
-      "heartfelt",
-      "emotional",
-      "classic",
-      "love song",
-      "vocal harmony",
-      "early 2000s",
-      "classic pop",
-      "adult contemporary",
-      "harmony",
-    ]
-  note: "My #1 favorite song of all time. My first English-written music. My first choice of the popular music. I started learning English while listening to this song. 10+ years later, I still love it."
-  language: en
-  listen:
-    - ORG: https://youtu.be/ulOb9gIGGd0?si=lWY6QyReHXwK8GQN
-    - RX(Nonoy Peña): https://youtu.be/DIa5hOVqm8w?si=aEyGInhkBMLWuTQf
-    - NCR: https://youtu.be/Ze8hp9MdxRc?si=wlHnccyBLvV8wmLs
+nationality: IE
+
+songs:
+  - title: "My Love"
+    release: "2000-10-30"
+    tags:
+      [
+        "nostalgic",
+        "romantic",
+        "ballad",
+        "pop",
+        "heartfelt",
+        "emotional",
+        "classic",
+        "love song",
+        "vocal harmony",
+        "early 2000s",
+        "classic pop",
+        "adult contemporary",
+        "harmony",
+      ]
+    note: "My #1 favorite song of all time. My first English-written music. My first choice of the popular music. I started learning English while listening to this song. 10+ years later, I still love it."
+    language: en
+    listen:
+      - ORG: https://youtu.be/ulOb9gIGGd0?si=lWY6QyReHXwK8GQN
+      - RX(Nonoy Peña): https://youtu.be/DIa5hOVqm8w?si=aEyGInhkBMLWuTQf
+      - NCR: https://youtu.be/Ze8hp9MdxRc?si=wlHnccyBLvV8wmLs
