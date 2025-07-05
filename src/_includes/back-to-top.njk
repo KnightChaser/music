@@ -9,18 +9,4 @@
   TOP
 </button>
 
-<script>
-const btn = document.getElementById('backToTop');
-window.addEventListener('scroll', () => {
-  if (window.scrollY > 300) {
-    btn.classList.remove('opacity-0', 'pointer-events-none');
-    btn.classList.add('opacity-100', 'pointer-events-auto');
-  } else {
-    btn.classList.remove('opacity-100', 'pointer-events-auto');
-    btn.classList.add('opacity-0', 'pointer-events-none');
-  }
-});
-btn.addEventListener('click', () => {
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-});
-</script>
+{# The script has been moved to main.js #}
