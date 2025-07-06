@@ -5,6 +5,7 @@ import * as search from "./search.js";
 import * as renderer from "./renderer.js";
 import * as suggestions from "./suggestions.js";
 import * as worldMap from "./worldMap.js";
+import { langNames } from "./utils.js";
 
 // --- STATE ---
 let allSongs = [];
@@ -154,6 +155,58 @@ async function init() {
           mapContainer.innerHTML =
             '<p class="text-center text-red-500">Error loading map data.</p>';
         }
+      }
+    });
+  }
+
+  // Render the language distribution chart (highcharts)
+  const langToggleBtn = document.getElementById("lang-toggle");
+  const langContainer = document.getElementById("lang-container");
+  let langInitialized = false;
+
+  if (langToggleBtn && langContainer) {
+    langToggleBtn.addEventListener("click", () => {
+      // Show/hide the chart
+      langContainer.classList.toggle("hidden");
+
+      // Lazy-init the donut on first show
+      if (!langContainer.classList.contains("hidden") && !langInitialized) {
+        // Transform your existing languageCounts -> Highcharts data format
+        const chartData = Object.entries(languageCounts).map(
+          ([code, count]) => ({
+            name: langNames[code]?.[0] || code, // Use the full name(e.g. "English") instead of code(e.g. "en")
+            y: count,
+          })
+        );
+
+        Highcharts.chart("lang-container", {
+          chart: {
+            type: "pie",
+            backgroundColor: "#f9fafb",
+          },
+          title: { text: "Language Distribution of Songs" },
+          subtitle: { text: "Count of songs by its language" },
+          plotOptions: {
+            pie: {
+              innerSize: "50%", // donut hole
+              allowPointSelect: true,
+              cursor: "pointer",
+              dataLabels: {
+                enabled: true,
+                format: "{point.name}: {point.y}",
+              },
+            },
+          },
+          series: [
+            {
+              name: "Songs",
+              colorByPoint: true,
+              data: chartData,
+            },
+          ],
+        });
+
+        langInitialized = true;
       }
     });
   }
