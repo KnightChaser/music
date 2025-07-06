@@ -1,0 +1,27 @@
+# Minamotoya (源屋).yml
+
+nationality: JP
+
+songs:
+  - title: "Hello world! (Vocal by SOPHY)"
+    release: "2015-01-30"
+    tags:
+      [
+        "japanese",
+        "electronic",
+        "uk hardcore",
+        "happy hardcore",
+        "happy",
+        "speedy",
+        "jubeat",
+        "sophy (artist)",
+        "happy",
+        "game",
+        "ost",
+        "upbeat",
+        "synthesizer",
+      ]
+    note: "A short sorcery of happiness!"
+    language: ja
+    listen:
+      - ORG: https://youtu.be/Q_kb8qkWSY0?si=84dvPwmSFHRXp30e

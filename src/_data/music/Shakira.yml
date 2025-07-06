@@ -1,0 +1,32 @@
+# Shakira.yml
+
+nationality: CO
+
+songs:
+  - title: "Try Everything"
+    release: "2016-03-04"
+    tags:
+      [
+        "pop",
+        "zootopia (movie)",
+        "ost",
+        "upbeat",
+        "feel good",
+        "inspiring",
+        "hopeful",
+        "bright",
+        "empowering",
+        "motivational",
+        "catchy",
+        "anthem",
+        "nostalgic",
+        "solo vocal",
+        "blue sky",
+        "blue",
+        "dance",
+      ]
+    note: ""
+    language: en
+    listen:
+      - ORG: https://youtu.be/c6rP-YP4c5I?si=6ZPWSOn26NpjTgEq
+      - NCR: https://youtu.be/2ui70jBIapo?si=LJDtKpMlT9yxhENL

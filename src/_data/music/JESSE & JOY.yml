@@ -24,3 +24,32 @@ songs:
     language: es
     listen:
       - ORG: https://youtu.be/A9Iby9n-qAk?si=8AcuoTwXUHk9SSrE
+
+  - title: "La De La Mala Suerte"
+    release: "2012-03-26"
+    tags:
+      [
+        "latin pop",
+        "sweet",
+        "heartbreak",
+        "acoustic",
+        "acoustic guitar",
+        "singer-songwriter",
+        "band",
+        "classic",
+        "sweet voice",
+        "emotional",
+        "complicated love",
+        "nostalgic",
+        "melancholic",
+        "reflective",
+        "authentic",
+        "gradual",
+        "nostalgic",
+        "goodbye song",
+        "pop rock",
+      ]
+    note: "When you understand the lyrics, it hits harder"
+    language: es
+    listen:
+      - ORG: https://youtu.be/r0eIhlsks4s?si=6GY73l6TOwmOApJW

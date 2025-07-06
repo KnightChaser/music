@@ -36,3 +36,23 @@ songs:
     listen:
       - ORG: https://youtu.be/J-gYJBsln-w?si=w8OlalQ-dys18HqC
       - NCR: https://youtu.be/RE15Av09NJc?si=RhSyIpV4yNrKrU4_
+
+  - title: "Mana"
+    release: "2019-08-23"
+    tags:
+      [
+        "edm",
+        "exotic",
+        "multicultural",
+        "eastern",
+        "electronic",
+        "free",
+        "powerful",
+        "marvelous",
+        "unique",
+        "styled",
+      ]
+    note: ""
+    language: en
+    listen:
+      - ORG: https://youtu.be/_2aOd9Dt7R4?si=Qn6Oe5uN2HBGliPQ

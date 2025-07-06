@@ -1,0 +1,27 @@
+# SPACESPEAKERS.yml
+
+nationality: VN
+
+songs:
+  - title: "FREAKY SQUAD"
+    release: "2021-11-30"
+    tags:
+      [
+        "vietnamese",
+        "hip hop",
+        "street",
+        "midnight",
+        "neon",
+        "dawn",
+        "reflective",
+        "lowkey",
+        "chill",
+        "smoky",
+        "psychedelic",
+        "colab",
+        "multiple vocals",
+      ]
+    note: ""
+    language: en
+    listen:
+      - ORG: https://youtu.be/N4a9Db9_ijc?si=AYMwZbd3o-dNj3yP

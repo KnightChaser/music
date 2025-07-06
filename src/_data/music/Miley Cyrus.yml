@@ -1,0 +1,30 @@
+# Miley Cyrus.yml
+
+nationality: US
+
+songs:
+  - title: "The Climb"
+    release: "2009-02-14"
+    tags:
+      [
+        "pop",
+        "country pop",
+        "ballad",
+        "powerful ballad",
+        "powerful vocal",
+        "solo",
+        "piano",
+        "hopeful",
+        "inspirational",
+        "uplifting",
+        "emotional",
+        "reflective",
+        "gradual",
+        "gradual development",
+        "self discovery",
+        "empowerment",
+      ]
+    note: ""
+    language: en
+    listen:
+      - ORG: https://youtu.be/NG2zyeVRcbs?si=GRPUjiq5zKaeSWhr

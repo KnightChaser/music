@@ -1,0 +1,30 @@
+# Wiz Khalifa.yml
+
+nationality: US
+
+songs:
+  - title: "Roll Up"
+    release: "2011-03-05"
+    tags:
+      [
+        "hip hop",
+        "pop rap",
+        "rap",
+        "party",
+        "upbeat",
+        "summer",
+        "feel good",
+        "chill",
+        "laid back",
+        "catchy",
+        "anthem",
+        "nostalgic",
+        "solo vocal",
+        "blue sky",
+        "blue",
+        "light orange",
+      ]
+    note: ""
+    language: en
+    listen:
+      - ORG: https://youtu.be/UhQz-0QVmQ0?si=AkXsMAVO5SsRC7HM

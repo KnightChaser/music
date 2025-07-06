@@ -1,0 +1,28 @@
+# Takanashi Kiara.yml
+
+nationality: AT
+
+songs:
+  - title: "DO U"
+    release: "2022-09-19"
+    tags:
+      [
+        "vtuber",
+        "hololive",
+        "hololive en",
+        "idol",
+        "pop",
+        "anime",
+        "thin vocal",
+        "solo vocal",
+        "high tone",
+        "vocaloid",
+        "dance",
+        "colorful",
+        "energetic",
+        "catchy",
+      ]
+    note: ""
+    language: en
+    listen:
+      - ORG: https://youtu.be/QI96hnhcr2E?si=ceeOch_FMtzUbyY8

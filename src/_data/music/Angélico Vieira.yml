@@ -1,0 +1,28 @@
+# Angélico Vieira.yml
+
+nationality: PT
+
+songs:
+  - title: "Bailarina"
+    release: "2008-10-24"
+    tags:
+      [
+        "portuguese",
+        "pop",
+        "scenary",
+        "dance",
+        "passionate",
+        "romantic",
+        "capturing",
+        "attractive",
+        "nostalgic",
+        "hip hop",
+        "latin",
+        "raegetton",
+        "punk",
+        "country",
+      ]
+    note: ""
+    language: pt
+    listen:
+      - ORG: https://youtu.be/8GZfNssxj0M?si=ozuBhFKEGMDjZwQh

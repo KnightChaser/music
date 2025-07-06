@@ -1,0 +1,31 @@
+# Feenixpawl.yml
+
+nationality: AT
+
+songs:
+  - title: "Blue Sky"
+    release: "2016-02-09"
+    tags:
+      [
+        "nostalgic",
+        "electronic",
+        "single vocal",
+        "gradual development",
+        "past memories",
+        "driving",
+        "blue sky",
+        "clear sky",
+        "light blue",
+        "upbeat",
+        "feel good",
+        "synthetic",
+        "happy",
+        "energetic",
+        "dance",
+        "summer vibes",
+        "festival",
+      ]
+    note: "Sunny day, Arizona, Windows Down, On the highway, Driving 40 mph"
+    language: en
+    listen:
+      - ORG: https://youtu.be/Rm8xr9hmG40?si=lWqTkcY7amBHs4Hp

@@ -1,0 +1,172 @@
+# TOREINA(トリエナ).yml
+
+nationality: JP
+
+songs:
+  - title: "Blood debug"
+    release: "2023-02-16"
+    tags:
+      [
+        "hardcore",
+        "trance",
+        "aggressive",
+        "speedy",
+        "speedcore",
+        "hardcore",
+        "hardcore techno",
+        "midnight",
+        "racing",
+        "dark",
+        "synthetic",
+        "addictive",
+        "psychedelic",
+      ]
+    note: ""
+    language: none
+    listen:
+      - ORG: https://youtu.be/aFR3Dp9_H1s?si=uIWuAA15hF8gk-P9
+
+  - title: "Housekeeper"
+    release: "2023-02-16"
+    tags:
+      [
+        "hardcore",
+        "trance",
+        "chaotic",
+        "speedy",
+        "speedcore",
+        "hardcore",
+        "extreme",
+        "hardcore techno",
+        "extreme techno",
+        "psychedelic",
+        "addictive",
+        "solo vocal",
+        "distorted voice",
+        "dark",
+        "midnight",
+        "dreamlike",
+      ]
+    note: ""
+    language: none
+    listen:
+      - ORG: https://youtu.be/p6ztSMv2FE0?si=MhnFynmbc7j8sNTa
+
+  - title: "Push it"
+    release: "2023-02-16"
+    tags:
+      [
+        "hardcore",
+        "beat",
+        "repeated phrase",
+        "trance",
+        "techno",
+        "next generation",
+        "aggressive",
+        "midnight",
+        "midnight rave",
+        "racing",
+        "tunnel",
+        "exotic",
+        "distorted voice",
+        "mad",
+        "chaotic",
+        "dark",
+        "synthetic",
+      ]
+    note: ""
+    language: none
+    listen:
+      - ORG: https://youtu.be/mRVzKPObNKM?si=v2LHkLHxEtM_NWT6
+
+  - title: "Speed dog"
+    release: "2021-09-20"
+    tags:
+      [
+        "hardcore",
+        "trance",
+        "speedy",
+        "distorted voice",
+        "repeated phrase",
+        "craze",
+        "dissociative",
+        "psychedelic",
+        "dreamlike",
+        "speedcore",
+        "mad",
+        "abstract",
+        "hardcore",
+        "hardcore techno",
+        "extreme hardcore techno",
+        "addictive",
+        "psychedelic",
+        "toreina makes me smile",
+      ]
+    note: ""
+    language: none
+    listen:
+      - ORG: https://youtu.be/JznICKK6HiY?si=BmA1djrpQXzj3Sbo
+
+  - title: "TV boo"
+    release: "2021-09-20"
+    tags:
+      [
+        "hardcore",
+        "trance",
+        "distorted voice",
+        "repeated phrase",
+        "psychedelic",
+        "abstract",
+        "hardcore",
+        "hardcore techno",
+        "extreme hardcore techno",
+        "addictive",
+        "drum",
+        "hip hop",
+        "street",
+        "street cred",
+        "rave",
+        "midnight",
+        "city",
+        "racing",
+        "drug",
+        "dark",
+        "synthetic",
+        "mad",
+        "chaotic",
+      ]
+    note: "Ah, yeah."
+    language: none
+    listen:
+      - ORG: https://youtu.be/mh7lo6Aazfw?si=rDx9-6_2WNCnua6U
+
+  - title: "C.Q.C"
+    release: "2021-09-20"
+    tags:
+      [
+        "hardcore",
+        "trance",
+        "speedcore",
+        "hardcore techno",
+        "reflective",
+        "internal monologue",
+        "anthem",
+        "repeated phrase",
+        "psychedelic",
+        "abstract",
+        "psychedelic",
+        "sterile",
+        "summer",
+        "midnight",
+        "racing",
+        "dark",
+        "cold",
+        "synthetic",
+        "bad weather",
+        "dramatic",
+        "questioning",
+      ]
+    note: "This song seized my soul at 2024 August."
+    language: ja
+    listen:
+      - ORG: https://youtu.be/SVA-1eafSx4?si=FKgkximQeixSx1fF

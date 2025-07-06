@@ -1,0 +1,30 @@
+# VHS Collection.yml
+
+nationality: US
+
+songs:
+  - title: "Waiting on the Summer (Inukshuk Remix)"
+    release: "2017-08-09"
+    tags:
+      [
+        "nostalgic",
+        "indie synth",
+        "extra vivid",
+        "crystal clear",
+        "extra nostalgic",
+        "electronic",
+        "upbeat",
+        "feel good",
+        "summer vibes",
+        "laid back",
+        "dreamy",
+        "smiling",
+        "happy",
+        "dreamlike",
+        "multiple vocals",
+        "blue sky",
+      ]
+    note: "Tearfully nostalgic. So nostalgic so it even sounds tragic. Will I ever be able to return to that summer? Probably, next life?"
+    language: en
+    listen:
+      - ORG: https://youtu.be/BwgwJs5TkSs?si=A2O6GjSQwDBQiPco

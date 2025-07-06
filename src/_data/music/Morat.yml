@@ -1,0 +1,30 @@
+# Morat.yml
+
+nationality: CO
+
+songs:
+  - title: "Besos en Guerra"
+    release: "2017-11-03"
+    tags:
+      [
+        "pop",
+        "colombian pop",
+        "latin pop",
+        "tropipop",
+        "hip hop",
+        "romantic",
+        "heartbreak",
+        "multiple vocals",
+        "diverged future",
+        "reflective",
+        "undetermined",
+        "nostalgic",
+        "melancholic",
+        "drum",
+        "choir",
+        "acoustic guitar",
+      ]
+    note: ""
+    language: es
+    listen:
+      - ORG: https://youtu.be/1oeD2m2UQAI?si=FA0OD5EXYjm6Tyha

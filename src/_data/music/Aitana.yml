@@ -1,0 +1,33 @@
+# Aitana.yml
+
+nationality: ES
+
+songs:
+  - title: "+ (Más)"
+    release: "2019-12-18"
+    tags:
+      [
+        "cali y el dandee (artist)",
+        "pop",
+        "spanish",
+        "romantic",
+        "heartbreak",
+        "bad weather",
+        "nostalgic",
+        "melancholic",
+        "reflective",
+        "gradual",
+        "gradual development",
+        "sincere",
+        "emotional",
+        "acoustic guitar",
+        "pop rock",
+        "power pop",
+        "garage",
+        "dual vocals",
+        "colab",
+      ]
+    note: ""
+    language: es
+    listen:
+      - ORG: https://youtu.be/pPoAE5DnQRg?si=4PbLNqW6acbH1P7P

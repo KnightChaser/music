@@ -1,0 +1,30 @@
+# Stilettos.yml
+
+nationality: DK
+
+songs:
+  - title: "Click Click Click"
+    release: "2011-10-13"
+    tags:
+      [
+        "danish pop",
+        "pop",
+        "sensational",
+        "attractive",
+        "high tone",
+        "triple vocals",
+        "confident",
+        "sensual",
+        "dance",
+        "voluptuous",
+        "upbeat",
+        "party",
+        "addictive",
+        "catchy",
+        "catchy background",
+        "night",
+      ]
+    note: "A song on the borderline of attractiveness and suggestiveness, so I like it."
+    language: en
+    listen:
+      - ORG: https://youtu.be/tS-egEy5c6w?si=x4SKWT2q45vtM_wO

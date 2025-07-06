@@ -68,3 +68,81 @@ songs:
     listen:
       - ORG: https://youtu.be/vxI3BWYCVX0?si=3urm88JrRn-5rzf-
       - RX(Day Limins): https://youtu.be/6YMqOjKYSkY?si=Ldj55hBk0gcwa8Ub
+
+  - title: "Se Der Pra Responder (Acústico)"
+    release: "2018-04-18"
+    tags:
+      [
+        "acoustic guitar",
+        "nostalgic",
+        "reflective",
+        "intimate",
+        "classic",
+        "solo vocal",
+        "melodic",
+        "melancholic",
+        "brazilian",
+        "pop",
+        "husky",
+        "low voice",
+        "sorrowful",
+        "silent",
+        "calm",
+        "sensitive",
+      ]
+    note: "Wait, it's better than I thought."
+    language: pt
+    listen:
+      - ORG: https://youtu.be/U62pkqBjh9g?si=CO5mfNhwtosYfLZ1
+
+  - title: "O Máximo ou Nada"
+    release: "2022-07-28"
+    tags:
+      [
+        "brazilian",
+        "brazilian rap",
+        "brazilian hip hop",
+        "hip hop",
+        "midnight",
+        "dual vocals",
+        "underground",
+        "city",
+        "street",
+        "alcoholic",
+        "neon",
+      ]
+    note: "A normal Thursday night of Sao Paulo."
+    language: pt
+    listen:
+      - ORG: https://youtu.be/pRgu9vRlXYk?si=cdRwTlIduMo_p0z1
+
+  - title: "Olha Quem Voltou"
+    release: "2022-07-28"
+    tags:
+      [
+        "brazilian",
+        "brazilian rap",
+        "brazilian hip hop",
+        "hip hop",
+        "sensational",
+        "purple",
+        "fluorescent",
+        "midnight",
+        "dual vocals",
+        "underground",
+        "purple",
+        "stormkidz (artist)",
+        "city",
+        "street",
+        "smoky",
+        "defiant",
+        "cyberpunk",
+        "dark",
+        "hype",
+        "hip hop",
+        "neon",
+      ]
+    note: "The return of the street kings."
+    language: pt
+    listen:
+      - ORG: https://youtu.be/z6CVPDc2OUc?si=7mY5JumOQxpC5Zxc

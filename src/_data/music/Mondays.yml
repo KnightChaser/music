@@ -1,0 +1,24 @@
+# Mondays.yml
+
+nationality: US
+
+songs:
+  - title: "I'm Over You"
+    release: "2016-06-10"
+    tags:
+      [
+        "pop",
+        "indie pop",
+        "indie pop rock",
+        "indie",
+        "high tone",
+        "upbeat",
+        "multiple vocals",
+        "happy",
+        "blue sky",
+        "sunkissed",
+      ]
+    note: ""
+    language: en
+    listen:
+      - ORG: https://youtu.be/dakhv-dfRjw?si=-vNhnHjrPhNdfCWT

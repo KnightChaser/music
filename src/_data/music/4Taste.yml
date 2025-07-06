@@ -1,0 +1,43 @@
+# 4Taste.yml
+
+nationality: PT
+
+songs:
+  - title: "Sempre Que Te Vejo (Sinto um Desejo)"
+    release: "2006-12-21"
+    tags:
+      [
+        "nostalgic",
+        "portuguese",
+        "pop",
+        "romantic",
+        "rock",
+        "guitar",
+        "electronic guitar",
+      ]
+    note: ""
+    language: pt
+    listen:
+      - ORG: https://youtu.be/Fon4YLgf-pM?si=0Rbt-Gtp8sixonzT
+
+  - title: "Desta Vez Não Te Vou Perdoar"
+    release: "2016-04-15"
+    tags:
+      [
+        "nostalgic",
+        "not forgiving",
+        "goodbye",
+        "goodbye song",
+        "portuguese",
+        "upbeat",
+        "pop",
+        "rock",
+        "guitar",
+        "poetic",
+        "multiple vocals",
+        "electronic guitar",
+      ]
+    note: "Goodbye in a gentle and poetic way, not angry."
+    language: pt
+    listen:
+      - ORG: https://youtu.be/_Gi8jQ5ON9Y?si=qmc4WXph8YXaJlfh

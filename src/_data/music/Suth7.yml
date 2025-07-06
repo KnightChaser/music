@@ -1,0 +1,25 @@
+# Suthy.yml
+
+nationality: BR
+
+songs:
+  - title: "Chance única"
+    release: "2025-01-17"
+    tags:
+      [
+        "brazilian",
+        "brazilian rap",
+        "brazilian pop",
+        "chill",
+        "city",
+        "driving",
+        "daytime",
+        "cloudy",
+        "sky",
+        "indie",
+        "indie pop",
+      ]
+    note: "Ah yeah, I like this kind of rap."
+    language: pt
+    listen:
+      - ORG: https://youtu.be/jXnqPujsse4?si=_N0pNnpJMNlEOwIW

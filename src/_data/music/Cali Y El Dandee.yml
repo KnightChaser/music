@@ -1,0 +1,81 @@
+# Cali Y El Dandee.yml
+
+nationality: CO
+
+songs:
+  - title: "Yo Te Esperaré"
+    release: "2011-04-05"
+    tags:
+      [
+        "latin pop",
+        "romantic",
+        "heartbreak",
+        "dual vocals",
+        "popular",
+        "pop",
+        "emotional",
+        "melancholic",
+        "nostalgic",
+        "dance",
+        "electronic",
+        "tropipop",
+        "dembow",
+        "reflective",
+        "colombian",
+        "colombian pop",
+      ]
+    note: ""
+    language: es
+    listen:
+      - ORG: https://youtu.be/_KSyWS8UgA4?si=CG5IyQNpLqmlJKOy
+
+  - title: "Por Fin Te Encontré"
+    release: "2015-09-25"
+    tags:
+      [
+        "latin pop",
+        "romantic",
+        "sincere",
+        "heartfelt",
+        "traditional spanish",
+        "raeggeton",
+        "flamenco",
+        "dual vocals",
+        "colombian",
+        "juan magán (artist)",
+        "sebastián yatra (artist)",
+        "beat",
+        "drum",
+        "dance",
+        "summer",
+        "summer vibe",
+      ]
+    note: ""
+    language: es
+    listen:
+      - ORG: https://youtu.be/_kxz7WX4mLU?si=-vNq7625I5hAHzaB
+
+  - title: "Sirena"
+    release: "2018-04-27"
+    tags:
+      [
+        "latin pop",
+        "romantic",
+        "urban pop",
+        "colombian",
+        "dual vocals",
+        "dance",
+        "raeggeton",
+        "slow",
+        "gradual",
+        "storytelling",
+        "sincere",
+        "authentic",
+        "moving",
+        "emotional",
+        "reflective",
+      ]
+    note: "If you have time, listen to the full version with the music video."
+    language: es
+    listen:
+      - ORG: https://youtu.be/gT4IVJRjw4w?si=awbOS3EVI_5GQNHv

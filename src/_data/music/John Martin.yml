@@ -1,0 +1,29 @@
+# John Martin.yml
+
+nationality: SE
+
+songs:
+  - title: "Anywhere For You"
+    release: "2014-03-20"
+    tags:
+      [
+        "swedish house",
+        "progressive house",
+        "electronic",
+        "edm",
+        "danceable",
+        "uplifting",
+        "hopeful",
+        "energetic",
+        "dance",
+        "deep blue",
+        "summer vibe",
+        "feel good",
+        "festival",
+        "festival anthem",
+      ]
+    note: "Probably, my #1 favorite progressive house track of all time."
+    language: en
+    listen:
+      - ORG: https://youtu.be/KWw_5PYu58I?si=Y1J3owlB6yXTA_p0
+      - RX(Tiësto vs Dzeko & Torres Remix): https://youtu.be/GE4tbjiQ-Ew?si=0kKgA5VxjM39aP9n
