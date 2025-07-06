@@ -259,6 +259,54 @@ async function init() {
     });
   }
 
+  const tagToggleBtn = document.getElementById("tag-toggle");
+  const tagContainer = document.getElementById("tag-container");
+  let tagInitialized = false;
+
+  if (tagToggleBtn && tagContainer) {
+    tagToggleBtn.addEventListener("click", () => {
+      tagContainer.classList.toggle("hidden");
+      if (!tagContainer.classList.contains("hidden") && !tagInitialized) {
+        // build word-cloud data from your tagCounts
+        const cloudData = Object.entries(tagCounts).map(([tag, count]) => ({
+          name: tag,
+          weight: count,
+        }));
+
+        Highcharts.chart("tag-container", {
+          chart: {
+            type: "wordcloud",
+            backgroundColor: "#f9fafb",
+            height: 600, // match your container
+          },
+          title: { text: "Tag Cloud of Playlist" },
+          plotOptions: {
+            wordcloud: {
+              gridSize: 4, // smaller grid => tighter packing
+              minFontSize: 12, // floor size
+              maxFontSize: 64, // ceiling size
+              spiral: "rectangular", // denser layout
+            },
+          },
+          series: [
+            {
+              type: "wordcloud",
+              data: Object.entries(tagCounts).map(([tag, count]) => ({
+                name: tag,
+                // logarithmic weight to exaggerate differences at the top end:
+                weight: Math.log(count + 1),
+              })),
+              rotation: { from: 0, to: 0 },
+              shuffle: true,
+            },
+          ],
+        });
+
+        tagInitialized = true;
+      }
+    });
+  }
+
   // Setup event listeners and modules
   dom.searchInput.addEventListener("input", doSearch);
   dom.clearButton.addEventListener("click", () => {

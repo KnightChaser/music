@@ -20,6 +20,8 @@ module.exports = function (eleventyConfig) {
       "assets/flowbite/flowbite.min.js",
     "node_modules/highcharts/highcharts.js": "assets/highcharts/highcharts.js",
     "node_modules/highcharts/modules/map.js": "assets/highcharts/map.js",
+    "node_modules/highcharts/modules/wordcloud.js":
+      "assets/highcharts/wordcloud.js",
     "node_modules/highcharts/mapdata/custom/world.js":
       "assets/highcharts/world.js",
   });
