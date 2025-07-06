@@ -211,6 +211,54 @@ async function init() {
     });
   }
 
+  const yearToggleBtn = document.getElementById("year-toggle");
+  const yearContainer = document.getElementById("year-container");
+  let yearInitialized = false;
+
+  if (yearToggleBtn && yearContainer) {
+    yearToggleBtn.addEventListener("click", () => {
+      yearContainer.classList.toggle("hidden");
+
+      if (!yearContainer.classList.contains("hidden") && !yearInitialized) {
+        // 1) build counts per year
+        const yearCounts = allSongs.reduce((acc, song) => {
+          const yr = new Date(song.release).getFullYear();
+          if (yr && !isNaN(yr)) acc[yr] = (acc[yr] || 0) + 1;
+          return acc;
+        }, {});
+
+        // 2) to Highcharts data: [ [timestamp, count], … ]
+        const chartData = Object.entries(yearCounts)
+          .map(([yr, cnt]) => [Date.UTC(+yr, 0, 1), cnt])
+          .sort((a, b) => a[0] - b[0]);
+
+        // 3) draw column chart
+        Highcharts.chart("year-container", {
+          chart: { type: "column", backgroundColor: "#f9fafb" },
+          title: { text: "Songs Released Per Year" },
+          xAxis: {
+            type: "datetime",
+            title: { text: "Year" },
+            tickInterval: 365 * 24 * 3600 * 1000, // one year
+          },
+          yAxis: {
+            title: { text: "Number of Songs" },
+            allowDecimals: false,
+          },
+          series: [
+            {
+              name: "Songs",
+              data: chartData,
+              tooltip: { xDateFormat: "%Y", valueSuffix: " songs" },
+            },
+          ],
+        });
+
+        yearInitialized = true;
+      }
+    });
+  }
+
   // Setup event listeners and modules
   dom.searchInput.addEventListener("input", doSearch);
   dom.clearButton.addEventListener("click", () => {
