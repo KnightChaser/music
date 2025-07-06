@@ -5,6 +5,7 @@ import * as search from "./search.js";
 import * as renderer from "./renderer.js";
 import * as suggestions from "./suggestions.js";
 import * as worldMap from "./worldMap.js";
+import { langNames } from "./utils.js";
 
 // --- STATE ---
 let allSongs = [];
@@ -154,6 +155,154 @@ async function init() {
           mapContainer.innerHTML =
             '<p class="text-center text-red-500">Error loading map data.</p>';
         }
+      }
+    });
+  }
+
+  // Render the language distribution chart (highcharts)
+  const langToggleBtn = document.getElementById("lang-toggle");
+  const langContainer = document.getElementById("lang-container");
+  let langInitialized = false;
+
+  if (langToggleBtn && langContainer) {
+    langToggleBtn.addEventListener("click", () => {
+      // Show/hide the chart
+      langContainer.classList.toggle("hidden");
+
+      // Lazy-init the donut on first show
+      if (!langContainer.classList.contains("hidden") && !langInitialized) {
+        // Transform your existing languageCounts -> Highcharts data format
+        const chartData = Object.entries(languageCounts).map(
+          ([code, count]) => ({
+            name: langNames[code]?.[0] || code, // Use the full name(e.g. "English") instead of code(e.g. "en")
+            y: count,
+          })
+        );
+
+        Highcharts.chart("lang-container", {
+          chart: {
+            type: "pie",
+            backgroundColor: "#f9fafb",
+          },
+          title: { text: "Language Distribution of Songs" },
+          subtitle: { text: "Count of songs by its language" },
+          plotOptions: {
+            pie: {
+              innerSize: "50%", // donut hole
+              allowPointSelect: true,
+              cursor: "pointer",
+              dataLabels: {
+                enabled: true,
+                format: "{point.name}: {point.y}",
+              },
+            },
+          },
+          series: [
+            {
+              name: "Songs",
+              colorByPoint: true,
+              data: chartData,
+            },
+          ],
+        });
+
+        langInitialized = true;
+      }
+    });
+  }
+
+  const yearToggleBtn = document.getElementById("year-toggle");
+  const yearContainer = document.getElementById("year-container");
+  let yearInitialized = false;
+
+  if (yearToggleBtn && yearContainer) {
+    yearToggleBtn.addEventListener("click", () => {
+      yearContainer.classList.toggle("hidden");
+
+      if (!yearContainer.classList.contains("hidden") && !yearInitialized) {
+        // 1) build counts per year
+        const yearCounts = allSongs.reduce((acc, song) => {
+          const yr = new Date(song.release).getFullYear();
+          if (yr && !isNaN(yr)) acc[yr] = (acc[yr] || 0) + 1;
+          return acc;
+        }, {});
+
+        // 2) to Highcharts data: [ [timestamp, count], … ]
+        const chartData = Object.entries(yearCounts)
+          .map(([yr, cnt]) => [Date.UTC(+yr, 0, 1), cnt])
+          .sort((a, b) => a[0] - b[0]);
+
+        // 3) draw column chart
+        Highcharts.chart("year-container", {
+          chart: { type: "column", backgroundColor: "#f9fafb" },
+          title: { text: "Songs Released Per Year" },
+          xAxis: {
+            type: "datetime",
+            title: { text: "Year" },
+            tickInterval: 365 * 24 * 3600 * 1000, // one year
+          },
+          yAxis: {
+            title: { text: "Number of Songs" },
+            allowDecimals: false,
+          },
+          series: [
+            {
+              name: "Songs",
+              data: chartData,
+              tooltip: { xDateFormat: "%Y", valueSuffix: " songs" },
+            },
+          ],
+        });
+
+        yearInitialized = true;
+      }
+    });
+  }
+
+  const tagToggleBtn = document.getElementById("tag-toggle");
+  const tagContainer = document.getElementById("tag-container");
+  let tagInitialized = false;
+
+  if (tagToggleBtn && tagContainer) {
+    tagToggleBtn.addEventListener("click", () => {
+      tagContainer.classList.toggle("hidden");
+      if (!tagContainer.classList.contains("hidden") && !tagInitialized) {
+        // build word-cloud data from your tagCounts
+        const cloudData = Object.entries(tagCounts).map(([tag, count]) => ({
+          name: tag,
+          weight: count,
+        }));
+
+        Highcharts.chart("tag-container", {
+          chart: {
+            type: "wordcloud",
+            backgroundColor: "#f9fafb",
+            height: 600, // match your container
+          },
+          title: { text: "Tag Cloud of Playlist" },
+          plotOptions: {
+            wordcloud: {
+              gridSize: 4, // smaller grid => tighter packing
+              minFontSize: 12, // floor size
+              maxFontSize: 64, // ceiling size
+              spiral: "rectangular", // denser layout
+            },
+          },
+          series: [
+            {
+              type: "wordcloud",
+              data: Object.entries(tagCounts).map(([tag, count]) => ({
+                name: tag,
+                // logarithmic weight to exaggerate differences at the top end:
+                weight: Math.log(count + 1),
+              })),
+              rotation: { from: 0, to: 0 },
+              shuffle: true,
+            },
+          ],
+        });
+
+        tagInitialized = true;
       }
     });
   }
